@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewData["Title"] = "Khuyến mãi";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+@model IEnumerable<WebDungCuLamBanh.Models.KhuyenMaiModel>
+
+<h1>Danh sách khuyến mại</h1>
+
+<div class="d-flex justify-content-left" style="margin-right:10px">
+    <div class="mr-3">
+        <a class="btn btn-primary" asp-action="CreateSaleOff" role="button">Thêm 1 khuyến mại mới</a>
+    </div
+    <div class="mr-3">
+        <a class="btn btn-primary" onclick="runSaleOff()" role="button">Chạy khuyến mãi</a>
+    </div>
+    @* <div class="mr-3">
+        <select style="width:130px" class="form-select" id="SortDrop">
+            <option value="">Sắp xếp</option>
+            <option value="1">Giá tăng dần</option>
+            <option value="2">Giá giảm dần</option>
+            <option value="3">Tên A-Z</option>
+            <option value="4">Tên Z-A</option>
+            <option value="6">Cũ nhất</option>
+            <option value="5">Mới nhất</option>
+        </select>
+    </div> *@
+    @* <div class="mr-3">
+        <form class="d-flex" role="search">
+            <input style="width:100px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div> *@
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Mã khuyến mại
+            </th>
+            <th>
+                Tên khuyến mại
+            </th>
+            <th>
+                Ngày bắt đầu
+            </th>
+            <th>
+                Ngày kết thúc
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a href="/Administrator/AddProductToSaleOff/@item.Id_KhuyenMai">
+                        @Html.DisplayFor(modelItem => item.Id_KhuyenMai)
+                    </a>
+                    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKhuyenMai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayBatDau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayKetThuc)
+                </td>
+
+                <th>
+                   <a href="/Administrator/DeleteSaleOff?id=@item.Id_KhuyenMai">
+                       <span class="material-symbols-outlined">
+                        delete
+                        </span>
+                   </a>
+                </th>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    function runSaleOff(){
+                $.ajax({
+                     url: '@Url.Action("ApplySaleOff", "Administrator")',
+                    type: "POST",
+                    success: function (result) {
+                if (result.success == true) {
+                    alert('Thành công!')
+                }
+                else if (result.success == false) {
+                    alert(result.message);
+                }
+            }
+                });
+    }
+</script>

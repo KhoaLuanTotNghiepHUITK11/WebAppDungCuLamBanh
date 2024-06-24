@@ -283,7 +283,8 @@ namespace WebDungCuLamBanh.Controllers
             catch (Exception ex)
             {
                 // Log the exception (ex) for further analysis
-                ViewBag.error = "Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.";
+                ViewBag.error = "Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại."+ex.Message;
+
                 return View();
             }
         }
@@ -316,6 +317,7 @@ namespace WebDungCuLamBanh.Controllers
                 ViewBag.Error = "Có lỗi xảy ra khi gửi yêu cầu đặt lại mật khẩu. Vui lòng thử lại.";
                 // Optionally log the exact error message to the logs
                 // _logger.LogError(ex, "Error during password reset");
+                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -351,6 +353,7 @@ namespace WebDungCuLamBanh.Controllers
                 catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = "Cập nhật thông tin không thành công";
+                    Console.WriteLine(ex.Message);
                     return RedirectToAction("Edit", "Account");
                 }
                 return RedirectToAction("Edit", "Account");

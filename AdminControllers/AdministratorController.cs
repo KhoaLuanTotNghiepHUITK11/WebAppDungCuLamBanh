@@ -138,7 +138,9 @@ namespace WebDungCuLamBanh.AdminControllers
             var tienShipHomNay = _context.DonHangVanChuyens
                     .Where(d => d.TrangThaiVanChuyen.Id_TrangThai != 1 && d.DonHang.NgayDat.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.PhiVanChuyen);
+#pragma warning disable CS8629 // Nullable value type may be null.
             var doanhThuSauThuevaChiPhiHomNay = Math.Round((decimal)(doanhThuHomNay * 92 / 100), 0) - tienShipHomNay;
+#pragma warning restore CS8629 // Nullable value type may be null.
             var tienNhapHangHomNay = _context.HoaDonNhapHangs
                 .Where(d => d.NgayNhapHang.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.TongTien);
@@ -151,9 +153,13 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewBag.tienShipHomNay = HtmlHelpers.FormatCurrency((decimal)tienShipHomNay);
             ViewBag.doanhThuSauThuevaChiPhiHomNay = HtmlHelpers.FormatCurrency((decimal)doanhThuSauThuevaChiPhiHomNay);
             ViewBag.tienNhapHangHomNay = HtmlHelpers.FormatCurrency((decimal)tienNhapHangHomNay);
+#pragma warning disable CS8629 // Nullable value type may be null.
             ViewBag.tienLoiHomNay = HtmlHelpers.FormatCurrency((decimal)tienLoiHomNay);
+#pragma warning restore CS8629 // Nullable value type may be null.
+#pragma warning disable CS8629 // Nullable value type may be null.
             ViewBag.vatHomNay = HtmlHelpers.FormatCurrency((decimal)vatHomNay);
-            //Lấy sản phẩm trong Chi tiết đơn hàng
+#pragma warning restore CS8629 // Nullable value type may be null.
+                              //Lấy sản phẩm trong Chi tiết đơn hàng
             var top10= _context.ChiTietDonHangs
                 .Include(ct => ct.DungCu)
                 

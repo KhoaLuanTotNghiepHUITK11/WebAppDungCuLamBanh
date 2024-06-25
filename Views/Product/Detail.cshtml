@@ -154,7 +154,7 @@
                             <img src="https://img.icons8.com/?size=100&id=YFbzdUk7Q3F8&format=png&color=000000" width="40px" />
                         </a>
                     </div>
-                    <div>
+                    @* <div>
                         @if (ViewBag.email != null)
                         {
                             @if (!ViewBag.isFavorite)
@@ -176,136 +176,13 @@
 
                             }
                         }
-                    </div>
+                    </div> *@
                 </div>
             </div>
-            <script>
-                function addToFavorite() {
-                    $.ajax({
-                        url: "@Url.Action("AddToFavorite", "Account")",
-                        method: "POST",
-                        data: { id: @Model.Id_DungCu }, 
-                        success: function (response) {
-                            if (response.success) {
-                                sessionStorage.setItem('showToast', response.message); // Message từ server
-                                location.reload(); // Tải lại trang
-                            } else {
-                                showToast(response.message); // Hiển thị message từ server
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            // Xử lý lỗi kết nối hoặc server
-                            showToast("Đã xảy ra lỗi khi thêm vào yêu thích. Vui lòng thử lại.");
-                        }
-                    });
-                }
-                function deleteFavorite(id) {
-                    $.ajax({
-                        url: "/Account/DeleteFavorite/" + id, // Sử dụng đường dẫn URL tuyệt đối với tham số id
-                        method: "POST",
-                        success: function (response) {
-                            if (response.success) {
-                                sessionStorage.setItem('showToast', response.message); // Lưu thông báo từ server vào sessionStorage
-                                location.reload(); // Tải lại trang
-                            } else {
-                                showToast(response.message); // Hiển thị thông báo lỗi từ server
-                            }
-                        },
-                        error: function (xhr, status, error) {
-                            showToast("Đã xảy ra lỗi khi kết nối tới máy chủ: " + error); // Hiển thị thông báo lỗi kết nối
-                        }
-                    });
-                }
-                function showToast(message) {
-                    alert(message); // Bạn có thể thay thế bằng cách hiển thị thông báo tùy chỉnh
-                }
-                function addToCart() {
-                    var quantity = $("#quantity").val(); // Lấy giá trị từ ô nhập liệu
-                    var productID = @Model.Id_DungCu; // Lấy giá trị từ Model.MAPM
-                    var currentInventory = parseInt("@ViewBag.TonKho"); // Lấy giá trị tồn kho và chuyển về kiểu số nguyên
-
-                    // Kiểm tra nếu số lượng thêm lớn hơn tồn kho
-                    if (parseInt(quantity) > currentInventory) {
-                        showToast("Rất tiếc, số sản phẩm trong kho không đáp ứng đủ cho số lượng cần của bạn.");
-                        return;
-                    }
-                    else if (parseInt(quantity) < 0) {
-                        showToast("Số lượng không hợp lệ.");
-                        return;
-                    }
-                    $.get("@Url.Action("CheckLogin", "Account")", function (data) {
-                        if (data.signedIn) {
-                            // Nếu người dùng đã đăng nhập, thêm sản phẩm vào giỏ hàng
-                            //Dùng ajax thêm vào giỏ hàng
-                            $.ajax({
-                                url: "@Url.Action("AddToCart", "Cart")",
-                                method: "POST",
-                                data: { productID: productID, quantity: quantity },
-                                success: function (response) {
-                                    updateCartBadge();
-                                    miniCart('@ViewBag.uid');
-                                    sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
-                                    location.reload();
-                                    
-                                },
-                                error: function (xhr, status, error) {
-                                    showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
-                                }
-                            });
-
-                        } else {
-                            // Nếu người dùng chưa đăng nhập, thực hiện đăng nhập ẩn danh
-                            $.get("@Url.Action("SignInAnonymously", "Account")", function (data) {
-                                if (data.success == true) {
-                                    // Nếu đăng nhập thành công, thêm sản phẩm vào giỏ hàng
-                                    $.ajax({
-                                        url: "@Url.Action("AddToCart", "Cart")",
-                                        method: "POST",
-                                        data: { productID: productID, quantity: quantity },
-                                        success: function (response) {
-                                            updateCartBadge();
-                                            miniCart('@ViewBag.uid');
-                                            sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
-                                            location.reload();
-                                            
-                                        },
-                                        error: function (xhr, status, error) {
-                                           showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
-                                        }
-                                    });
-                                } else {
-                                    // Nếu đăng nhập không thành công, hiển thị thông báo lỗi
-                                    $.ajax({
-                                        url: "@Url.Action("AddToCart", "Cart")",
-                                        method: "POST",
-                                        data: { productID: productID, quantity: quantity },
-                                        success: function (response) {
-                                            updateCartBadge
-                                            miniCart('@ViewBag.uid');
-                                            sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
-                                            location.reload();
-                                            
-                                            
-                                           
-                                        },
-                                        error: function (xhr, status, error) {
-                                            showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
-                };
-                
-
-
-            </script>
+            
             <br />
             <br />
-            <p>
-                @ViewBag.MyData
-            </p>
+
         </div>
     </div>
     <div class="row" style="background-color:white;padding:20px;border-radius:20px;margin-top:20px">
@@ -340,6 +217,125 @@
         </div>
     </div>
 </div>
+<script>
+    function addToFavorite() {
+        $.ajax({
+            url: "@Url.Action("AddToFavorite", "Account")",
+            method: "POST",
+            data: { id: @Model.Id_DungCu },
+            success: function (response) {
+                if (response.success) {
+                    sessionStorage.setItem('showToast', response.message); // Message từ server
+                    location.reload(); // Tải lại trang
+                } else {
+                    showToast(response.message); // Hiển thị message từ server
+                }
+            },
+            error: function (xhr, status, error) {
+                // Xử lý lỗi kết nối hoặc server
+                showToast("Đã xảy ra lỗi khi thêm vào yêu thích. Vui lòng thử lại.");
+            }
+        });
+    }
+    function deleteFavorite(id) {
+        $.ajax({
+            url: "/Account/DeleteFavorite/" + id, // Sử dụng đường dẫn URL tuyệt đối với tham số id
+            method: "POST",
+            success: function (response) {
+                if (response.success) {
+                    sessionStorage.setItem('showToast', response.message); // Lưu thông báo từ server vào sessionStorage
+                    location.reload(); // Tải lại trang
+                } else {
+                    showToast(response.message); // Hiển thị thông báo lỗi từ server
+                }
+            },
+            error: function (xhr, status, error) {
+                showToast("Đã xảy ra lỗi khi kết nối tới máy chủ: " + error); // Hiển thị thông báo lỗi kết nối
+            }
+        });
+    }
+    function showToast(message) {
+        alert(message); // Bạn có thể thay thế bằng cách hiển thị thông báo tùy chỉnh
+    }
+    function addToCart() {
+        var quantity = $("#quantity").val(); // Lấy giá trị từ ô nhập liệu
+        var productID = @Model.Id_DungCu; // Lấy giá trị từ Model.MAPM
+        var currentInventory = parseInt("@ViewBag.TonKho"); // Lấy giá trị tồn kho và chuyển về kiểu số nguyên
+
+        // Kiểm tra nếu số lượng thêm lớn hơn tồn kho
+        if (parseInt(quantity) > currentInventory) {
+            showToast("Rất tiếc, số sản phẩm trong kho không đáp ứng đủ cho số lượng cần của bạn.");
+            return;
+        }
+        else if (parseInt(quantity) < 0) {
+            showToast("Số lượng không hợp lệ.");
+            return;
+        }
+        $.get("@Url.Action("CheckLogin", "Account")", function (data) {
+            if (data.signedIn) {
+                // Nếu người dùng đã đăng nhập, thêm sản phẩm vào giỏ hàng
+                //Dùng ajax thêm vào giỏ hàng
+                $.ajax({
+                    url: "@Url.Action("AddToCart", "Cart")",
+                    method: "POST",
+                    data: { productID: productID, quantity: quantity },
+                    success: function (response) {
+                        updateCartBadge();
+                        miniCart('@ViewBag.uid');
+                        sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
+                        location.reload();
+
+                    },
+                    error: function (xhr, status, error) {
+                        showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
+                    }
+                });
+
+            } else {
+                // Nếu người dùng chưa đăng nhập, thực hiện đăng nhập ẩn danh
+                $.get("@Url.Action("SignInAnonymously", "Account")", function (data) {
+                    if (data.success == true) {
+                        // Nếu đăng nhập thành công, thêm sản phẩm vào giỏ hàng
+                        $.ajax({
+                            url: "@Url.Action("AddToCart", "Cart")",
+                            method: "POST",
+                            data: { productID: productID, quantity: quantity },
+                            success: function (response) {
+                                updateCartBadge();
+                                miniCart('@ViewBag.uid');
+                                sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
+                                location.reload();
+
+                            },
+                            error: function (xhr, status, error) {
+                                showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
+                            }
+                        });
+                    } else {
+                        // Nếu đăng nhập không thành công, hiển thị thông báo lỗi
+                        $.ajax({
+                            url: "@Url.Action("AddToCart", "Cart")",
+                            method: "POST",
+                            data: { productID: productID, quantity: quantity },
+                            success: function (response) {
+                                updateCartBadge
+                                miniCart('@ViewBag.uid');
+                                sessionStorage.setItem('showToast', 'Thêm sản phẩm thành công!');
+                                location.reload();
+
+
+
+                            },
+                            error: function (xhr, status, error) {
+                                showToast("Đã xảy ra lỗi khi thêm vào giỏ hàng.");
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    };
+</script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Kiểm tra sessionStorage

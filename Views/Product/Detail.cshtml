@@ -49,6 +49,8 @@
         font-weight: bold;
         font-style: normal;
     }
+
+    
 </style>
 
 
@@ -135,23 +137,28 @@
                 <a style="text-decoration:none" title="Chia sẻ lên Messenger" href="fb-messenger://share?link=http://35.223.233.219/Product/Detail/@Html.DisplayFor(model => model.Id_DungCu) target="_blank" rel="noopener noreferrer">
                     <img src="https://img.icons8.com/?size=100&id=YFbzdUk7Q3F8&format=png&color=000000" width="40px" />
                 </a>
-                @if (ViewBag.email != null)
+                @if(ViewBag.email!=null)
                 {
                     @if (!ViewBag.isFavorite)
                     {
-                        <a style="border-radius:20px" class="btn btn-dark" onclick="addToFavorite()">
+
+                        <a style="border-radius:20px" class="btn btn-dark" id="addToCartButton" onclick="addToFavorite()">
                             <img src="~/logo/favorite.svg" />
-                            <b>Thêm vào yêu thích</b>
-                        </a>
+                            <b>Thêm vào yêu thích</b></a>
+
                     }
                     else
                     {
-                        <a style="border-radius:20px" class="btn btn-dark" onclick="deleteFavorite()">
+
+                        <a style="border-radius:20px" class="btn btn-dark" id="addToCartButton" onclick="deleteFavorite()">
                             <img src="~/logo/favorite_fill.svg" />
-                            <b>Bỏ yêu thích</b>
-                        </a>
+                            <b>Bỏ yêu thích</b></a>
+
                     }
-                }              
+                }
+                
+               
+               
             </div>
             <script>
                 function addToFavorite() {

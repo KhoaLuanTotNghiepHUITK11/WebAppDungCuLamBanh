@@ -647,24 +647,37 @@ namespace WebDungCuLamBanh.Controllers
         [Route("Account/DeleteFavorite/{id}")]
         public async Task<ActionResult> DeleteFavorite(int id)
         {
-            var session = HttpContext.Session.GetString("email");
-            if (session == null)
+            // Kiểm tra xem người dùng đã đăng nhập chưa
+            var sessionEmail = HttpContext.Session.GetString("email");
+            var sessionUid = HttpContext.Session.GetString("uid");
+
+            if (sessionEmail == null || sessionUid == null)
             {
                 return Json(new { success = false, message = "Vui lòng đăng nhập để xóa sản phẩm khỏi yêu thích." });
             }
-            var uid = HttpContext.Session.GetString("uid");
-            if (uid == null)
-            {
-                return Json(new { success = false, message = "Vui lòng đăng nhập để xóa sản phẩm khỏi yêu thích." });
-            }
-            var favorite = await _context.YeuThichs.Where(yt => yt.Id_SanPham == id && yt.Id_KhachHang == uid).FirstOrDefaultAsync();
+
+            // Tìm sản phẩm yêu thích trong cơ sở dữ liệu
+            var favorite = await _context.YeuThichs
+                .Where(yt => yt.Id_SanPham == id && yt.Id_KhachHang == sessionUid)
+                .FirstOrDefaultAsync();
+
             if (favorite == null)
             {
                 return Json(new { success = false, message = "Sản phẩm không có trong danh sách yêu thích." });
             }
-            _context.YeuThichs.Remove(favorite);
-            await _context.SaveChangesAsync();
-            return Json(new { success = true, message = "Xóa sản phẩm khỏi yêu thích thành công." });
+
+            try
+            {
+                // Xóa sản phẩm yêu thích khỏi cơ sở dữ liệu
+                _context.YeuThichs.Remove(favorite);
+                await _context.SaveChangesAsync();
+                return Json(new { success = true, message = "Xóa sản phẩm khỏi yêu thích thành công." });
+            }
+            catch (Exception ex)
+            {
+                // Trả về thông báo lỗi chi tiết hơn
+                return Json(new { success = false, message = "Đã xảy ra lỗi khi xóa sản phẩm khỏi yêu thích: " + ex.Message });
+            }
         }
         public IActionResult FavoriteProduct()
         {

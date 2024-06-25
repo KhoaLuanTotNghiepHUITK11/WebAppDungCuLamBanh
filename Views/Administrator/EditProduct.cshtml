@@ -12,6 +12,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id_DungCu" />
             <input type="hidden" asp-for="DaXoa" value="0" />
+            <input type="hidden" asp-for="SoLuong"/>
+            <input type="hidden" asp-for="GiaNhap"/>
             <div class="form-group">
                 <label asp-for="TenDungCu" class="control-label">Tên sản phẩm</label>
                 <input asp-for="TenDungCu" class="form-control" required/>

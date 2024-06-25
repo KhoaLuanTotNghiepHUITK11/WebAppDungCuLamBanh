@@ -7,6 +7,9 @@
     ViewData["Title"] = "Hoá đơn nhập hàng";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+@{
+    int dem = 1;
+}
 <div class="row">
     @if (hoaDon != null)
     {
@@ -54,7 +57,6 @@
     {
         <div></div>
     }
-
     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -99,7 +101,7 @@
       @foreach (var item in cthdNhapHang)
       {
           <tr>
-              <th scope="row">1</th>
+              <th scope="row">@dem</th>
               <td>@item.SanPham.TenDungCu</td>
               <td style="text-align:right">@item.SoLuong cái</td>
               <td style="text-align:right">@Html.FormatCurrency(item.DonGia.Value)</td>
@@ -120,6 +122,11 @@
                 }
 
           </tr>
+                {
+                    dem = dem + 1;
+                }
+                
+
       }
   </tbody>
 </table>

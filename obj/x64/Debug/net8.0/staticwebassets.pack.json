@@ -1601,6 +1601,10 @@
       "PackagePath": "staticwebassets\\logo\\bg-login.jpg"
     },
     {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\facebook.png",
+      "PackagePath": "staticwebassets\\logo\\facebook.png"
+    },
+    {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\favorite.svg",
       "PackagePath": "staticwebassets\\logo\\favorite.svg"
     },
@@ -1625,8 +1629,20 @@
       "PackagePath": "staticwebassets\\logo\\logodai.png"
     },
     {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\messenger.png",
+      "PackagePath": "staticwebassets\\logo\\messenger.png"
+    },
+    {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\minilogo.jpg",
       "PackagePath": "staticwebassets\\logo\\minilogo.jpg"
+    },
+    {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\twitter.png",
+      "PackagePath": "staticwebassets\\logo\\twitter.png"
+    },
+    {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\zalo.png",
+      "PackagePath": "staticwebassets\\logo\\zalo.png"
     },
     {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\package-lock.json",

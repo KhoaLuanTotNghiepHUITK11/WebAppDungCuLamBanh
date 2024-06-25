@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "5CnbYLyYTlXvqZJn3X12UZddc9Bumlnzu+iUq79l3AA=",
+  "Hash": "S3CYf9Dg+E/qQIoJexpjXiZDm1bM+vTljEgvNiTHOVs=",
   "Source": "WebDungCuLamBanh",
   "BasePath": "_content/WebDungCuLamBanh",
   "Mode": "Default",
@@ -7560,6 +7560,25 @@
       "OriginalItemSpec": "wwwroot\\logo\\Error404.png"
     },
     {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\facebook.png",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "logo/facebook.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo\\facebook.png"
+    },
+    {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\favorite.svg",
       "SourceId": "WebDungCuLamBanh",
       "SourceType": "Discovered",
@@ -7674,6 +7693,25 @@
       "OriginalItemSpec": "wwwroot\\logo\\logodai.png"
     },
     {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\messenger.png",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "logo/messenger.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo\\messenger.png"
+    },
+    {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\minilogo.jpg",
       "SourceId": "WebDungCuLamBanh",
       "SourceType": "Discovered",
@@ -7731,6 +7769,25 @@
       "OriginalItemSpec": "wwwroot\\logo\\OIG4.jpg"
     },
     {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\twitter.png",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "logo/twitter.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo\\twitter.png"
+    },
+    {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\Thanh toán thành công!.png",
       "SourceId": "WebDungCuLamBanh",
       "SourceType": "Discovered",
@@ -7767,6 +7824,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\logo\\Whisk &Flourisk.svg"
+    },
+    {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\logo\\zalo.png",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "logo/zalo.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\logo\\zalo.png"
     },
     {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\package.json",

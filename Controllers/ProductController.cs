@@ -68,9 +68,16 @@ namespace WebDungCuLamBanh.Controllers
                 _ => query.OrderByDescending(p => p.Id_LoaiDungCu),
             };
 
+            // Kiểm tra nếu không có kết quả
+            int TotalItems = await query.CountAsync();
+            if (TotalItems == 0)
+            {
+                // Nếu không tìm thấy kết quả nào, trả về null
+                return View(null);
+            }
+
             // Phân trang
             int ItemOfPage = 15;
-            int TotalItems = await query.CountAsync();
             int TotalPage = (int)Math.Ceiling((double)TotalItems / ItemOfPage);
 
             if (page < 1)
@@ -93,6 +100,7 @@ namespace WebDungCuLamBanh.Controllers
 
             return View(result);
         }
+
 
 
         public async Task<IActionResult> Detail(int? id, string MyData)

@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\detail.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\toast_Style.css" />
     <_ContentIncludedByDefault Remove="wwwroot\js\cart.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\checkCloseTab.js" />

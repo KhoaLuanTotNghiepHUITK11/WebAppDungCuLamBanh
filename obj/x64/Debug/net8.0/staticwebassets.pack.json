@@ -1069,6 +1069,10 @@
       "PackagePath": "staticwebassets\\css\\ads.min.css.map"
     },
     {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\detail.css",
+      "PackagePath": "staticwebassets\\css\\detail.css"
+    },
+    {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\examples.css",
       "PackagePath": "staticwebassets\\css\\examples.css"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Xl7AIDCqrneMy1ZeT9oVrNy87DN54f+yHGkNQ5xiof8=",
+  "Hash": "5CnbYLyYTlXvqZJn3X12UZddc9Bumlnzu+iUq79l3AA=",
   "Source": "WebDungCuLamBanh",
   "BasePath": "_content/WebDungCuLamBanh",
   "Mode": "Default",
@@ -5088,6 +5088,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\ads.min.css.map"
+    },
+    {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\detail.css",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "css/detail.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\detail.css"
     },
     {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\examples.css",

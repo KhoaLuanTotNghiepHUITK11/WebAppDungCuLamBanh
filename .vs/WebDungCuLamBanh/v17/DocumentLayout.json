@@ -9,6 +9,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\wwwroot\\css\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:wwwroot\\css\\detail.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,8 +22,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "detail.css",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\detail.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\detail.css",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\css\\detail.css",
+              "RelativeToolTip": "wwwroot\\css\\detail.css",
+              "ViewState": "AQIAABkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-06-25T15:28:07.901Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -28,9 +45,10 @@
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
               "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AQIAAIYCAAAAAAAAAAAAAKgCAAAJAAAA",
+              "ViewState": "AQIAAG4CAAAAAAAAAAAAAKgCAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T10:03:41.086Z"
+              "WhenOpened": "2024-06-25T10:03:41.086Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -40,7 +58,7 @@
               "RelativeDocumentMoniker": "Views\\Product\\Detail.cshtml",
               "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
               "RelativeToolTip": "Views\\Product\\Detail.cshtml",
-              "ViewState": "AQIAAPwAAAAAAAAAAAAkwAcBAAAAAAAA",
+              "ViewState": "AQIAAFEAAAAAAAAAAAAAAFEAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-25T10:02:12.826Z",
               "EditorCaption": ""

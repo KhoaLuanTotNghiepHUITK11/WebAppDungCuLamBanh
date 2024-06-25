@@ -1,7 +1,5 @@
-﻿using MailKit.Security;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MimeKit;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 
@@ -145,6 +143,6 @@ namespace WebDungCuLamBanh.API
             }
             return Ok(giaVanChuyen.CuocVanChuyen);
         }
-        
+
     }
 }

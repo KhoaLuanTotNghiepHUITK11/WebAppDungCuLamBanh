@@ -74,7 +74,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 }
                 return View(nhaCungCapModel);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = ex.Message });
             }
@@ -123,7 +123,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 {
                     if (!NhaCungCapModelExists(nhaCungCapModel.Id_NhaCungCap))
                     {
-                        return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message ="Not Found" });
+                        return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Not Found" });
                     }
                     else
                     {
@@ -173,11 +173,11 @@ namespace WebDungCuLamBanh.AdminControllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-        
+
         }
 
         private bool NhaCungCapModelExists(int id)

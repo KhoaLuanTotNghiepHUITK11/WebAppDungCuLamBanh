@@ -16,7 +16,7 @@ namespace WebDungCuLamBanh.Models
         public DateTime? NgayGiao { get; set; }
         public decimal? TienGiamGia { get; set; }
         public decimal? VAT { get; set; }
-        public decimal? TienDiemThuong { get;set;}
+        public decimal? TienDiemThuong { get; set; }
         public decimal? TongTien { get; set; }
         public string? TrangThai { get; set; }
         [Column("PhuongThucThanhToan")]

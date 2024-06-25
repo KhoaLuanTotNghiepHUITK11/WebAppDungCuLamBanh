@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 
@@ -80,11 +74,11 @@ namespace WebDungCuLamBanh.AdminControllers
                 }
                 return View(adminModel);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-            
+
         }
 
         // GET: Staff/Edit/5
@@ -172,12 +166,12 @@ namespace WebDungCuLamBanh.AdminControllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-            
-            
+
+
         }
 
         private bool AdminModelExists(string id)

@@ -13,7 +13,9 @@
 <link href="~/css/toast_style.css" rel="stylesheet" />
 <style>
     @@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&family=Rowdies:wght@300;400;700&display=swap');
-    bg. {
+    
+    bg. 
+    {
         <img src="~/logo/Designer.jpeg" alt="Alternate Text" />
     }
 
@@ -159,10 +161,6 @@
                         <a href="@banner[i].LienKet">
                             <img src="@banner[i].DuongDan" class="d-block w-100" >
                             <div class="carousel-caption d-none d-md-block">
-                                @if (i == 0)
-                                {
-                                    @* <h1>WELCOME TO WHISK & FLOURISH!</h1> *@
-                                }
                             </div>
                         </a>                       
                     </div>
@@ -271,13 +269,12 @@ else
 
 
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width:300px;">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width:300px">
         <div class="toast-body">
             <a>Trang web này sử dụng các công nghệ như cookie để kích hoạt chức năng thiết yếu của trang web, khi bạn truy cập trang web nghĩa là bạn đã chấp nhận chính sách bảo mật của chúng tôi.</a>
-            <div class="mt-2 pt-2 border-top">
-      
-      <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Tôi đã hiểu</button>
-    </div>
+            <div class="mt-2 pt-2 border-top"> 
+            <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast">Tôi đã hiểu</button>
+        </div>
   </div>    
 </div>
 </div>

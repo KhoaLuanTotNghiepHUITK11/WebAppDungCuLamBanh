@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using System.Net.WebSockets;
 using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
@@ -146,7 +145,7 @@ namespace WebDungCuLamBanh.Controllers
             double phantramkhuyenmai = 0;
             if (dungCuModel.GiaKhuyenMai != 0)
             {
-                phantramkhuyenmai = 100-(((double)dungCuModel.GiaKhuyenMai / (double)dungCuModel.Gia) * 100);
+                phantramkhuyenmai = 100 - (((double)dungCuModel.GiaKhuyenMai / (double)dungCuModel.Gia) * 100);
                 ViewBag.phantramkm = phantramkhuyenmai;
             }
             return View(dungCuModel);

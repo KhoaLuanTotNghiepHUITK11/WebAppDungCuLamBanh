@@ -99,11 +99,11 @@ namespace WebDungCuLamBanh.AdminControllers
                 ViewData["Id_NhaCungCap"] = new SelectList(_context.NhaCungCaps, "Id_NhaCungCap", "Id_NhaCungCap", hoaDonNhapHangModel.Id_NhaCungCap);
                 return RedirectToAction(nameof(AddProductToReceipt), new { id = hoaDonNhapHangModel.Id_HoaDonNhap });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-            
+
         }
         public IActionResult AddProductToReceipt(string id)
         {
@@ -114,7 +114,7 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewData["Id_HoaDonNhap"] = id;
             var hdn = _context.HoaDonNhapHangs.Find(id);
             ViewData["HoaDon"] = _context.HoaDonNhapHangs.Include(h => h.NhaCungCap).FirstOrDefault(h => h.Id_HoaDonNhap == id);
-            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0&&p.Id_NhaCungCap==hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
+            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0 && p.Id_NhaCungCap == hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
             ViewData["CTHDNhapHang"] = _context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == id).ToList();
             return View();
         }
@@ -197,13 +197,13 @@ namespace WebDungCuLamBanh.AdminControllers
             catch (Exception e)
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
-            }           
+            }
         }
 
         private bool HoaDonNhapHangModelExists(string id)
         {
             return _context.HoaDonNhapHangs.Any(e => e.Id_HoaDonNhap == id);
         }
-        
+
     }
 }

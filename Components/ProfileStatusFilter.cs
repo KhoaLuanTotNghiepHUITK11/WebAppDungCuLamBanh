@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 namespace WebDungCuLamBanh.Components
 {
-    public class ProfileStatusFilter: ActionFilterAttribute
+    public class ProfileStatusFilter : ActionFilterAttribute
     {
         public override void OnActionExecuting(ActionExecutingContext context)
         {

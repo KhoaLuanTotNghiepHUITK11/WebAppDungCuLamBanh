@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
@@ -30,13 +25,13 @@ namespace WebDungCuLamBanh.API
                 .Include(donHangs => donHangs.DonHang)
                 .Include(donHangs => donHangs.DonHang.KhachHang)
                 .Include(trangThais => trangThais.TrangThaiVanChuyen)
-                .OrderByDescending(p=>p.DonHang.NgayDat)
+                .OrderByDescending(p => p.DonHang.NgayDat)
                 .ToListAsync();
             // Lấy sản phẩm từ chi tiết đơn hàng
-            if(donHangs==null)
+            if (donHangs == null)
             {
-                   return NotFound();
-            }    
+                return NotFound();
+            }
 
             return Ok(donHangs);
         }

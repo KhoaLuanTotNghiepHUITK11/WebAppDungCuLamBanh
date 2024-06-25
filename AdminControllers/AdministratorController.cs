@@ -1,18 +1,15 @@
 ﻿using Firebase.Storage;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Utilities;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using System.Data;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using WebDungCuLamBanh.Data;
+using WebDungCuLamBanh.Helpers;
 using WebDungCuLamBanh.Models;
 using WebDungCuLamBanh.Models.admin;
-using WebDungCuLamBanh.Helpers;
 namespace WebDungCuLamBanh.AdminControllers
 {
     public class AdministratorController : Controller
@@ -37,7 +34,9 @@ namespace WebDungCuLamBanh.AdminControllers
                     .FirstOrDefaultAsync(a => a.TenNguoiDung == adminModel.TenNguoiDung && a.MatKhau == adminModel.MatKhau);
                 if (admin != null && admin.Quyen == 1)
                 {
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
                     HttpContext.Session.Set("admin", System.Text.Encoding.UTF8.GetBytes(admin.TenNguoiDung.ToString()));
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
                     return RedirectToAction("Dashboard");
                 }
                 else
@@ -88,7 +87,7 @@ namespace WebDungCuLamBanh.AdminControllers
             var vatThangNay = _context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Month == DateTime.Now.Month && d.NgayDat.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.VAT);
-            ViewBag.tienVatThangNay =HtmlHelpers.FormatCurrency((decimal)tienVatThangNay);
+            ViewBag.tienVatThangNay = HtmlHelpers.FormatCurrency((decimal)tienVatThangNay);
             ViewBag.tienShipThangNay = HtmlHelpers.FormatCurrency((decimal)tienShipThangNay);
             ViewBag.doanhThuSauThuevaChiPhiThangNay = HtmlHelpers.FormatCurrency((decimal)doanhThuSauThuevaChiPhiThangNay);
             ViewBag.tienNhapHangThangNay = HtmlHelpers.FormatCurrency((decimal)tienNhapHangThangNay);
@@ -103,17 +102,17 @@ namespace WebDungCuLamBanh.AdminControllers
                 .Where(d => d.TrangThai == "Chưa thanh toán")
                 .Count();
             ViewBag.donHangChoXuLy = donHangChoXuLy;
-            
-           
 
 
-                // Lọc doanh thu từ ngày đến ngày
-                var doanhThuLoc = _context.DonHangs
-                .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat >= fromDate && d.NgayDat <= toDate)
-                    .Sum(d => d.TongTien);
-                var tienShipLoc = _context.DonHangVanChuyens
-                .Where(d => d.TrangThaiVanChuyen.Id_TrangThai !=1 && d.DonHang.NgayDat >= fromDate && d.DonHang.NgayDat <= toDate)
-                    .Sum(d => d.PhiVanChuyen);
+
+
+            // Lọc doanh thu từ ngày đến ngày
+            var doanhThuLoc = _context.DonHangs
+            .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat >= fromDate && d.NgayDat <= toDate)
+                .Sum(d => d.TongTien);
+            var tienShipLoc = _context.DonHangVanChuyens
+            .Where(d => d.TrangThaiVanChuyen.Id_TrangThai != 1 && d.DonHang.NgayDat >= fromDate && d.DonHang.NgayDat <= toDate)
+                .Sum(d => d.PhiVanChuyen);
             var doanhThuSauThuevaChiPhiLoc = Math.Round((decimal)(doanhThuLoc * 92 / 100), 0) - tienShipLoc;
             var tienNhapHangLoc = _context.HoaDonNhapHangs
                 .Where(d => d.NgayNhapHang >= fromDate && d.NgayNhapHang <= toDate)
@@ -159,12 +158,12 @@ namespace WebDungCuLamBanh.AdminControllers
 #pragma warning disable CS8629 // Nullable value type may be null.
             ViewBag.vatHomNay = HtmlHelpers.FormatCurrency((decimal)vatHomNay);
 #pragma warning restore CS8629 // Nullable value type may be null.
-                              //Lấy sản phẩm trong Chi tiết đơn hàng
-            var top10= _context.ChiTietDonHangs
+            //Lấy sản phẩm trong Chi tiết đơn hàng
+            var top10 = _context.ChiTietDonHangs
                 .Include(ct => ct.DungCu)
-                
+
                 .Where(ct => ct.DonHang.TrangThai != "Chưa thanh toán")
-              
+
                 .ToList();
             var top10RepeatedProducts = top10
                 .GroupBy(ct => ct.DungCu.Id_DungCu)  // Nhóm các sản phẩm theo ID
@@ -180,7 +179,7 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewData["Top10"] = top10RepeatedProducts;
             return View();
         }
-        public async Task<IActionResult> Product(string search="")
+        public async Task<IActionResult> Product(string search = "")
         {
             if (HttpContext.Session.GetString("admin") == null)
             {
@@ -577,12 +576,12 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateSaleOff(KhuyenMaiModel khuyenMai2)
         {
-            
+
             if (HttpContext.Session.GetString("admin") == null)
             {
                 return RedirectToAction("Index");
             }
-            if(khuyenMai2.NgayBatDau>khuyenMai2.NgayKetThuc)
+            if (khuyenMai2.NgayBatDau > khuyenMai2.NgayKetThuc)
             {
                 ModelState.AddModelError(string.Empty, "Ngày không hợp lệ.");
             }
@@ -627,7 +626,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-            
+
         }
         public async Task<IActionResult> AddProductToSaleOff(int id)
         {
@@ -645,11 +644,11 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            if(chiTietKhuyenMai.GiaTriGiam>99||chiTietKhuyenMai.GiaTriGiam<1)
+            if (chiTietKhuyenMai.GiaTriGiam > 99 || chiTietKhuyenMai.GiaTriGiam < 1)
             {
                 return Json(new { success = false, message = "Giá trị giảm phải từ 1 đến 99." });
             }
-            var existingChiTietKhuyenMai = await _context.ChiTietKhuyenMais.FirstOrDefaultAsync(k=>k.Id_SanPham == chiTietKhuyenMai.Id_SanPham);
+            var existingChiTietKhuyenMai = await _context.ChiTietKhuyenMais.FirstOrDefaultAsync(k => k.Id_SanPham == chiTietKhuyenMai.Id_SanPham);
             if (existingChiTietKhuyenMai != null)
             {
 
@@ -672,7 +671,7 @@ namespace WebDungCuLamBanh.AdminControllers
 
             // Lấy chi tiết đơn hàng cần xóa
             var ct = await _context.ChiTietKhuyenMais
-                .FirstOrDefaultAsync(ct => ct.Id_CTKM ==Id_CTKM);
+                .FirstOrDefaultAsync(ct => ct.Id_CTKM == Id_CTKM);
             try
             {
                 if (ct != null)
@@ -688,7 +687,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
-            
+
         }
         [HttpPost]
         public async Task<ActionResult> ApplySaleOff()
@@ -720,9 +719,9 @@ namespace WebDungCuLamBanh.AdminControllers
                         var dungCu = await _context.DungCus.FirstOrDefaultAsync(d => d.Id_DungCu == ct.Id_SanPham);
                         if (dungCu != null)
                         {
-                            if(km.NgayBatDau<=DateTime.Now&&km.NgayKetThuc>=DateTime.Now)
+                            if (km.NgayBatDau <= DateTime.Now && km.NgayKetThuc >= DateTime.Now)
                             {
-                                dungCu.GiaKhuyenMai = ((dungCu.Gia * (100-ct.GiaTriGiam))/100);
+                                dungCu.GiaKhuyenMai = ((dungCu.Gia * (100 - ct.GiaTriGiam)) / 100);
                                 _context.Update(dungCu);
                                 await _context.SaveChangesAsync();
                             }
@@ -731,19 +730,19 @@ namespace WebDungCuLamBanh.AdminControllers
                                 dungCu.GiaKhuyenMai = 0;
                                 _context.Update(dungCu);
                                 await _context.SaveChangesAsync();
-                            }    
+                            }
                         }
-                        
+
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Json(new { success = false, message = ex.Message });
             }
             //Lấy danh sách ctkm
-           
-            return Json (new { success = true });         
+
+            return Json(new { success = true });
         }
         public async Task<IActionResult> Voucher()
         {
@@ -785,7 +784,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
             }
             // Thêm khuyenMai2 vào cơ sở dữ liệu
-            
+
         }
         public async Task<IActionResult> DeleteVoucher(string? id)
         {
@@ -831,7 +830,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 .Where(d => d.TinhTrang == 2)
                 .Count();
             ViewBag.donHangDaGiao = donHangDaGiao;
-            var donHangDangGiao  = _context.DonHangVanChuyens
+            var donHangDangGiao = _context.DonHangVanChuyens
                 .Where(d => d.TinhTrang == 1)
                 .Count();
             ViewBag.donHangDangGiao = donHangDangGiao;
@@ -851,7 +850,7 @@ namespace WebDungCuLamBanh.AdminControllers
                     Text = $"{pttt.TenTrangThai}"
                 })
                 .ToList();
-            return View(await appDbContext.OrderByDescending(p=>p.Id_DHVC).ToListAsync());
+            return View(await appDbContext.OrderByDescending(p => p.Id_DHVC).ToListAsync());
         }
         public async Task<IActionResult> OrdersNotDelivered()
         {

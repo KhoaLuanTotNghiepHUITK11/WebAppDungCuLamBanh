@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using WebDungCuLamBanh.Data;
@@ -26,7 +21,7 @@ namespace WebDungCuLamBanh.API
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DungCuModel>>> GetDungCus()
         {
-            return await _context.DungCus.Where(p=>p.DaXoa==0).ToListAsync();
+            return await _context.DungCus.Where(p => p.DaXoa == 0).ToListAsync();
         }
 
         // GET: api/SanPham/5
@@ -108,7 +103,7 @@ namespace WebDungCuLamBanh.API
         private bool DungCuModelExists(int id)
         {
             return _context.DungCus.Any(e => e.Id_DungCu == id);
-            
+
         }
         [HttpGet("khuyenmai")]
         public async Task<ActionResult<IEnumerable<DungCuModel>>> GetKhuyenMai()

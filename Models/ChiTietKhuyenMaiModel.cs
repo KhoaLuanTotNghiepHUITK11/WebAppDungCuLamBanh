@@ -7,7 +7,7 @@ namespace WebDungCuLamBanh.Models
     {
         [Key]
         [Required]
-        public int Id_CTKM { get;set;}
+        public int Id_CTKM { get; set; }
         public int Id_KhuyenMai { get; set; }
         public int Id_SanPham { get; set; }
         public int GiaTriGiam { get; set; }

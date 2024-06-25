@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 
@@ -64,21 +68,13 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TenNguoiDung,MatKhau,Quyen,Ten,Email,DiaChi,SoDienThoai")] AdminModel adminModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(adminModel);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                return View(adminModel);
+                _context.Add(adminModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
-            }
-
+            return View(adminModel);
         }
 
         // GET: Staff/Edit/5
@@ -106,7 +102,7 @@ namespace WebDungCuLamBanh.AdminControllers
         {
             if (id != adminModel.TenNguoiDung)
             {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Not Found." });
+                return NotFound();
             }
 
             if (ModelState.IsValid)
@@ -120,7 +116,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 {
                     if (!AdminModelExists(adminModel.TenNguoiDung))
                     {
-                        return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Not Found." });
+                        return NotFound();
                     }
                     else
                     {
@@ -155,23 +151,14 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            try
+            var adminModel = await _context.Admins.FindAsync(id);
+            if (adminModel != null)
             {
-                var adminModel = await _context.Admins.FindAsync(id);
-                if (adminModel != null)
-                {
-                    _context.Admins.Remove(adminModel);
-                }
-
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception e)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
+                _context.Admins.Remove(adminModel);
             }
 
-
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool AdminModelExists(string id)

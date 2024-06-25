@@ -6,12 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MimeKit;
+using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
-using WebDungCuLamBanh.Helpers;
 using WebDungCuLamBanh.Models;
+using WebDungCuLamBanh.Helpers;
 namespace WebDungCuLamBanh.Controllers
 {
     [ProfileStatusFilter]
@@ -172,7 +174,7 @@ namespace WebDungCuLamBanh.Controllers
 
 
             decimal? tongtien = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == donHang.Id_DonHang).SumAsync(ct => ct.DonGia);
-            donHang.TongTien = tongtien * (decimal)1.08;
+            donHang.TongTien = tongtien*(decimal)1.08;
             donHang.VAT = tongtien * (decimal)0.08;
             _context.Update(donHang);
             await _context.SaveChangesAsync();
@@ -229,7 +231,7 @@ namespace WebDungCuLamBanh.Controllers
                     .SumAsync(ct => ct.DonGia));
                 ViewBag.giamgia = HtmlHelpers.FormatCurrency((decimal)hoadon.TienGiamGia);
                 ViewBag.tongtien = HtmlHelpers.FormatCurrency((decimal)hoadon.TongTien);
-                ViewBag.vat = HtmlHelpers.FormatCurrency((decimal)hoadon.VAT);
+                ViewBag.vat  = HtmlHelpers.FormatCurrency((decimal)hoadon.VAT);
                 int dem = 0;
                 //Lấy danh sách sản phẩm trong giỏ hàng
                 if (_context.ChiTietDonHangs != null)
@@ -318,19 +320,19 @@ namespace WebDungCuLamBanh.Controllers
                 hoadon.Id_PhuongThucThanhToan = 1;
                 hoadon.TienDiemThuong = diemthuong;
                 hoadon.NgayGiao = DateTime.Now.AddDays(3);
-
-                decimal? TienHang = hoadon.TongTien + phivanchuyen - diemthuong;
+              
+                decimal? TienHang =hoadon.TongTien + phivanchuyen - diemthuong;
 
 
                 decimal? Tongiensauvat = TienHang;
-                if (Tongiensauvat < 0)
+                if (Tongiensauvat<0)
                 {
                     return Json(new { success = false, error = "Đã xảy ra sự cố ngoài ý muốn." });
                 }
                 else
                 {
-                    hoadon.TongTien = Tongiensauvat;
-                }
+                    hoadon.TongTien=Tongiensauvat;
+                }    
                 // Tính tổng tiền của đơn hàng
                 _context.Update(hoadon);
 
@@ -406,7 +408,7 @@ namespace WebDungCuLamBanh.Controllers
             builder.HtmlBody = string.Format("<img src=\"https://firebasestorage.googleapis.com/v0/b/qldclb-770f5.appspot.com/o/logodai.png?alt=media&token=9b3c82aa-1cc1-4d9d-b642-108ef39da3bd\" height=\"40\" />\r\n<p>Chào " + result.donHangVanChuyenModel.TenKhachHang + "!</p>\r\n<p>Cảm ơn bạn đã tin dùng sản phẩm của Whisk & Flourish.</p>\r\n<p>Sau đây là thông tin đơn hàng của bạn.</p>\r\n<hr />");
             builder.HtmlBody += "<table style=\"width:100%\">";
             builder.HtmlBody += "<tbody>";
-            builder.HtmlBody += "<tr>\r\n                <td style=\"text-align:left\">Mã đơn hàng:</td>\r\n                <td style=\"text-align:right\">" + result.donHangModel.Id_DonHang + "</td>\r\n            </tr>";
+            builder.HtmlBody += "<tr>\r\n                <td style=\"text-align:left\">Mã đơn hàng:</td>\r\n                <td style=\"text-align:right\">"+result.donHangModel.Id_DonHang+"</td>\r\n            </tr>";
             builder.HtmlBody += "<tr>\r\n                <td style=\"text-align:left\">Ngày đặt hàng:</td>\r\n                <td style=\"text-align:right\">" + result.donHangModel.NgayDat + "</td>\r\n            </tr>";
             builder.HtmlBody += "<tr>\r\n                <td style=\"text-align:left\">Địa chỉ giao:</td>\r\n                <td style=\"text-align:right\">" + result.donHangVanChuyenModel.DiaChiVanChuyen + "</td>\r\n            </tr>";
             builder.HtmlBody += "<tr>\r\n                <td style=\"text-align:left\">Số điện thoại:</td>\r\n                <td style=\"text-align:right\">" + result.donHangVanChuyenModel.SoDienThoai + "</td>\r\n            </tr>";
@@ -436,7 +438,7 @@ namespace WebDungCuLamBanh.Controllers
             builder.HtmlBody += "</tbody>";
             builder.HtmlBody += "</table>";
             builder.HtmlBody += "<hr/>";
-            builder.HtmlBody += "<table style=\"width:100%\">\r\n    <tbody>\r\n        <tr>\r\n            <td>Thuế: </td>\r\n            <td style=\"text-align:right\">" + result.donHangModel.VAT + "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Phí vận chuyển: </td>\r\n            <td style=\"text-align:right\">" + result.donHangModel.PhiVanChuyen + "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Giảm giá bởi mã giảm giá: </td>\r\n            <td style=\"text-align:right\">" + result.donHangModel.GiamGia + "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Giảm giá bởi điểm thưởng: </td>\r\n            <td style=\"text-align:right\">" + result.donHangModel.TienDiemThuong + "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td><b>Thành tiền: </b></td>\r\n            <td style=\"text-align:right\"><b>" + result.donHangModel.TongTien + "₫</b></td>\r\n        </tr>\r\n    </tbody>\r\n</table>";
+            builder.HtmlBody += "<table style=\"width:100%\">\r\n    <tbody>\r\n        <tr>\r\n            <td>Thuế: </td>\r\n            <td style=\"text-align:right\">"+result.donHangModel.VAT+"₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Phí vận chuyển: </td>\r\n            <td style=\"text-align:right\">"+result.donHangModel.PhiVanChuyen+ "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Giảm giá bởi mã giảm giá: </td>\r\n            <td style=\"text-align:right\">"+result.donHangModel.GiamGia+ "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td>Giảm giá bởi điểm thưởng: </td>\r\n            <td style=\"text-align:right\">"+result.donHangModel.TienDiemThuong+ "₫</td>\r\n        </tr>\r\n        <tr>\r\n            <td><b>Thành tiền: </b></td>\r\n            <td style=\"text-align:right\"><b>"+result.donHangModel.TongTien+"₫</b></td>\r\n        </tr>\r\n    </tbody>\r\n</table>";
 
             builder.HtmlBody += "<p>Mọi chi tiết liên hệ:</p>\r\n<p>Email: contact@whiskandflourish.vn</p>\r\n<p>SĐT: +84 36 213 5435</p>\r\n<p>© 2024 Whisk & Flourish.</p>";
             email.Body = builder.ToMessageBody();
@@ -615,7 +617,7 @@ namespace WebDungCuLamBanh.Controllers
 
             // Lấy thông tin mã giảm giá từ cơ sở dữ liệu
             var giamgia = await _context.MaGiamGias
-                .FirstOrDefaultAsync(gg => gg.Id_MaGiamGia == voucher && gg.LuotSuDung > 0);
+                .FirstOrDefaultAsync(gg => gg.Id_MaGiamGia == voucher&&gg.LuotSuDung>0);
 
             if (giamgia == null)
             {
@@ -735,7 +737,7 @@ namespace WebDungCuLamBanh.Controllers
         {
             HttpContext.Session.Set(key, System.Text.Encoding.UTF8.GetBytes(value));
         }
-
+        
     }
 }
 

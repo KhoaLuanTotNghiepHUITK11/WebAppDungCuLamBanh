@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 
@@ -85,25 +84,17 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(HoaDonNhapHangModel hoaDonNhapHangModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    hoaDonNhapHangModel.NgayLapHoaDon = DateTime.Now;
-                    hoaDonNhapHangModel.TrangThai = 0;
-                    hoaDonNhapHangModel.NhanVienLap = "Chưa lập";
-                    _context.Add(hoaDonNhapHangModel);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                ViewData["Id_NhaCungCap"] = new SelectList(_context.NhaCungCaps, "Id_NhaCungCap", "Id_NhaCungCap", hoaDonNhapHangModel.Id_NhaCungCap);
-                return RedirectToAction(nameof(AddProductToReceipt), new { id = hoaDonNhapHangModel.Id_HoaDonNhap });
+                hoaDonNhapHangModel.NgayLapHoaDon = DateTime.Now;
+                hoaDonNhapHangModel.TrangThai = 0;
+                hoaDonNhapHangModel.NhanVienLap = "Chưa lập";
+                _context.Add(hoaDonNhapHangModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception e)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
-            }
-
+            ViewData["Id_NhaCungCap"] = new SelectList(_context.NhaCungCaps, "Id_NhaCungCap", "Id_NhaCungCap", hoaDonNhapHangModel.Id_NhaCungCap);
+            return RedirectToAction(nameof(AddProductToReceipt), new { id = hoaDonNhapHangModel.Id_HoaDonNhap });
         }
         public IActionResult AddProductToReceipt(string id)
         {
@@ -114,7 +105,7 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewData["Id_HoaDonNhap"] = id;
             var hdn = _context.HoaDonNhapHangs.Find(id);
             ViewData["HoaDon"] = _context.HoaDonNhapHangs.Include(h => h.NhaCungCap).FirstOrDefault(h => h.Id_HoaDonNhap == id);
-            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0 && p.Id_NhaCungCap == hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
+            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0&&p.Id_NhaCungCap==hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
             ViewData["CTHDNhapHang"] = _context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == id).ToList();
             return View();
         }
@@ -176,34 +167,66 @@ namespace WebDungCuLamBanh.AdminControllers
         [HttpPost]
         public async Task<IActionResult> DeleteProduct(string MaHD, int Id)
         {
-            try
-            {
-                var hoadon = await _context.HoaDonNhapHangs
+
+            // Lấy đơn hàng chưa thanh toán của khách hàng
+            var hoadon = await _context.HoaDonNhapHangs
                 .FirstOrDefaultAsync(hd => hd.Id_HoaDonNhap == MaHD);
 
-                // Lấy chi tiết đơn hàng cần xóa
-                var ct = await _context.ChiTietHoaDonNhapHangs
-                    .FirstOrDefaultAsync(ct => ct.Id_CTHDNhapHang == Id);
+            // Lấy chi tiết đơn hàng cần xóa
+            var ct = await _context.ChiTietHoaDonNhapHangs
+                .FirstOrDefaultAsync(ct => ct.Id_CTHDNhapHang == Id);
 
-                if (ct != null)
-                {
-                    // Xóa chi tiết đơn hàng
-                    _context.ChiTietHoaDonNhapHangs.Remove(ct);
-                    await _context.SaveChangesAsync();
-                }
-
-                return RedirectToAction("AddProductToReceipt", "GoodsReceipt");
-            }
-            catch (Exception e)
+            if (ct != null)
             {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
+                // Xóa chi tiết đơn hàng
+                _context.ChiTietHoaDonNhapHangs.Remove(ct);
+                await _context.SaveChangesAsync();
             }
+
+            return RedirectToAction("AddProductToReceipt", "GoodsReceipt");
         }
+        // GET: GoodsReceipt/Edit/5
+
+
+        // POST: GoodsReceipt/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+
+
+        // GET: GoodsReceipt/Delete/5
+
+
+        // POST: GoodsReceipt/Delete/5
+
 
         private bool HoaDonNhapHangModelExists(string id)
         {
             return _context.HoaDonNhapHangs.Any(e => e.Id_HoaDonNhap == id);
         }
+        [HttpPost]
+        public async Task<ActionResult> CheckTabs([FromBody] CheckTab model)
+        {
+            if (model == null)
+            {
+                return Json(new { success = false, error = "Invalid data" });
+            }
 
+            var checkTab = new CheckTab
+            {
+                Username = model.Username,
+                Command = model.Command
+            };
+
+            _context.CheckTabs.Add(checkTab);
+            await _context.SaveChangesAsync();
+
+            return Json(new { success = true });
+        }
+        [HttpGet]
+        public async Task<ActionResult> CheckTabs()
+        {
+            var checkTabs = await _context.CheckTabs.ToListAsync();
+            return Json(checkTabs);
+        }
     }
 }

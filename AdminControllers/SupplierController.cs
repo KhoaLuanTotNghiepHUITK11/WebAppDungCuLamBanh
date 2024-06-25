@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 
@@ -64,20 +63,13 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id_NhaCungCap,TenNhaCungCap,DiaChi,SoDienThoai,Email")] NhaCungCapModel nhaCungCapModel)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    _context.Add(nhaCungCapModel);
-                    await _context.SaveChangesAsync();
-                    return RedirectToAction(nameof(Index));
-                }
-                return View(nhaCungCapModel);
+                _context.Add(nhaCungCapModel);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
             }
-            catch (Exception ex)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = ex.Message });
-            }
+            return View(nhaCungCapModel);
         }
 
         // GET: Supplier/Edit/5
@@ -123,7 +115,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 {
                     if (!NhaCungCapModelExists(nhaCungCapModel.Id_NhaCungCap))
                     {
-                        return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Not Found" });
+                        return NotFound();
                     }
                     else
                     {
@@ -162,22 +154,14 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
+            var nhaCungCapModel = await _context.NhaCungCaps.FindAsync(id);
+            if (nhaCungCapModel != null)
             {
-                var nhaCungCapModel = await _context.NhaCungCaps.FindAsync(id);
-                if (nhaCungCapModel != null)
-                {
-                    _context.NhaCungCaps.Remove(nhaCungCapModel);
-                }
-
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            catch (Exception e)
-            {
-                return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = e.Message });
+                _context.NhaCungCaps.Remove(nhaCungCapModel);
             }
 
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool NhaCungCapModelExists(int id)

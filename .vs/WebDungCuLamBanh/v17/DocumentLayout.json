@@ -1,18 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\GitHub\\WebAppDungCuLamBanh\\",
+  "WorkspaceRootPath": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|c:\\users\\android17x\\downloads\\compressed\\webappdungculambanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\views\\administrator\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|c:\\users\\android17x\\downloads\\compressed\\webappdungculambanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|c:\\users\\android17x\\downloads\\compressed\\webappdungculambanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\views\\administrator\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|c:\\users\\android17x\\downloads\\compressed\\webappdungculambanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,46 +26,56 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\Detail.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
-              "RelativeToolTip": "Views\\Product\\Detail.cshtml",
-              "ViewState": "AQIAACQBAAAAAAAAAAAAAJkAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-25T00:13:52.372Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AdministratorController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
+              "DocumentMoniker": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\AdminControllers\\AdministratorController.cs",
               "RelativeDocumentMoniker": "AdminControllers\\AdministratorController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
+              "ToolTip": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\AdminControllers\\AdministratorController.cs",
               "RelativeToolTip": "AdminControllers\\AdministratorController.cs",
-              "ViewState": "AQIAAH0AAAAAAAAAAIAwwIYAAABFAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAQwEIAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-25T00:12:31.116Z",
+              "WhenOpened": "2024-06-21T10:06:29.556Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Administrator\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "Views\\Administrator\\Dashboard.cshtml",
+              "ToolTip": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Administrator\\Dashboard.cshtml",
+              "RelativeToolTip": "Views\\Administrator\\Dashboard.cshtml",
+              "ViewState": "AQIAANcAAAAAAAAAAAAzwN8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-21T10:05:50.043Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAwwA4AAAAFAAAA",
+              "Title": "OrderDetail.cshtml",
+              "DocumentMoniker": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Administrator\\OrderDetail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Administrator\\OrderDetail.cshtml",
+              "ToolTip": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Administrator\\OrderDetail.cshtml",
+              "RelativeToolTip": "Views\\Administrator\\OrderDetail.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-25T00:10:23.204Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-21T10:05:20.683Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AdminLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Shared\\AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\AdminLayout.cshtml",
+              "ToolTip": "C:\\Users\\android17x\\Downloads\\Compressed\\WebAppDungCuLamBanh-9c82f54fc88b64165bf7fea7706a4f95c96b7058\\Views\\Shared\\AdminLayout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\AdminLayout.cshtml",
+              "ViewState": "AQIAALYAAAAAAAAAAAAewLsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-21T10:03:35.09Z"
             }
           ]
         }

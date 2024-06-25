@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Firebase.Storage;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
-using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
+using WebDungCuLamBanh.Components;
 namespace WebDungCuLamBanh.Controllers
 {
     [ProfileStatusFilter]
@@ -30,9 +31,9 @@ namespace WebDungCuLamBanh.Controllers
         {
             ViewBag.uid = HttpContext.Session.GetString("uid");
             var appDbContext = _context.BannerModel;
-            ViewData["KhuyenMai"] = await _context.DungCus.Where(x => x.GiaKhuyenMai > 0 && x.SoLuong > 0).Take(4).ToListAsync();
+            ViewData["KhuyenMai"]= await _context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).Take(4).ToListAsync();
             ViewData["Banner"] = await appDbContext.ToListAsync();
-            ViewData["NewProduct"] = await _context.DungCus.Where(x => x.SoLuong > 0).OrderByDescending(x => x.Id_DungCu).Take(4).ToListAsync();
+            ViewData["NewProduct"] = await _context.DungCus.Where(x=>x.SoLuong>0).OrderByDescending(x => x.Id_DungCu).Take(4).ToListAsync();
             ViewData["PhanTramKM"] = await _context.DungCus
                 .Where(x => x.GiaKhuyenMai > 0)
                 .Select(x => x.GiaKhuyenMai / x.Gia * 100)
@@ -43,7 +44,7 @@ namespace WebDungCuLamBanh.Controllers
         public async Task<IActionResult> SaleOff()
         {
 
-            ViewData["KhuyenMai"] = await _context.DungCus.Where(x => x.GiaKhuyenMai > 0 && x.SoLuong > 0).ToListAsync();
+            ViewData["KhuyenMai"] = await _context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).ToListAsync();
             return View();
         }
         public IActionResult Privacy()
@@ -60,7 +61,7 @@ namespace WebDungCuLamBanh.Controllers
 
         public IActionResult PaymentSuccess()
         {
-            ViewBag.donhang = HttpContext.Session.GetString("donhang");
+            ViewBag.donhang = HttpContext.Session.GetString("donhang");        
             //Lay cac ViewBag trong payment
             //Lay Id_DonHang từ payment
 

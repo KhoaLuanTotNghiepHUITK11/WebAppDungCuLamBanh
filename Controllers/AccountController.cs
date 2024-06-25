@@ -8,8 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
-using WebDungCuLamBanh.Helpers;
 using WebDungCuLamBanh.Models;
+using WebDungCuLamBanh.Helpers;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 namespace WebDungCuLamBanh.Controllers
 {
 
@@ -90,7 +91,7 @@ namespace WebDungCuLamBanh.Controllers
                     if (result.User.Uid != null)
                     {
                         SetSession("uid", result.User.Uid);
-
+                  
                         await HttpContext.SignInAsync("Firebase", new System.Security.Claims.ClaimsPrincipal(), new Microsoft.AspNetCore.Authentication.AuthenticationProperties
                         {
                             IsPersistent = true,
@@ -282,8 +283,7 @@ namespace WebDungCuLamBanh.Controllers
             catch (Exception ex)
             {
                 // Log the exception (ex) for further analysis
-                ViewBag.error = "Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại." + ex.Message;
-
+                ViewBag.error = "Có lỗi xảy ra khi đổi mật khẩu. Vui lòng thử lại.";
                 return View();
             }
         }
@@ -316,7 +316,6 @@ namespace WebDungCuLamBanh.Controllers
                 ViewBag.Error = "Có lỗi xảy ra khi gửi yêu cầu đặt lại mật khẩu. Vui lòng thử lại.";
                 // Optionally log the exact error message to the logs
                 // _logger.LogError(ex, "Error during password reset");
-                Console.WriteLine(ex.Message);
                 return View();
             }
         }
@@ -339,7 +338,7 @@ namespace WebDungCuLamBanh.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(KhachHangModel accountModel)
+        public async Task<IActionResult> Edit([Bind("Id_KhachHang,TenKhachHang,Email,SoDienThoai,DiaChi")] KhachHangModel accountModel)
         {
             if (ModelState.IsValid)
             {
@@ -352,7 +351,6 @@ namespace WebDungCuLamBanh.Controllers
                 catch (Exception ex)
                 {
                     TempData["ErrorMessage"] = "Cập nhật thông tin không thành công";
-                    Console.WriteLine(ex.Message);
                     return RedirectToAction("Edit", "Account");
                 }
                 return RedirectToAction("Edit", "Account");
@@ -508,7 +506,7 @@ namespace WebDungCuLamBanh.Controllers
             var chiTietDonHang = await _context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.DungCu)
-                .Include(p => p.DungCu.LoaiDungCu)
+                .Include(p=>p.DungCu.LoaiDungCu)
                 .ToListAsync();
             if (chiTietDonHang == null || chiTietDonHang.Count == 0)
             {

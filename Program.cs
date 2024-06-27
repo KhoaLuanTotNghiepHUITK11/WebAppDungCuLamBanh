@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Primitives;
 using WebDungCuLamBanh.Data;
 
 namespace WebDungCuLamBanh
@@ -69,25 +70,25 @@ namespace WebDungCuLamBanh
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            //app.UseWhen(context => context.Request.Path.StartsWithSegments("/wwwroot/js"), appBuilder =>
-            //{
-            //    appBuilder.UseStaticFiles(new StaticFileOptions
-            //    {
-            //        OnPrepareResponse = context =>
-            //        {
-            //            context.Context.Response.Headers.Add("Cache-Control", "public, max-age=31536000");
-            //            if (context.Context.Request.Headers.TryGetValue("Accept-Encoding", out StringValues value) && value.ToString().Contains("br"))
-            //            {
-            //                context.Context.Response.Headers.Add("Content-Encoding", "br");
-            //            }
-            //            else
-            //            {
-            //                context.Context.Response.Headers.Add("Content-Encoding", "gzip");
-            //            }
-            //        }
-            //    });
-            //});
-            //app.UseResponseCompression();
+            app.UseWhen(context => context.Request.Path.StartsWithSegments("/wwwroot/js"), appBuilder =>
+            {
+                appBuilder.UseStaticFiles(new StaticFileOptions
+                {
+                    OnPrepareResponse = context =>
+                    {
+                        context.Context.Response.Headers.Add("Cache-Control", "public, max-age=31536000");
+                        if (context.Context.Request.Headers.TryGetValue("Accept-Encoding", out StringValues value) && value.ToString().Contains("br"))
+                        {
+                            context.Context.Response.Headers.Add("Content-Encoding", "br");
+                        }
+                        else
+                        {
+                            context.Context.Response.Headers.Add("Content-Encoding", "gzip");
+                        }
+                    }
+                });
+            });
+            app.UseResponseCompression();
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();

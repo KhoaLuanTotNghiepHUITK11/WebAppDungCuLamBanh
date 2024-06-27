@@ -56,6 +56,15 @@ namespace WebDungCuLamBanh.Data
             {
                 entity.Property(e => e.Gia).HasPrecision(18, 0);
             });
+            _ = modelBuilder.Entity<DungCuModel>(entity =>
+            {
+                entity.Property(e => e.GiaKhuyenMai).HasPrecision(18, 0);
+            });
+            _ = modelBuilder.Entity<DungCuModel>(entity =>
+            {
+                entity.Property(e => e.GiaNhap).HasPrecision(18, 0);
+            });
+
             ///////////////////////////////////Đơn hàng/////////////////////////
 
             _ = modelBuilder.Entity<DonHangModel>()
@@ -74,6 +83,22 @@ namespace WebDungCuLamBanh.Data
             _ = modelBuilder.Entity<DonHangModel>(entity =>
             {
                 entity.Property(e => e.PhiVanChuyen).HasPrecision(18, 2);
+            });
+            _ = modelBuilder.Entity<DonHangModel>(entity =>
+            {
+                entity.Property(e => e.TongTien).HasPrecision(18, 2);
+            });
+            _ = modelBuilder.Entity<DonHangModel>(entity =>
+            {
+                entity.Property(e => e.TienDiemThuong).HasPrecision(18, 2);
+            });
+            _ = modelBuilder.Entity<DonHangModel>(entity =>
+            {
+                entity.Property(e => e.TienGiamGia).HasPrecision(18, 2);
+            });
+            _ = modelBuilder.Entity<DonHangModel>(entity =>
+            {
+                entity.Property(e => e.VAT).HasPrecision(18, 2);
             });
 
             ////////////////////////////////////////////////////////////////////
@@ -101,6 +126,10 @@ namespace WebDungCuLamBanh.Data
                 .HasOne(p => p.TrangThaiVanChuyen)
                 .WithMany()
                 .HasForeignKey(p => p.TinhTrang);
+            _ = modelBuilder.Entity<DonHangVanChuyenModel>(entity =>
+            {
+                entity.Property(e => e.PhiVanChuyen).HasPrecision(18, 2);
+            });
             ////////////////////
             _ = modelBuilder.Entity<KhachHangModel>(entity =>
             {
@@ -116,6 +145,11 @@ namespace WebDungCuLamBanh.Data
                 .HasOne(p => p.NhaCungCap)
                 .WithMany()
                 .HasForeignKey(p => p.Id_NhaCungCap);
+            _ = modelBuilder.Entity<HoaDonNhapHangModel>(entity =>
+            {
+                entity.Property(e => e.TongTien).HasPrecision(18, 2);
+            });
+
             _ = modelBuilder.Entity<CTHDNhapHangModel>()
                 .HasOne(p => p.HoaDonNhapHang)
                 .WithMany()
@@ -127,6 +161,10 @@ namespace WebDungCuLamBanh.Data
             _ = modelBuilder.Entity<CTHDNhapHangModel>(entity =>
             {
                 entity.Property(e => e.DonGia).HasPrecision(18, 0);
+            });
+            _ = modelBuilder.Entity<CTHDNhapHangModel>(entity =>
+            {
+                entity.Property(e => e.GiaTien).HasPrecision(18, 0);
             });
             /////////
             _ = modelBuilder.Entity<ChiTietKhuyenMaiModel>()
@@ -146,7 +184,10 @@ namespace WebDungCuLamBanh.Data
                 .HasOne(p => p.SanPham)
                 .WithMany()
                 .HasForeignKey(p => p.Id_SanPham);
-
+            _ = modelBuilder.Entity<CuocVanChuyenModel>(entity =>
+            {
+                entity.Property(e => e.CuocVanChuyen).HasPrecision(18, 0);
+            });
         }
         public DbSet<WebDungCuLamBanh.Models.BannerModel> BannerModel { get; set; } = default!;
     }

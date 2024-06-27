@@ -129,17 +129,65 @@
                         </ul>
                     </td>
                     <td>
-                        <select id="TinhTrang_@item.Id_DHVC" onchange="changeState('@item.Id_DHVC')" asp-for="@item.TinhTrang" asp-items="ViewBag.TrangThaiVanChuyen" class="form-select form-select-sm me-3 transparent-input" aria-label=".form-select-sm">
+                        <select id="TinhTrang_@item.Id_DHVC" onchange="changeState('@item.Id_DHVC','@item.DonHang.Id_KhachHang','@item.Id_DonHang')" asp-for="@item.TinhTrang" asp-items="ViewBag.TrangThaiVanChuyen" class="form-select form-select-sm me-3 transparent-input" aria-label=".form-select-sm">
                         </select>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+                        <script type="module">
+                            import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js'
+                            import { getDatabase, ref,push, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+                            const firebaseConfig = {
+                                databaseURL: "https://qldclb-770f5-default-rtdb.asia-southeast1.firebasedatabase.app/",
+                            };
+
+                            const app = initializeApp(firebaseConfig);
+                            const database = getDatabase(app);
+
+                            // Định nghĩa hàm và gán nó vào phạm vi global
+                            window.writeUserData = function (userId, message, link) {
+                                var time = new Date().getTime();
+                                push(ref(database, 'notification'), {
+                                    uid: userId,
+                                    message: message,
+                                    link: link,
+                                    time: time
+                                })
+                                    .then(() => {
+                                        console.log("Dữ liệu đã được lưu thành công!");
+                                    })
+                                    .catch((error) => {
+                                        console.error("Lỗi khi lưu dữ liệu: ", error);
+                                    });
+                            }
+                        </script>
                         <script type="text/javascript">
-                            function changeState(dhvc) {
+                            function changeState(dhvc,uid,dh) {
                                 var selectElement = document.getElementById("TinhTrang_" + dhvc);
                                 if (selectElement) {
-                                    var value = selectElement.value; // Lấy giá trị của tùy chọn được chọn
+                                    var value = selectElement.value;
                                     console.log("DHVC: " + dhvc);
                                     console.log("Giá trị: " + value);
+                                    console.log("Đơn hàng: " + dh);
+                                    console.log("Khách hàng" + uid);
+                                    var tinhTrang = "";
+                                    if(value==0)
+                                    {
+                                        tinhTrang = "đang chuẩn bị hàng.";
 
+                                    }
+                                    else if(value==1)
+                                    {
+                                        tinhTrang = "đang được giao.";
+                                    }
+                                    else if(value==2)
+                                    {
+                                        tinhTrang = "đã được giao thành công.";
+                                    }
+                                    else if(value==3)
+                                    {
+                                        tinhTrang = "đã bị hủy.";
+                                    }
                                     $.ajax({
                                         url: '/Administrator/ChangeStatus',
                                         type: "POST",
@@ -149,6 +197,7 @@
                                         },
                                         success: function (result) {
                                             if (result.success) {
+                                                writeUserData(uid, 'Đơn hàng '+dh+' '+tinhTrang, '/Account/OrderDetail/'+dh);
                                                 alert('Thành công');
                                             } else {
                                                 alert(result.error);
@@ -162,8 +211,7 @@
                                     console.error("Cannot find the select element with the given ID: TinhTrang_" + dhvc);
                                 }
                             }
-
-                        </script>
+                        </script>         
                     </td>
                 </tr>
             }

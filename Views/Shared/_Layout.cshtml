@@ -14,10 +14,7 @@
     <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 </head>
 <body>
-    @* <df-messenger intent="WELCOME"
-                  chat-title="NewAgent"
-                  agent-id="0fa31d9d-a644-49ee-a3ab-bc8e07e9b620"
-                  language-code="vi"></df-messenger> *@
+
     <script src="~/js/cart.js"></script>
     <div>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm mb-2">
@@ -41,7 +38,7 @@
                                 Sản phẩm
                             </a>
                             <ul class="dropdown-menu dd">
-                                <li>
+                                @* <li>
                                     @{
                                         if (ViewBag.idspvuaxem == null)
                                         {
@@ -52,7 +49,7 @@
                                             <a class="dropdown-item" href="/Product/Detail/@ViewBag.idspvuaxem">Sản phẩm vừa xem</a>
                                         }
                                     }
-                                </li>
+                                </li> *@
                                 <li><a class="dropdown-item" asp-action="Index" asp-controller="Product">Tất cả sản phẩm</a></li>
 @*                                 <li><a class="dropdown-item" href="#">Something else here</a></li> *@
                             </ul>
@@ -123,6 +120,15 @@
 
 
 
+                    </div>
+                    <div>
+                        <button style="height:44px; color: black;border-radius:20px" class="btn my-2 my-sm-0" type="submit" asp-action="Notification" asp-controller="Account">
+                            <b>
+                                <span class="material-symbols-outlined">
+                                    notifications
+                                </span>
+                            </b>
+                        </button>
                     </div>
                     @{
                         if (ViewBag.email == null)

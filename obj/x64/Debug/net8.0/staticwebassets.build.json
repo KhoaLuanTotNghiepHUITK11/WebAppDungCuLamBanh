@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "S3CYf9Dg+E/qQIoJexpjXiZDm1bM+vTljEgvNiTHOVs=",
+  "Hash": "Gu+cWbKLx7+Mk2BoeooQfUG2NrZSjbp/cFnCjh6tyto=",
   "Source": "WebDungCuLamBanh",
   "BasePath": "_content/WebDungCuLamBanh",
   "Mode": "Default",
@@ -5468,6 +5468,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\delivery-truck.png"
+    },
+    {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\dist\\bundle.js",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "dist/bundle.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\dist\\bundle.js"
     },
     {
       "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\favicon.ico",
@@ -47268,6 +47287,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\vendors\\simplebar\\js\\simplebar.min.js"
+    },
+    {
+      "Identity": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\webpack.config.js",
+      "SourceId": "WebDungCuLamBanh",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\",
+      "BasePath": "_content/WebDungCuLamBanh",
+      "RelativePath": "webpack.config.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\webpack.config.js"
     }
   ]
 }

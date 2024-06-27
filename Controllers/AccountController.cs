@@ -694,5 +694,9 @@ namespace WebDungCuLamBanh.Controllers
             var favorite = _context.YeuThichs.Where(yt => yt.Id_KhachHang == uid).Include(yt => yt.SanPham).ToList();
             return View(favorite);
         }
+        public IActionResult Notification()
+        {
+            return View();
+        }
     }
 }

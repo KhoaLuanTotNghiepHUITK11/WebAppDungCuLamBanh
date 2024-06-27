@@ -1145,6 +1145,10 @@
       "PackagePath": "staticwebassets\\delivery-truck.png"
     },
     {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\dist\\bundle.js",
+      "PackagePath": "staticwebassets\\dist\\bundle.js"
+    },
+    {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -9943,6 +9947,10 @@
     {
       "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\vendors\\simplebar\\js\\simplebar.min.js",
       "PackagePath": "staticwebassets\\vendors\\simplebar\\js\\simplebar.min.js"
+    },
+    {
+      "Id": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\webpack.config.js",
+      "PackagePath": "staticwebassets\\webpack.config.js"
     },
     {
       "Id": "obj\\x64\\Debug\\net8.0\\staticwebassets\\msbuild.WebDungCuLamBanh.Microsoft.AspNetCore.StaticWebAssets.props",

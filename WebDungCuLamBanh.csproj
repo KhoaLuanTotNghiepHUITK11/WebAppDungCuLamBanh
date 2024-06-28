@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\js\cart.js" />
+    <Content Remove="wwwroot\js\changeStateOrder.js" />
     <Content Remove="wwwroot\js\checkCloseTab.js" />
     <Content Remove="wwwroot\js\firebase.js" />
   </ItemGroup>
@@ -28,6 +29,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\css\detail.css" />
     <_ContentIncludedByDefault Remove="wwwroot\css\toast_Style.css" />
     <_ContentIncludedByDefault Remove="wwwroot\js\cart.js" />
+    <_ContentIncludedByDefault Remove="wwwroot\js\changeStateOrder.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\checkCloseTab.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\firebase.js" />
     <_ContentIncludedByDefault Remove="wwwroot\logo\logodai.png" />
@@ -311,6 +313,7 @@
     <None Include="wwwroot\admin\vendors\chart.js\js\chart.umd.js.map" />
     <None Include="wwwroot\admin\vendors\simplebar\js\simplebar.min.js" />
     <None Include="wwwroot\js\cart.js" />
+    <None Include="wwwroot\js\changeStateOrder.js" />
     <None Include="wwwroot\js\checkCloseTab.js" />
     <None Include="wwwroot\js\firebase.js" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Notification";
+    ViewData["Title"] = "Thông báo";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -82,7 +82,7 @@
                 // Tạo định dạng ngày tháng bạn mong muốn, ví dụ: 'YYYY-MM-DD HH:mm:ss'
                 const formattedDateTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
                 const messageElement = document.createElement('div');
-                messageElement.innerHTML = `<a href="${notification.link}" class="list-group-item list-group-item-action"><p>${formattedDateTime}</p>
+                messageElement.innerHTML = `<a href="/Account/OrderDetail/${notification.link}" class="list-group-item list-group-item-action"><p>${formattedDateTime}</p>
                     <p>${notification.message}</p>
                 </a>`;
                 messageContainer.appendChild(messageElement);

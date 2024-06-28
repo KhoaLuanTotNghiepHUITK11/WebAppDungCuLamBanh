@@ -60,42 +60,10 @@
                         </ul>
                     </td>
                     <td>
-                        <select id="TinhTrang_@item.Id_DHVC" onchange="changeState('@item.Id_DHVC')" asp-for="@item.TinhTrang" asp-items="ViewBag.TrangThaiVanChuyen" class="form-select form-select-sm me-3 transparent-input" aria-label=".form-select-sm">
-                        </select>
-
-                        <script type="text/javascript">
-                            function changeState(dhvc) {
-                                var selectElement = document.getElementById("TinhTrang_" + dhvc);
-                                if (selectElement) {
-                                    var value = selectElement.value; // Lấy giá trị của tùy chọn được chọn
-                                    console.log("DHVC: " + dhvc);
-                                    console.log("Giá trị: " + value);
-
-                                    $.ajax({
-                                        url: '/Administrator/ChangeStatus',
-                                        type: "POST",
-                                        data: {
-                                            dhvc: dhvc,
-                                            value: value
-                                        },
-                                        success: function (result) {
-                                            if (result.success) {
-                                                alert('Thành công');
-                                                location.reload();
-                                            } else {
-                                                alert(result.error);
-                                            }
-                                        },
-                                        error: function (jqXHR, textStatus, errorThrown) {
-                                            console.error("AJAX error:", textStatus, errorThrown);
-                                        }
-                                    });
-                                } else {
-                                    console.error("Cannot find the select element with the given ID: TinhTrang_" + dhvc);
-                                }
-                            }
-
-                        </script>
+                        <select id="TinhTrang_@item.Id_DHVC" onchange="changeState('@item.Id_DHVC','@item.DonHang.Id_KhachHang','@item.Id_DonHang')" asp-for="@item.TinhTrang" asp-items="ViewBag.TrangThaiVanChuyen" class="form-select form-select-sm me-3 transparent-input" aria-label=".form-select-sm"></select>
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <script type="module" src="~/js/firebase.js"></script>
+                        <script type="text/javascript" src="~/js/changeStateOrder.js"></script>
 
                     </td>
                             @*                     <td>

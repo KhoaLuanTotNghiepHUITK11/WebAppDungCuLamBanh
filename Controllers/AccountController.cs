@@ -373,7 +373,7 @@ namespace WebDungCuLamBanh.Controllers
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(uid))
             {
                 // Nếu session không có dữ liệu, điều hướng đến trang đăng nhập hoặc thông báo lỗi
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("SignIn", "Account");
             }
 
             // Lấy danh sách đơn hàng vận chuyển

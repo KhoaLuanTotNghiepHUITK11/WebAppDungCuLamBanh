@@ -1,13 +1,12 @@
 ﻿@model WebDungCuLamBanh.Models.HoaDonNhapHangModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Thêm hoá đơn";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
 <h1>Thêm hoá đơn mới</h1>
 
-<h4>HoaDonNhapHangModel</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -22,13 +21,8 @@
                 <label asp-for="Id_NhaCungCap" class="control-label">Nhà cung cấp</label>
                 <select asp-for="Id_NhaCungCap" class="form-control" asp-items="ViewBag.Id_NhaCungCap"></select>
             </div>
-@*             <div class="form-group">
-                <label asp-for="NgayNhap" class="control-label">Ngày nhập</label>
-                <input asp-for="NgayNhap" class="form-control" />
-                <span asp-validation-for="NgayNhap" class="text-danger"></span>
-            </div> *@
             <div class="form-group">
-                <label asp-for="TongTien" class="control-label"></label>
+                
                 <input asp-for="TongTien" class="form-control" value="0" type="hidden"/>
                 <span asp-validation-for="TongTien" class="text-danger"></span>
             </div>
@@ -40,6 +34,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Trở về danh sách</a>
 </div>
 

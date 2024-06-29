@@ -23,5 +23,11 @@ namespace WebDungCuLamBanh.Helpers
             string formattedValue = amount.ToString("N", nfi) + " ₫";
             return formattedValue;
         }
+        public static IHtmlContent FormatTime(this IHtmlHelper html, DateTime time)
+        {
+            
+            string formattedValue = time.ToString("HH:mm dd.MM.yyyy ");
+            return new HtmlString(formattedValue);
+        }
     }
 }

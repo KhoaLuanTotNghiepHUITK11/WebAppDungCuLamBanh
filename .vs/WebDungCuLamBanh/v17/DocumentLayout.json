@@ -3,48 +3,24 @@
   "WorkspaceRootPath": "D:\\GitHub\\WebAppDungCuLamBanh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\administrator\\ordersnotdelivered.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\ordersnotdelivered.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\home\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\home\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\favoriteproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\favoriteproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\administrator\\ordersdelivered.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\ordersdelivered.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\history.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\history.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\administrator\\allorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\allorders.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\wwwroot\\js\\changestateorder.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:wwwroot\\js\\changestateorder.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\wwwroot\\js\\firebase.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:wwwroot\\js\\firebase.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\administrator\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -59,144 +35,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AQIAAG4BAAAAAAAAAADgv3cBAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T05:56:35.367Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAALcAAAAAAAAAAAAAAL0AAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:54:00.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SaleOff.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\SaleOff.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\SaleOff.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Home\\SaleOff.cshtml",
-              "RelativeToolTip": "Views\\Home\\SaleOff.cshtml",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABEAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:53:06.741Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAABwBAAAAAAAAAAAAACIBAABdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:52:48.726Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "AdminLayout.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\AdminLayout.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\AdminLayout.cshtml",
-              "ViewState": "AQIAAF0AAAAAAAAAAAAQwGoAAABtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:52:12.262Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Notification.cshtml",
               "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\Notification.cshtml",
               "RelativeDocumentMoniker": "Views\\Account\\Notification.cshtml",
               "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\Notification.cshtml",
               "RelativeToolTip": "Views\\Account\\Notification.cshtml",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAAAAIAAAAjAAAA",
+              "ViewState": "AQIAAGAAAAAAAAAAAAAywG0AAACdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:50:44.109Z",
+              "WhenOpened": "2024-06-29T03:47:48.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FavoriteProduct.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\FavoriteProduct.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\FavoriteProduct.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\FavoriteProduct.cshtml",
+              "RelativeToolTip": "Views\\Account\\FavoriteProduct.cshtml",
+              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFQAAAClAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T03:47:22.317Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "OrdersNotDelivered.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\OrdersNotDelivered.cshtml",
-              "RelativeDocumentMoniker": "Views\\Administrator\\OrdersNotDelivered.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\OrdersNotDelivered.cshtml",
-              "RelativeToolTip": "Views\\Administrator\\OrdersNotDelivered.cshtml",
-              "ViewState": "AQIAADMAAAAAAAAAAAAAAEIAAAAZAAAA",
+              "Title": "History.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\History.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\History.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\History.cshtml",
+              "RelativeToolTip": "Views\\Account\\History.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAAC8AAACFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:49:10.814Z",
+              "WhenOpened": "2024-06-29T03:44:52.102Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "OrdersDelivered.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\OrdersDelivered.cshtml",
-              "RelativeDocumentMoniker": "Views\\Administrator\\OrdersDelivered.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\OrdersDelivered.cshtml",
-              "RelativeToolTip": "Views\\Administrator\\OrdersDelivered.cshtml",
-              "ViewState": "AQIAADgAAAAAAAAAAAAAAEEAAABfAAAA",
+              "DocumentIndex": 2,
+              "Title": "OrderDetail.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\OrderDetail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Account\\OrderDetail.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\OrderDetail.cshtml",
+              "RelativeToolTip": "Views\\Account\\OrderDetail.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAmwDYAAABSAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:49:02.942Z",
+              "WhenOpened": "2024-06-29T03:42:33.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "firebase.js",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\js\\firebase.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\firebase.js",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\js\\firebase.js",
-              "RelativeToolTip": "wwwroot\\js\\firebase.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-28T05:46:23.514Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "changeStateOrder.js",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\js\\changeStateOrder.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\changeStateOrder.js",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\wwwroot\\js\\changeStateOrder.js",
-              "RelativeToolTip": "wwwroot\\js\\changeStateOrder.js",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAgwCsAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-06-28T05:45:37.169Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AllOrders.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\AllOrders.cshtml",
-              "RelativeDocumentMoniker": "Views\\Administrator\\AllOrders.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\AllOrders.cshtml",
-              "RelativeToolTip": "Views\\Administrator\\AllOrders.cshtml",
-              "ViewState": "AQIAAH4AAAAAAAAAAAAAAIMAAAAYAAAA",
+              "DocumentIndex": 4,
+              "Title": "SaleOff.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\SaleOff.cshtml",
+              "RelativeDocumentMoniker": "Views\\Administrator\\SaleOff.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\SaleOff.cshtml",
+              "RelativeToolTip": "Views\\Administrator\\SaleOff.cshtml",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAAAFEAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-28T05:22:21.03Z",
+              "WhenOpened": "2024-06-29T03:37:14.052Z",
               "EditorCaption": ""
             }
           ]

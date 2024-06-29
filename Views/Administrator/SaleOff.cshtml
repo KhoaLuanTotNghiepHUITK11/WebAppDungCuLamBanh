@@ -3,6 +3,7 @@
     ViewData["Title"] = "Khuyến mãi";
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
+@using WebDungCuLamBanh.Helpers
 @model IEnumerable<WebDungCuLamBanh.Models.KhuyenMaiModel>
 
 <h1>Danh sách khuyến mại</h1>
@@ -14,23 +15,6 @@
     <div class="mr-3">
         <a class="btn btn-primary" onclick="runSaleOff()" role="button">Chạy khuyến mãi</a>
     </div>
-    @* <div class="mr-3">
-        <select style="width:130px" class="form-select" id="SortDrop">
-            <option value="">Sắp xếp</option>
-            <option value="1">Giá tăng dần</option>
-            <option value="2">Giá giảm dần</option>
-            <option value="3">Tên A-Z</option>
-            <option value="4">Tên Z-A</option>
-            <option value="6">Cũ nhất</option>
-            <option value="5">Mới nhất</option>
-        </select>
-    </div> *@
-    @* <div class="mr-3">
-        <form class="d-flex" role="search">
-            <input style="width:100px" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div> *@
 </div>
 
 <table class="table">
@@ -65,12 +49,12 @@
                     @Html.DisplayFor(modelItem => item.TenKhuyenMai)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NgayBatDau)
+                    @Html.FormatTime(item.NgayBatDau.Value)
+                    
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.NgayKetThuc)
+                    @Html.FormatTime(item.NgayKetThuc.Value)
                 </td>
-
                 <th>
                    <a href="/Administrator/DeleteSaleOff?id=@item.Id_KhuyenMai">
                        <span class="material-symbols-outlined">

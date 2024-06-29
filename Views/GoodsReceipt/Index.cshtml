@@ -18,7 +18,7 @@
         </form>
     </div>
     <p>
-        <a style="margin-right:15px;" asp-action="Index"> <button type="button" class="btn btn-primary">Bỏ tìm kiếm</button></a>
+        <a style="margin-right:15px;" asp-action="Index"> <button type="button" class="btn btn-danger">Bỏ tìm kiếm</button></a>
     </p>
 </div>
 
@@ -49,7 +49,7 @@
                 
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NgayLapHoaDon)
+                @Html.FormatTime(item.NgayLapHoaDon.Value)
             </td>
             <td style="text-align:right">
                 @Html.FormatCurrency(item.TongTien.Value)

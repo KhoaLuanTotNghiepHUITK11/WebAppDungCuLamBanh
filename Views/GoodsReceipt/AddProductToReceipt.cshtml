@@ -15,10 +15,10 @@
     {
         <div>
             <h2>Hóa Đơn @hoaDon.Id_HoaDonNhap</h2>
-            <p><strong>Ngày lập hoá đơn:</strong> @hoaDon.NgayLapHoaDon</p>
+            <p><strong>Ngày lập hoá đơn:</strong> @Html.FormatTime(hoaDon.NgayLapHoaDon.Value)</p>
             @if(hoaDon.NgayNhapHang != null)
             {
-                <p><strong>Ngày nhập hàng:</strong> @hoaDon.NgayNhapHang</p>
+                <p><strong>Ngày nhập hàng:</strong> @Html.FormatTime(hoaDon.NgayNhapHang.Value)</p>
             }
             else
             {

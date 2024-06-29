@@ -6,20 +6,13 @@ using WebDungCuLamBanh.Models;
 
 namespace WebDungCuLamBanh.AdminControllers
 {
-    public class GoodsReceiptController : Controller
+    public class GoodsReceiptController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public GoodsReceiptController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         // GET: GoodsReceipt
         public async Task<IActionResult> Index(string search = "")
         {
             // Truy vấn cơ bản bao gồm bảng HoaDonNhapHangs và bảng liên kết NhaCungCap
-            var query = _context.HoaDonNhapHangs.Include(h => h.NhaCungCap).AsQueryable();
+            var query = context.HoaDonNhapHangs.Include(h => h.NhaCungCap).AsQueryable();
 
             // Lọc theo từ khóa tìm kiếm nếu có
             if (!string.IsNullOrEmpty(search))
@@ -49,7 +42,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var hoaDonNhapHangModel = await _context.HoaDonNhapHangs
+            var hoaDonNhapHangModel = await context.HoaDonNhapHangs
                 .Include(h => h.NhaCungCap)
                 .FirstOrDefaultAsync(m => m.Id_HoaDonNhap == id);
             if (hoaDonNhapHangModel == null)
@@ -67,7 +60,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            ViewData["Id_NhaCungCap"] = _context.NhaCungCaps
+            ViewData["Id_NhaCungCap"] = context.NhaCungCaps
                 .Select(ncc => new SelectListItem
                 {
                     Value = ncc.Id_NhaCungCap.ToString(),
@@ -89,11 +82,11 @@ namespace WebDungCuLamBanh.AdminControllers
                 hoaDonNhapHangModel.NgayLapHoaDon = DateTime.Now;
                 hoaDonNhapHangModel.TrangThai = 0;
                 hoaDonNhapHangModel.NhanVienLap = "Chưa lập";
-                _context.Add(hoaDonNhapHangModel);
-                await _context.SaveChangesAsync();
+                context.Add(hoaDonNhapHangModel);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Id_NhaCungCap"] = new SelectList(_context.NhaCungCaps, "Id_NhaCungCap", "Id_NhaCungCap", hoaDonNhapHangModel.Id_NhaCungCap);
+            ViewData["Id_NhaCungCap"] = new SelectList(context.NhaCungCaps, "Id_NhaCungCap", "Id_NhaCungCap", hoaDonNhapHangModel.Id_NhaCungCap);
             return RedirectToAction(nameof(AddProductToReceipt), new { id = hoaDonNhapHangModel.Id_HoaDonNhap });
         }
         public IActionResult AddProductToReceipt(string id)
@@ -103,10 +96,10 @@ namespace WebDungCuLamBanh.AdminControllers
                 return RedirectToAction("Index");
             }
             ViewData["Id_HoaDonNhap"] = id;
-            var hdn = _context.HoaDonNhapHangs.Find(id);
-            ViewData["HoaDon"] = _context.HoaDonNhapHangs.Include(h => h.NhaCungCap).FirstOrDefault(h => h.Id_HoaDonNhap == id);
-            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0&&p.Id_NhaCungCap==hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
-            ViewData["CTHDNhapHang"] = _context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == id).ToList();
+            var hdn = context.HoaDonNhapHangs.Find(id);
+            ViewData["HoaDon"] = context.HoaDonNhapHangs.Include(h => h.NhaCungCap).FirstOrDefault(h => h.Id_HoaDonNhap == id);
+            ViewData["SanPham"] = new SelectList(context.DungCus.Where(p => p.DaXoa == 0&&p.Id_NhaCungCap==hdn.Id_NhaCungCap), "Id_DungCu", "TenDungCu");
+            ViewData["CTHDNhapHang"] = context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == id).ToList();
             return View();
         }
         [HttpPost]
@@ -122,8 +115,8 @@ namespace WebDungCuLamBanh.AdminControllers
             };
             try
             {
-                _context.ChiTietHoaDonNhapHangs.Add(ctdhnhaphang);
-                await _context.SaveChangesAsync();
+                context.ChiTietHoaDonNhapHangs.Add(ctdhnhaphang);
+                await context.SaveChangesAsync();
             }
             catch (Exception e)
             {
@@ -137,26 +130,26 @@ namespace WebDungCuLamBanh.AdminControllers
         public async Task<IActionResult> ImportProduct(string maHD)
         {
             //Nhap san pham tu cthd vao sanpham
-            var cthd = _context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == maHD).ToList();
+            var cthd = context.ChiTietHoaDonNhapHangs.Include(ct => ct.SanPham).Where(ct => ct.Id_HoaDonNhap == maHD).ToList();
             foreach (var item in cthd)
             {
-                var dungCu = _context.DungCus.Find(item.Id_SanPham);
+                var dungCu = context.DungCus.Find(item.Id_SanPham);
                 dungCu.SoLuong += item.SoLuong;
                 dungCu.GiaNhap = item.DonGia;
-                _context.DungCus.Update(dungCu);
+                context.DungCus.Update(dungCu);
             }
             //Cap nhat tong tien cho hoa don
             try
             {
-                var hoaDon = _context.HoaDonNhapHangs.Find(maHD);
+                var hoaDon = context.HoaDonNhapHangs.Find(maHD);
                 hoaDon.TongTien = cthd.Sum(ct => ct.GiaTien);
                 hoaDon.NgayNhapHang = DateTime.Now;
                 hoaDon.NhanVienLap = HttpContext.Session.GetString("admin");
                 hoaDon.TrangThai = 1;
 
-                _context.HoaDonNhapHangs.Update(hoaDon);
+                context.HoaDonNhapHangs.Update(hoaDon);
 
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
             }
             catch (Exception e)
             {
@@ -169,18 +162,18 @@ namespace WebDungCuLamBanh.AdminControllers
         {
 
             // Lấy đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.HoaDonNhapHangs
+            var hoadon = await context.HoaDonNhapHangs
                 .FirstOrDefaultAsync(hd => hd.Id_HoaDonNhap == MaHD);
 
             // Lấy chi tiết đơn hàng cần xóa
-            var ct = await _context.ChiTietHoaDonNhapHangs
+            var ct = await context.ChiTietHoaDonNhapHangs
                 .FirstOrDefaultAsync(ct => ct.Id_CTHDNhapHang == Id);
 
             if (ct != null)
             {
                 // Xóa chi tiết đơn hàng
-                _context.ChiTietHoaDonNhapHangs.Remove(ct);
-                await _context.SaveChangesAsync();
+                context.ChiTietHoaDonNhapHangs.Remove(ct);
+                await context.SaveChangesAsync();
             }
 
             return RedirectToAction("AddProductToReceipt", "GoodsReceipt");
@@ -201,7 +194,7 @@ namespace WebDungCuLamBanh.AdminControllers
 
         private bool HoaDonNhapHangModelExists(string id)
         {
-            return _context.HoaDonNhapHangs.Any(e => e.Id_HoaDonNhap == id);
+            return context.HoaDonNhapHangs.Any(e => e.Id_HoaDonNhap == id);
         }
         [HttpPost]
         public async Task<ActionResult> CheckTabs([FromBody] CheckTab model)
@@ -217,15 +210,15 @@ namespace WebDungCuLamBanh.AdminControllers
                 Command = model.Command
             };
 
-            _context.CheckTabs.Add(checkTab);
-            await _context.SaveChangesAsync();
+            context.CheckTabs.Add(checkTab);
+            await context.SaveChangesAsync();
 
             return Json(new { success = true });
         }
         [HttpGet]
         public async Task<ActionResult> CheckTabs()
         {
-            var checkTabs = await _context.CheckTabs.ToListAsync();
+            var checkTabs = await context.CheckTabs.ToListAsync();
             return Json(checkTabs);
         }
     }

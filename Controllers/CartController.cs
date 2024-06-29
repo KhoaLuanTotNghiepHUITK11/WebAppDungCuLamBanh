@@ -1,14 +1,10 @@
 ﻿using Firebase.Auth;
 using Firebase.Auth.Providers;
 using MailKit.Security;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using MimeKit;
-using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
 using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
@@ -17,10 +13,9 @@ using WebDungCuLamBanh.Helpers;
 namespace WebDungCuLamBanh.Controllers
 {
     [ProfileStatusFilter]
-    public class CartController : Controller
+    public class CartController(AppDbContext context, ILogger<AccountController> logger) : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AccountController> _logger = logger;
         private static readonly FirebaseAuthConfig config = new FirebaseAuthConfig()
         {
 
@@ -31,11 +26,7 @@ namespace WebDungCuLamBanh.Controllers
                 new EmailProvider()
             }
         };
-        public CartController(AppDbContext context, ILogger<AccountController> logger)
-        {
-            _context = context;
-            _logger = logger;
-        }
+
         public async Task<IActionResult> Index(object MyData)
         {
             string maTK = GetSession("uid");
@@ -54,7 +45,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             ViewBag.tongtien = HtmlHelpers.FormatCurrency((decimal)hoadon.TongTien);
-            ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)(await _context.ChiTietDonHangs
+            ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)(await context.ChiTietDonHangs
                     .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                     .SumAsync(ct => ct.DonGia)));
             ViewBag.vat = HtmlHelpers.FormatCurrency((decimal)hoadon.VAT);
@@ -68,20 +59,20 @@ namespace WebDungCuLamBanh.Controllers
 
         private async Task<DonHangModel> GetUnpaidOrder(string maTK)
         {
-            return await _context.DonHangs
+            return await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
         }
 
         private async Task<int> GetCartItemCount(string maHD)
         {
-            return await _context.ChiTietDonHangs
+            return await context.ChiTietDonHangs
                 .Where(p => string.IsNullOrEmpty(maHD) || p.Id_DonHang == maHD)
                 .CountAsync();
         }
 
         private async Task<List<ChiTietDonHangModel>> GetOrderDetails(string maHD)
         {
-            return await _context.ChiTietDonHangs
+            return await context.ChiTietDonHangs
                 .Include(p => p.DungCu)
                 .Include(p => p.DungCu.LoaiDungCu)
                 .Where(p => string.IsNullOrEmpty(maHD) ? false : p.Id_DonHang == maHD)
@@ -101,7 +92,7 @@ namespace WebDungCuLamBanh.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            var product = await _context.DungCus.FirstOrDefaultAsync(p => p.Id_DungCu == productId);
+            var product = await context.DungCus.FirstOrDefaultAsync(p => p.Id_DungCu == productId);
 
             if (product == null || product.SoLuong == null)
             {
@@ -142,8 +133,8 @@ namespace WebDungCuLamBanh.Controllers
                 TienDiemThuong = 0
             };
 
-            _context.Add(newOrder);
-            await _context.SaveChangesAsync();
+            context.Add(newOrder);
+            await context.SaveChangesAsync();
 
             return newOrder;
         }
@@ -158,26 +149,26 @@ namespace WebDungCuLamBanh.Controllers
                 DonGia = Giasaukm * quantity,
             };
             //kiểm tra nếu sản phẩm đã tồn tại trong giỏ hàng thì cộng thêm số lượng
-            var check = await _context.ChiTietDonHangs.FirstOrDefaultAsync(ct => ct.Id_DonHang == donHang.Id_DonHang && ct.Id_DungCu == productId);
+            var check = await context.ChiTietDonHangs.FirstOrDefaultAsync(ct => ct.Id_DonHang == donHang.Id_DonHang && ct.Id_DungCu == productId);
             if (check != null)
             {
                 check.SoLuong += quantity;
                 check.DonGia = Giasaukm * check.SoLuong;
-                _context.Update(check);
-                await _context.SaveChangesAsync();
+                context.Update(check);
+                await context.SaveChangesAsync();
             }
             else
             {
-                _context.ChiTietDonHangs.Add(orderDetail);
-                await _context.SaveChangesAsync();
+                context.ChiTietDonHangs.Add(orderDetail);
+                await context.SaveChangesAsync();
             }
 
 
-            decimal? tongtien = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == donHang.Id_DonHang).SumAsync(ct => ct.DonGia);
+            decimal? tongtien = await context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == donHang.Id_DonHang).SumAsync(ct => ct.DonGia);
             donHang.TongTien = tongtien*(decimal)1.08;
             donHang.VAT = tongtien * (decimal)0.08;
-            _context.Update(donHang);
-            await _context.SaveChangesAsync();
+            context.Update(donHang);
+            await context.SaveChangesAsync();
         }
 
         public async Task<IActionResult> CheckOut()
@@ -198,7 +189,7 @@ namespace WebDungCuLamBanh.Controllers
             //    return RedirectToAction("Index", "Cart");
             //}    
 
-            var khachHang = await _context.KhachHangs.FirstOrDefaultAsync(kh => kh.Id_KhachHang == maTK);
+            var khachHang = await context.KhachHangs.FirstOrDefaultAsync(kh => kh.Id_KhachHang == maTK);
             if (khachHang != null)
             {
 
@@ -208,10 +199,10 @@ namespace WebDungCuLamBanh.Controllers
                 ViewBag.Ten = khachHang.TenKhachHang;
                 ViewBag.DiemThuong = khachHang.DiemThuong;
             }
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
-            ViewData["PTTT"] = _context.PTTTs.Where(predicate: pttt => pttt.TinhTrang == 1)
+            ViewData["PTTT"] = context.PTTTs.Where(predicate: pttt => pttt.TinhTrang == 1)
                 .Select(pttt => new SelectListItem
                 {
                     Value = pttt.Id_PTTT.ToString(),
@@ -226,7 +217,7 @@ namespace WebDungCuLamBanh.Controllers
             {
 
                 string? maHD = hoadon.Id_DonHang;
-                ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)await _context.ChiTietDonHangs
+                ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)await context.ChiTietDonHangs
                     .Where(ct => ct.Id_DonHang == maHD)
                     .SumAsync(ct => ct.DonGia));
                 ViewBag.giamgia = HtmlHelpers.FormatCurrency((decimal)hoadon.TienGiamGia);
@@ -234,15 +225,15 @@ namespace WebDungCuLamBanh.Controllers
                 ViewBag.vat  = HtmlHelpers.FormatCurrency((decimal)hoadon.VAT);
                 int dem = 0;
                 //Lấy danh sách sản phẩm trong giỏ hàng
-                if (_context.ChiTietDonHangs != null)
+                if (context.ChiTietDonHangs != null)
                 {
 
-                    var cthd = await _context.ChiTietDonHangs
+                    var cthd = await context.ChiTietDonHangs
                         .Include(p => p.DungCu)
                         .Include(p => p.DungCu.LoaiDungCu)
                         .Where(string.IsNullOrEmpty(maHD) ? p => p.Id_DonHang == maHD : p => p.Id_DonHang == maHD)
                         .ToListAsync();
-                    dem = await _context.ChiTietDonHangs
+                    dem = await context.ChiTietDonHangs
                     .Where(p => string.IsNullOrEmpty(maHD) || p.Id_DonHang == maHD)
                     .CountAsync();
                     ViewBag.dem = dem;
@@ -269,7 +260,7 @@ namespace WebDungCuLamBanh.Controllers
 
 
             // Lấy đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
             if (hoadon == null)
@@ -291,7 +282,7 @@ namespace WebDungCuLamBanh.Controllers
         public async Task<IActionResult> COD_Payment(decimal phivanchuyen, string diachi, string ten, string email, string sdt, decimal diemthuong)
         {
             string maTK = GetSession("uid");
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
             if (hoadon == null)
             {
@@ -311,7 +302,7 @@ namespace WebDungCuLamBanh.Controllers
             try
             {
                 // Thêm đối tượng DonHangVanChuyenModel vào cơ sở dữ liệu
-                _context.Add(donHangVanChuyenModel);
+                context.Add(donHangVanChuyenModel);
 
                 // Cập nhật thông tin đơn hàng
                 hoadon.TrangThai = "Thanh toán khi nhận hàng";
@@ -334,42 +325,42 @@ namespace WebDungCuLamBanh.Controllers
                     hoadon.TongTien=Tongiensauvat;
                 }    
                 // Tính tổng tiền của đơn hàng
-                _context.Update(hoadon);
+                context.Update(hoadon);
 
                 // Cập nhật thông tin khách hàng về điểm thưởng
-                var khachhang = await _context.KhachHangs.FirstOrDefaultAsync(kh => kh.Id_KhachHang == maTK);
+                var khachhang = await context.KhachHangs.FirstOrDefaultAsync(kh => kh.Id_KhachHang == maTK);
                 if (khachhang != null)
                 {
                     khachhang.DiemThuong += (hoadon.TongTien) * (decimal)0.1;
-                    _context.Update(khachhang);
+                    context.Update(khachhang);
                 }
                 //Cập nhật số lượng sản phẩm
-                var cthd = await _context.ChiTietDonHangs
+                var cthd = await context.ChiTietDonHangs
                     .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                     .ToListAsync();
                 foreach (var item in cthd)
                 {
 
-                    var dungcu = await _context.DungCus.FirstOrDefaultAsync(dc => dc.Id_DungCu == item.Id_DungCu);
+                    var dungcu = await context.DungCus.FirstOrDefaultAsync(dc => dc.Id_DungCu == item.Id_DungCu);
                     if (dungcu != null)
                     {
                         dungcu.SoLuong -= item.SoLuong;
-                        _context.Update(dungcu);
+                        context.Update(dungcu);
                     }
 
                 }
                 //Cập nhật lại số lượng mã giảm có trong kho
                 if (hoadon.Id_MaGiamGia != null)
                 {
-                    var magiamgia = await _context.MaGiamGias.FirstOrDefaultAsync(mgg => mgg.Id_MaGiamGia == hoadon.Id_MaGiamGia);
+                    var magiamgia = await context.MaGiamGias.FirstOrDefaultAsync(mgg => mgg.Id_MaGiamGia == hoadon.Id_MaGiamGia);
                     if (magiamgia != null)
                     {
                         magiamgia.LuotSuDung -= 1;
-                        _context.Update(magiamgia);
+                        context.Update(magiamgia);
                     }
                 }
 
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 HttpContext.Session.Set("donhang", System.Text.Encoding.UTF8.GetBytes(donHangVanChuyenModel.Id_DonHang));
                 var result = new OrderDetailViewModel()
                 {
@@ -378,7 +369,7 @@ namespace WebDungCuLamBanh.Controllers
                     donHangModel = new DonHangModel()
                 };
 
-                var ChiTietHoaDonModel = await _context.ChiTietDonHangs
+                var ChiTietHoaDonModel = await context.ChiTietDonHangs
                     .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                     .Include(p => p.DungCu)
                     .ToListAsync();
@@ -469,7 +460,7 @@ namespace WebDungCuLamBanh.Controllers
             string maTK = GetSession("uid");
 
             // Lấy đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
             if (hoadon == null)
@@ -478,17 +469,17 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy chi tiết đơn hàng cần xóa
-            var ct = await _context.ChiTietDonHangs
+            var ct = await context.ChiTietDonHangs
                 .FirstOrDefaultAsync(ct => ct.Id_ChiTietDonHang == id);
 
             if (ct != null)
             {
                 // Xóa chi tiết đơn hàng
-                _context.ChiTietDonHangs.Remove(ct);
-                await _context.SaveChangesAsync();
+                context.ChiTietDonHangs.Remove(ct);
+                await context.SaveChangesAsync();
 
                 // Cập nhật lại tổng tiền của đơn hàng
-                decimal? tongTienTruocVAT = await _context.ChiTietDonHangs
+                decimal? tongTienTruocVAT = await context.ChiTietDonHangs
                     .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                     .SumAsync(ct => ct.DonGia) - hoadon.TienGiamGia;
 
@@ -505,8 +496,8 @@ namespace WebDungCuLamBanh.Controllers
                 hoadon.TongTien = (decimal)tongTienSauVAT;
 
                 // Cập nhật lại hóa đơn
-                _context.Update(hoadon);
-                await _context.SaveChangesAsync();
+                context.Update(hoadon);
+                await context.SaveChangesAsync();
             }
             else
             {
@@ -529,7 +520,7 @@ namespace WebDungCuLamBanh.Controllers
             string? maTK = HttpContext.Session.GetString("uid");
 
             // Lấy thông tin chi tiết đơn hàng
-            var ct = await _context.ChiTietDonHangs
+            var ct = await context.ChiTietDonHangs
                  .FirstOrDefaultAsync(ct => ct.Id_ChiTietDonHang == id);
 
             if (ct == null)
@@ -538,13 +529,13 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy thông tin sản phẩm từ kho
-            int slkho = (int)await _context.DungCus
+            int slkho = (int)await context.DungCus
                 .Where(sp => sp.Id_DungCu == ct.Id_DungCu)
                 .Select(sp => sp.SoLuong)
                 .FirstOrDefaultAsync();
 
             // Lấy thông tin đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
             if (hoadon == null)
@@ -560,23 +551,23 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy giá sau khuyến mãi
-            decimal? GiaKM = await _context.DungCus
+            decimal? GiaKM = await context.DungCus
                 .Where(sp => sp.Id_DungCu == ct.Id_DungCu)
                 .Select(sp => sp.GiaKhuyenMai)
                 .FirstOrDefaultAsync();
 
-            decimal? Gia = (await _context.DungCus.FirstOrDefaultAsync(sp => sp.Id_DungCu == ct.Id_DungCu)).Gia;
+            decimal? Gia = (await context.DungCus.FirstOrDefaultAsync(sp => sp.Id_DungCu == ct.Id_DungCu)).Gia;
 
             decimal? Giasaukm = (GiaKM != null && GiaKM != 0) ? GiaKM : Gia;
 
             // Cập nhật số lượng và đơn giá trong chi tiết đơn hàng
             ct.SoLuong = quantity;
             ct.DonGia = (decimal)(Giasaukm * quantity);
-            _context.Update(ct);
-            await _context.SaveChangesAsync();
+            context.Update(ct);
+            await context.SaveChangesAsync();
 
             // Cập nhật lại tổng tiền hóa đơn
-            decimal? tongTienTruocVAT = await _context.ChiTietDonHangs
+            decimal? tongTienTruocVAT = await context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                 .SumAsync(ct => ct.DonGia) - hoadon.TienGiamGia;
 
@@ -594,8 +585,8 @@ namespace WebDungCuLamBanh.Controllers
             hoadon.TongTien = (decimal)tongTienSauVAT;
 
             // Cập nhật thông tin hóa đơn
-            _context.Update(hoadon);
-            await _context.SaveChangesAsync();
+            context.Update(hoadon);
+            await context.SaveChangesAsync();
 
             return Json(new { success = true, donGia = ct.DonGia, tongTien = hoadon.TongTien });
         }
@@ -607,7 +598,7 @@ namespace WebDungCuLamBanh.Controllers
             string maTK = GetSession("uid");
 
             // Lấy đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.DonHangs
+            var hoadon = await context.DonHangs
                 .FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
             if (hoadon == null)
@@ -616,7 +607,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy thông tin mã giảm giá từ cơ sở dữ liệu
-            var giamgia = await _context.MaGiamGias
+            var giamgia = await context.MaGiamGias
                 .FirstOrDefaultAsync(gg => gg.Id_MaGiamGia == voucher&&gg.LuotSuDung>0);
 
             if (giamgia == null)
@@ -626,7 +617,7 @@ namespace WebDungCuLamBanh.Controllers
 
             // Tính toán lại tổng tiền và giá trị giảm giá
             decimal? giaTriGiam = (decimal)giamgia.GiaTriGiam;
-            decimal? tongTien = (await _context.ChiTietDonHangs
+            decimal? tongTien = (await context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == hoadon.Id_DonHang)
                 .SumAsync(ct => ct.DonGia)) - giaTriGiam;
 
@@ -644,15 +635,15 @@ namespace WebDungCuLamBanh.Controllers
             hoadon.Id_MaGiamGia = voucher;
             hoadon.TienGiamGia = giaTriGiam;
             hoadon.TongTien = tongTien;
-            var tamTinh = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == hoadon.Id_DonHang).SumAsync(ct => ct.DonGia);
+            var tamTinh = await context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == hoadon.Id_DonHang).SumAsync(ct => ct.DonGia);
             var vat = hoadon.VAT;
             //hoadon.TongTien = Math.Round((decimal)tongTien, 0);
 
             // Lưu thay đổi vào cơ sở dữ liệu
-            _context.Update(hoadon);
+            context.Update(hoadon);
             try
             {
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return Json(new { success = true, vat = vat, giaTriGiam = giaTriGiam, tamTinh = tamTinh });
             }
             catch (Exception e)
@@ -677,7 +668,7 @@ namespace WebDungCuLamBanh.Controllers
                 }
 
                 // Tìm đơn hàng chưa thanh toán của khách hàng
-                var hoadon = await _context.DonHangs.FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
+                var hoadon = await context.DonHangs.FirstOrDefaultAsync(hd => hd.Id_KhachHang == maTK && hd.TrangThai == "Chưa thanh toán");
 
                 // Nếu không có đơn hàng chưa thanh toán, trả về 0
                 if (hoadon == null)
@@ -686,7 +677,7 @@ namespace WebDungCuLamBanh.Controllers
                 }
 
                 // Đếm số lượng sản phẩm trong giỏ hàng của khách hàng
-                int dem = await _context.ChiTietDonHangs.CountAsync(p => p.Id_DonHang == hoadon.Id_DonHang);
+                int dem = await context.ChiTietDonHangs.CountAsync(p => p.Id_DonHang == hoadon.Id_DonHang);
 
                 return Json(new { success = true, dem = dem });
             }
@@ -703,12 +694,12 @@ namespace WebDungCuLamBanh.Controllers
             {
                 // Tình cước vận chuyển dựa trên quận được cung cấp
                 // Lấy giá vận chuyển từ cơ sở dữ liệu
-                var giaVanChuyen = await _context.CuocVanChuyens.FirstOrDefaultAsync(cvc => cvc.KhuVuc == quan);
+                var giaVanChuyen = await context.CuocVanChuyens.FirstOrDefaultAsync(cvc => cvc.KhuVuc == quan);
 
                 if (giaVanChuyen == null)
                 {
                     // Nếu không tìm thấy giá vận chuyển cho quận được cung cấp, lấy giá vận chuyển của khu vực 'Khác'
-                    giaVanChuyen = await _context.CuocVanChuyens.FirstOrDefaultAsync(cvc => cvc.KhuVuc == "Khác");
+                    giaVanChuyen = await context.CuocVanChuyens.FirstOrDefaultAsync(cvc => cvc.KhuVuc == "Khác");
                 }
 
                 if (giaVanChuyen != null)

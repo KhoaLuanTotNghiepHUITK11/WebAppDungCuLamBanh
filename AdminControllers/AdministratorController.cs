@@ -1,31 +1,20 @@
 ﻿using Firebase.Storage;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Org.BouncyCastle.Utilities;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Formats.Jpeg;
-using System.Data;
 using System.Diagnostics;
-using System.Text.RegularExpressions;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
 using WebDungCuLamBanh.Models.admin;
 using WebDungCuLamBanh.Helpers;
 namespace WebDungCuLamBanh.AdminControllers
 {
-    public class AdministratorController : Controller
+    public class AdministratorController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public AdministratorController(AppDbContext context)
-        {
-            _context = context;
-        }
         public IActionResult Index()
         {
-
             return View();
         }
         [HttpPost]
@@ -33,7 +22,7 @@ namespace WebDungCuLamBanh.AdminControllers
         {
             try
             {
-                var admin = await _context.Admins
+                var admin = await context.Admins
                     .FirstOrDefaultAsync(a => a.TenNguoiDung == adminModel.TenNguoiDung && a.MatKhau == adminModel.MatKhau);
                 if (admin != null && admin.Quyen == 1)
                 {
@@ -70,22 +59,22 @@ namespace WebDungCuLamBanh.AdminControllers
                 return RedirectToAction("Index");
             }
             //Doanh thu tháng này
-            var doanhThuThangNay = _context.DonHangs
+            var doanhThuThangNay = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Month == DateTime.Now.Month && d.NgayDat.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.TongTien);
-            var tienVatThangNay = _context.DonHangs
+            var tienVatThangNay = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Month == DateTime.Now.Month && d.NgayDat.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.VAT);
 
-            var tienShipThangNay = _context.DonHangVanChuyens
+            var tienShipThangNay = context.DonHangVanChuyens
                 .Where(d => d.TrangThaiVanChuyen.Id_TrangThai != 1 && d.DonHang.NgayDat.Value.Month == DateTime.Now.Month && d.DonHang.NgayDat.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.PhiVanChuyen);
             var doanhThuSauThuevaChiPhiThangNay = Math.Round((decimal)(doanhThuThangNay * 92 / 100), 0) - tienShipThangNay - tienVatThangNay;
-            var tienNhapHangThangNay = _context.HoaDonNhapHangs
+            var tienNhapHangThangNay = context.HoaDonNhapHangs
                 .Where(d => d.NgayNhapHang.Value.Month == DateTime.Now.Month && d.NgayNhapHang.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.TongTien);
             var LoiNhuanThangNay = doanhThuSauThuevaChiPhiThangNay - tienNhapHangThangNay;
-            var vatThangNay = _context.DonHangs
+            var vatThangNay = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Month == DateTime.Now.Month && d.NgayDat.Value.Year == DateTime.Now.Year)
                 .Sum(d => d.VAT);
             ViewBag.tienVatThangNay =HtmlHelpers.FormatCurrency((decimal)tienVatThangNay);
@@ -99,7 +88,7 @@ namespace WebDungCuLamBanh.AdminControllers
 
             ViewBag.doanhThuThangNay = HtmlHelpers.FormatCurrency((decimal)doanhThuThangNay);
             //Đơn hàng chờ xử lý
-            var donHangChoXuLy = _context.DonHangs
+            var donHangChoXuLy = context.DonHangs
                 .Where(d => d.TrangThai == "Chưa thanh toán")
                 .Count();
             ViewBag.donHangChoXuLy = donHangChoXuLy;
@@ -108,18 +97,18 @@ namespace WebDungCuLamBanh.AdminControllers
 
 
                 // Lọc doanh thu từ ngày đến ngày
-                var doanhThuLoc = _context.DonHangs
+                var doanhThuLoc = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat >= fromDate && d.NgayDat <= toDate)
                     .Sum(d => d.TongTien);
-                var tienShipLoc = _context.DonHangVanChuyens
+                var tienShipLoc = context.DonHangVanChuyens
                 .Where(d => d.TrangThaiVanChuyen.Id_TrangThai !=1 && d.DonHang.NgayDat >= fromDate && d.DonHang.NgayDat <= toDate)
                     .Sum(d => d.PhiVanChuyen);
             var doanhThuSauThuevaChiPhiLoc = Math.Round((decimal)(doanhThuLoc * 92 / 100), 0) - tienShipLoc;
-            var tienNhapHangLoc = _context.HoaDonNhapHangs
+            var tienNhapHangLoc = context.HoaDonNhapHangs
                 .Where(d => d.NgayNhapHang >= fromDate && d.NgayNhapHang <= toDate)
                     .Sum(d => d.TongTien);
             var tienLoiLoc = doanhThuSauThuevaChiPhiLoc - tienNhapHangLoc;
-            var vatLoc = _context.DonHangs
+            var vatLoc = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat >= fromDate && d.NgayDat <= toDate)
                     .Sum(d => d.VAT);
 
@@ -132,18 +121,18 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewBag.fromDate = fromDate;
             ViewBag.toDate = toDate;
             //Doanh thu hôm nay
-            var doanhThuHomNay = _context.DonHangs
+            var doanhThuHomNay = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.TongTien);
-            var tienShipHomNay = _context.DonHangVanChuyens
+            var tienShipHomNay = context.DonHangVanChuyens
                     .Where(d => d.TrangThaiVanChuyen.Id_TrangThai != 1 && d.DonHang.NgayDat.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.PhiVanChuyen);
             var doanhThuSauThuevaChiPhiHomNay = Math.Round((decimal)(doanhThuHomNay * 92 / 100), 0) - tienShipHomNay;
-            var tienNhapHangHomNay = _context.HoaDonNhapHangs
+            var tienNhapHangHomNay = context.HoaDonNhapHangs
                 .Where(d => d.NgayNhapHang.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.TongTien);
             var tienLoiHomNay = doanhThuSauThuevaChiPhiHomNay - tienNhapHangHomNay;
-            var vatHomNay = _context.DonHangs
+            var vatHomNay = context.DonHangs
                 .Where(d => d.TrangThai != "Chưa thanh toán" && d.NgayDat.Value.Date == DateTime.Now.Date)
                 .Sum(d => d.VAT);
 
@@ -154,7 +143,7 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewBag.tienLoiHomNay = HtmlHelpers.FormatCurrency((decimal)tienLoiHomNay);
             ViewBag.vatHomNay = HtmlHelpers.FormatCurrency((decimal)vatHomNay);
             //Lấy sản phẩm trong Chi tiết đơn hàng
-            var top10= _context.ChiTietDonHangs
+            var top10= context.ChiTietDonHangs
                 .Include(ct => ct.DungCu)
                 
                 .Where(ct => ct.DonHang.TrangThai != "Chưa thanh toán")
@@ -181,7 +170,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var appDbContext = _context.DungCus.Include(d => d.LoaiDungCu).Where(d => d.DaXoa == 0);
+            var appDbContext = context.DungCus.Include(d => d.LoaiDungCu).Where(d => d.DaXoa == 0);
 
             //Lọc theo từ khoá
             if (!string.IsNullOrEmpty(search))
@@ -219,19 +208,12 @@ namespace WebDungCuLamBanh.AdminControllers
                                                     .PutAsync(outputStream);
                         return imageUrl;
                     }
-
                 }
-
-                //var imageUrl = await storage.Child("images")
-                //                            .Child(filename)
-                //                            .PutAsync(fileInput.OpenReadStream());
-                //return imageUrl;
             }
             catch (Exception)
             {
                 return null;
             }
-
         }
         public IActionResult CreateProduct()
         {
@@ -239,9 +221,9 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            ViewData["Id_LoaiDungCu"] = new SelectList(_context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu");
+            ViewData["Id_LoaiDungCu"] = new SelectList(context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu");
 
-            ViewData["Id_NhaCungCap"] = _context.NhaCungCaps
+            ViewData["Id_NhaCungCap"] = context.NhaCungCaps
                 .Select(ncc => new SelectListItem
                 {
                     Value = ncc.Id_NhaCungCap.ToString(),
@@ -265,9 +247,8 @@ namespace WebDungCuLamBanh.AdminControllers
                         ModelState.AddModelError(string.Empty, "Số lượng phải là một số nguyên dương.");
                         return View(dungCuModel);
                     }
-
-                    // Kiểm tra xem tên sản phẩm có bị trùng không
-                    bool isDuplicateName = await _context.DungCus
+// Kiểm tra xem tên sản phẩm có bị trùng không
+                    bool isDuplicateName = await context.DungCus
                         .AnyAsync(dc => dc.TenDungCu == dungCuModel.TenDungCu);
 
                     if (isDuplicateName)
@@ -277,18 +258,18 @@ namespace WebDungCuLamBanh.AdminControllers
                     }
 
                     // Kiểm tra sản phẩm có tồn tại chưa
-                    var sp = await _context.DungCus.FindAsync(dungCuModel.Id_DungCu);
+                    var sp = await context.DungCus.FindAsync(dungCuModel.Id_DungCu);
 
                     // Khởi tạo các giá trị ban đầu cho sản phẩm
                     dungCuModel.DaXoa = 0;
                     dungCuModel.SoLuong = 0;
                     dungCuModel.GiaKhuyenMai = 0;
 
-                    _context.Add(dungCuModel);
-                    await _context.SaveChangesAsync();
+                    context.Add(dungCuModel);
+                    await context.SaveChangesAsync();
 
                     // Lấy ID của sản phẩm mới được thêm vào
-                    int id = _context.DungCus.Max(d => d.Id_DungCu);
+                    int id = context.DungCus.Max(d => d.Id_DungCu);
 
                     // Nếu có ảnh, tải lên và cập nhật URL ảnh
                     if (imageInput != null)
@@ -296,8 +277,8 @@ namespace WebDungCuLamBanh.AdminControllers
                         string? newUrl = await UploadImage(imageInput, id.ToString());
                         dungCuModel.HinhAnh = newUrl;
 
-                        _context.Update(dungCuModel);
-                        await _context.SaveChangesAsync();
+                        context.Update(dungCuModel);
+                        await context.SaveChangesAsync();
                     }
 
                     return RedirectToAction(nameof(Product));
@@ -379,7 +360,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var dungCuModel = await _context.DungCus
+            var dungCuModel = await context.DungCus
                 .Include(p => p.LoaiDungCu)
                 .Include(p => p.NhaCungCap)
                 .FirstOrDefaultAsync(m => m.Id_DungCu == id);
@@ -388,8 +369,8 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return NotFound();
             }
-            ViewData["LoaiDungCu"] = new SelectList(_context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu", dungCuModel.Id_LoaiDungCu);
-            ViewData["NhaCungCap"] = _context.NhaCungCaps
+            ViewData["LoaiDungCu"] = new SelectList(context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu", dungCuModel.Id_LoaiDungCu);
+            ViewData["NhaCungCap"] = context.NhaCungCaps
                 .Select(ncc => new SelectListItem
                 {
                     Value = ncc.Id_NhaCungCap.ToString(),
@@ -421,14 +402,14 @@ namespace WebDungCuLamBanh.AdminControllers
                         dungCuModel.DaXoa = 0;
                         string? newUrl = await UploadImage(imageInput, dungCuModel.Id_DungCu.ToString());
                         dungCuModel.HinhAnh = newUrl;
-                        _context.Update(dungCuModel);
-                        await _context.SaveChangesAsync();
+                        context.Update(dungCuModel);
+                        await context.SaveChangesAsync();
                     }
                     else if (imageInput == null)
                     {
-                        dungCuModel.HinhAnh = await _context.DungCus.Where(d => d.Id_DungCu == dungCuModel.Id_DungCu).Select(d => d.HinhAnh).FirstOrDefaultAsync();
-                        _context.Update(dungCuModel);
-                        await _context.SaveChangesAsync();
+                        dungCuModel.HinhAnh = await context.DungCus.Where(d => d.Id_DungCu == dungCuModel.Id_DungCu).Select(d => d.HinhAnh).FirstOrDefaultAsync();
+                        context.Update(dungCuModel);
+                        await context.SaveChangesAsync();
                     }
 
                 }
@@ -438,7 +419,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 }
                 return RedirectToAction(nameof(Product));
             }
-            ViewData["Id_LoaiDungCu"] = new SelectList(_context.LoaiDungCus, "Id_LoaiDungCu", "Id_LoaiDungCu", dungCuModel.Id_LoaiDungCu);
+            ViewData["Id_LoaiDungCu"] = new SelectList(context.LoaiDungCus, "Id_LoaiDungCu", "Id_LoaiDungCu", dungCuModel.Id_LoaiDungCu);
             return View(dungCuModel);
         }
         public async Task<string?> DeleteImage(string filename)
@@ -464,7 +445,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var dungCuModel = await _context.DungCus
+            var dungCuModel = await context.DungCus
                 .Include(d => d.LoaiDungCu)
                 .FirstOrDefaultAsync(m => m.Id_DungCu == id);
             if (dungCuModel == null)
@@ -486,17 +467,17 @@ namespace WebDungCuLamBanh.AdminControllers
             }
             try
             {
-                var dungCuModel = await _context.DungCus.FindAsync(id);
+                var dungCuModel = await context.DungCus.FindAsync(id);
                 if (dungCuModel != null)
                 {
 
                     dungCuModel.DaXoa = 1;
                     dungCuModel.SoLuong = 0;
-                    _context.Update(dungCuModel);
+                    context.Update(dungCuModel);
 
                 }
 
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Product));
             }
             catch (Exception ex)
@@ -507,7 +488,7 @@ namespace WebDungCuLamBanh.AdminControllers
         }
         private bool DungCuModelExists(int id)
         {
-            return _context.DungCus.Any(e => e.Id_DungCu == id);
+            return context.DungCus.Any(e => e.Id_DungCu == id);
         }
         public IActionResult Category()
         {
@@ -517,7 +498,7 @@ namespace WebDungCuLamBanh.AdminControllers
             }
             var viewModel = new CategoryViewModel()
             {
-                Category = _context.LoaiDungCus.ToList(),
+                Category = context.LoaiDungCus.ToList(),
                 NewCategory = new LoaiDungCuModel()
             };
             return View(viewModel);
@@ -530,7 +511,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 if (ModelState.IsValid)
                 {
-                    var category = await _context.LoaiDungCus.FirstOrDefaultAsync(c => c.TenLoaiDungCu == TenLoaiDungCu);
+                    var category = await context.LoaiDungCus.FirstOrDefaultAsync(c => c.TenLoaiDungCu == TenLoaiDungCu);
                     if (category != null)
                     {
                         ModelState.AddModelError(string.Empty, "Loại dụng cụ này đã tồn tại.");
@@ -541,8 +522,8 @@ namespace WebDungCuLamBanh.AdminControllers
                         {
                             TenLoaiDungCu = TenLoaiDungCu,
                         };
-                        _context.Add(loaiDungCuModel);
-                        await _context.SaveChangesAsync();
+                        context.Add(loaiDungCuModel);
+                        await context.SaveChangesAsync();
                         return RedirectToAction(nameof(Category));
                     }
                 }
@@ -564,12 +545,12 @@ namespace WebDungCuLamBanh.AdminControllers
                 return RedirectToAction("Index");
             }
             await ApplySaleOff();
-            var appDbContext = _context.KhuyenMai2s;
+            var appDbContext = context.KhuyenMai2s;
             return View(await appDbContext.ToListAsync());
         }
         public async Task<IActionResult> CreateSaleOff()
         {
-            ViewData["Id_SanPham"] = new SelectList(_context.DungCus, "Id_DungCu", "TenDungCu");
+            ViewData["Id_SanPham"] = new SelectList(context.DungCus, "Id_DungCu", "TenDungCu");
             return View();
         }
         [HttpPost]
@@ -585,8 +566,8 @@ namespace WebDungCuLamBanh.AdminControllers
                 ModelState.AddModelError(string.Empty, "Ngày không hợp lệ.");
             }
                 // Thêm khuyenMai2 vào cơ sở dữ liệu
-                _context.Add(khuyenMai2);
-            await _context.SaveChangesAsync();
+                context.Add(khuyenMai2);
+            await context.SaveChangesAsync();
 
             return RedirectToAction(nameof(AddProductToSaleOff), new { id = khuyenMai2.Id_KhuyenMai });
         }
@@ -598,26 +579,26 @@ namespace WebDungCuLamBanh.AdminControllers
                 return RedirectToAction("Index");
             }
             //Xoá chi tiết khuyến mãi
-            var ctkm = await _context.ChiTietKhuyenMais.Where(ct => ct.Id_KhuyenMai == id).ToListAsync();
+            var ctkm = await context.ChiTietKhuyenMais.Where(ct => ct.Id_KhuyenMai == id).ToListAsync();
             foreach (var ct in ctkm)
             {
-                _context.ChiTietKhuyenMais.Remove(ct);
-                await _context.SaveChangesAsync();
+                context.ChiTietKhuyenMais.Remove(ct);
+                await context.SaveChangesAsync();
             }
-            var khuyenMai2 = await _context.KhuyenMai2s.FindAsync(id);
+            var khuyenMai2 = await context.KhuyenMai2s.FindAsync(id);
             if (khuyenMai2 != null)
             {
-                _context.KhuyenMai2s.Remove(khuyenMai2);
-                await _context.SaveChangesAsync();
+                context.KhuyenMai2s.Remove(khuyenMai2);
+                await context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(SaleOff));
         }
         public async Task<IActionResult> AddProductToSaleOff(int id)
         {
             ViewData["Id_KhuyenMai"] = id;
-            ViewData["KhuyenMai"] = await _context.KhuyenMai2s.FirstOrDefaultAsync(k => k.Id_KhuyenMai == id);
-            ViewData["SanPham"] = new SelectList(_context.DungCus.Where(p => p.DaXoa == 0), "Id_DungCu", "TenDungCu");
-            ViewData["ChiTietKhuyenMai"] = await _context.ChiTietKhuyenMais.Include(ct => ct.SanPham).Include(ct => ct.KhuyenMai).Where(ct => ct.Id_KhuyenMai == id).ToListAsync();
+            ViewData["KhuyenMai"] = await context.KhuyenMai2s.FirstOrDefaultAsync(k => k.Id_KhuyenMai == id);
+            ViewData["SanPham"] = new SelectList(context.DungCus.Where(p => p.DaXoa == 0), "Id_DungCu", "TenDungCu");
+            ViewData["ChiTietKhuyenMai"] = await context.ChiTietKhuyenMais.Include(ct => ct.SanPham).Include(ct => ct.KhuyenMai).Where(ct => ct.Id_KhuyenMai == id).ToListAsync();
             return View();
         }
         [HttpPost]
@@ -632,7 +613,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return Json(new { success = false, message = "Giá trị giảm phải từ 1 đến 99." });
             }
-            var existingChiTietKhuyenMai = await _context.ChiTietKhuyenMais.FirstOrDefaultAsync(k=>k.Id_SanPham == chiTietKhuyenMai.Id_SanPham);
+            var existingChiTietKhuyenMai = await context.ChiTietKhuyenMais.FirstOrDefaultAsync(k=>k.Id_SanPham == chiTietKhuyenMai.Id_SanPham);
             if (existingChiTietKhuyenMai != null)
             {
 
@@ -640,8 +621,8 @@ namespace WebDungCuLamBanh.AdminControllers
             }
 
             // Thêm khuyenMai2 vào cơ sở dữ liệu
-            _context.Add(chiTietKhuyenMai);
-            await _context.SaveChangesAsync();
+            context.Add(chiTietKhuyenMai);
+            await context.SaveChangesAsync();
             //Quay ve trang danh sach khuyen mai
             return Json(new { success = true });
         }
@@ -650,18 +631,18 @@ namespace WebDungCuLamBanh.AdminControllers
         {
 
             // Lấy đơn hàng chưa thanh toán của khách hàng
-            var hoadon = await _context.KhuyenMai2s
+            var hoadon = await context.KhuyenMai2s
                 .FirstOrDefaultAsync(hd => hd.Id_KhuyenMai == Id_KhuyenMai);
 
             // Lấy chi tiết đơn hàng cần xóa
-            var ct = await _context.ChiTietKhuyenMais
+            var ct = await context.ChiTietKhuyenMais
                 .FirstOrDefaultAsync(ct => ct.Id_CTKM ==Id_CTKM);
 
             if (ct != null)
             {
                 // Xóa chi tiết đơn hàng
-                _context.ChiTietKhuyenMais.Remove(ct);
-                await _context.SaveChangesAsync();
+                context.ChiTietKhuyenMais.Remove(ct);
+                await context.SaveChangesAsync();
             }
 
             return RedirectToAction("AddProductToSaleOff", "Administrator", new { id = Id_KhuyenMai });
@@ -676,37 +657,37 @@ namespace WebDungCuLamBanh.AdminControllers
             try
             {
                 //Xoá giá khuyến mại cũ
-                var kmcu = await _context.DungCus.ToListAsync();
+                var kmcu = await context.DungCus.ToListAsync();
                 foreach (var dc in kmcu)
                 {
                     dc.GiaKhuyenMai = 0;
-                    _context.Update(dc);
-                    await _context.SaveChangesAsync();
+                    context.Update(dc);
+                    await context.SaveChangesAsync();
                 }
 
                 //Duyệt danh sách KhuyenMai
-                var khuyenMai = await _context.KhuyenMai2s.ToListAsync();
+                var khuyenMai = await context.KhuyenMai2s.ToListAsync();
                 foreach (var km in khuyenMai)
                 {
                     //Lấy danh sách ctkm
-                    var ctkm = await _context.ChiTietKhuyenMais.Where(ct => ct.Id_KhuyenMai == km.Id_KhuyenMai).ToListAsync();
+                    var ctkm = await context.ChiTietKhuyenMais.Where(ct => ct.Id_KhuyenMai == km.Id_KhuyenMai).ToListAsync();
                     foreach (var ct in ctkm)
                     {
                         //Lấy sản phẩm
-                        var dungCu = await _context.DungCus.FirstOrDefaultAsync(d => d.Id_DungCu == ct.Id_SanPham);
+                        var dungCu = await context.DungCus.FirstOrDefaultAsync(d => d.Id_DungCu == ct.Id_SanPham);
                         if (dungCu != null)
                         {
                             if(km.NgayBatDau<=DateTime.Now&&km.NgayKetThuc>=DateTime.Now)
                             {
                                 dungCu.GiaKhuyenMai = ((dungCu.Gia * (100-ct.GiaTriGiam))/100);
-                                _context.Update(dungCu);
-                                await _context.SaveChangesAsync();
+                                context.Update(dungCu);
+                                await context.SaveChangesAsync();
                             }
                             else
                             {
                                 dungCu.GiaKhuyenMai = 0;
-                                _context.Update(dungCu);
-                                await _context.SaveChangesAsync();
+                                context.Update(dungCu);
+                                await context.SaveChangesAsync();
                             }    
                         }
                         
@@ -727,7 +708,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var appDbContext = _context.MaGiamGias;
+            var appDbContext = context.MaGiamGias;
             return View(await appDbContext.ToListAsync());
         }
         public IActionResult CreateVoucher()
@@ -743,7 +724,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var existingMaGiamGia = await _context.MaGiamGias.FirstOrDefaultAsync(k => k.Id_MaGiamGia == maGiamGia.Id_MaGiamGia);
+            var existingMaGiamGia = await context.MaGiamGias.FirstOrDefaultAsync(k => k.Id_MaGiamGia == maGiamGia.Id_MaGiamGia);
             if (existingMaGiamGia != null)
             {
                 ModelState.AddModelError(string.Empty, "Mã giảm giá này đã tồn tại.");
@@ -751,37 +732,37 @@ namespace WebDungCuLamBanh.AdminControllers
             }
 
             // Thêm khuyenMai2 vào cơ sở dữ liệu
-            _context.Add(maGiamGia);
-            await _context.SaveChangesAsync();
+            context.Add(maGiamGia);
+            await context.SaveChangesAsync();
             //Quay ve trang danh sach khuyen mai
             return RedirectToAction(nameof(Voucher));
         }
         public async Task<IActionResult> DeleteVoucher(string? id)
         {
-            var maGiamGia = await _context.MaGiamGias.FindAsync(id);
+            var maGiamGia = await context.MaGiamGias.FindAsync(id);
             if (maGiamGia != null)
             {
-                _context.MaGiamGias.Remove(maGiamGia);
-                await _context.SaveChangesAsync();
+                context.MaGiamGias.Remove(maGiamGia);
+                await context.SaveChangesAsync();
             }
             return RedirectToAction(nameof(Voucher));
         }
         public async Task<IActionResult> DeleteCategory(int? id)
         {
-            var loaiDungCu = await _context.LoaiDungCus.FindAsync(id);
+            var loaiDungCu = await context.LoaiDungCus.FindAsync(id);
             if (loaiDungCu != null)
             {
                 //Kiểm ra xem loại dụng cụ này đã có sản phẩm chưa
-                var dungCu = await _context.DungCus.FirstOrDefaultAsync(d => d.Id_LoaiDungCu == id);
+                var dungCu = await context.DungCus.FirstOrDefaultAsync(d => d.Id_LoaiDungCu == id);
                 if (dungCu != null)
                 {
                     ModelState.AddModelError(string.Empty, "Loại dụng cụ này đã có sản phẩm.");
                     return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Loại dụng cụ này đã có sản phẩm. Hãy xoá tất cả sản phẩm trước khi xoá loại dụng cụ." });
                 }
 
-                _context.LoaiDungCus.Remove(loaiDungCu);
-                await _context.SaveChangesAsync();
-                await _context.SaveChangesAsync();
+                context.LoaiDungCus.Remove(loaiDungCu);
+                await context.SaveChangesAsync();
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Category));
             }
             return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, Message = "Đã có lỗi xảy ra." });
@@ -792,28 +773,28 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var donHangChuaGiao = _context.DonHangVanChuyens
+            var donHangChuaGiao = context.DonHangVanChuyens
                 .Where(d => d.TinhTrang == 0)
                 .Count();
             ViewBag.donHangChuaGiao = donHangChuaGiao;
-            var donHangDaGiao = _context.DonHangVanChuyens
+            var donHangDaGiao = context.DonHangVanChuyens
                 .Where(d => d.TinhTrang == 2)
                 .Count();
             ViewBag.donHangDaGiao = donHangDaGiao;
-            var donHangDangGiao  = _context.DonHangVanChuyens
+            var donHangDangGiao  = context.DonHangVanChuyens
                 .Where(d => d.TinhTrang == 1)
                 .Count();
             ViewBag.donHangDangGiao = donHangDangGiao;
-            var donHangDaHuy = _context.DonHangVanChuyens
+            var donHangDaHuy = context.DonHangVanChuyens
                 .Where(d => d.TinhTrang == 3)
                 .Count();
             ViewBag.donHangDaHuy = donHangDaHuy;
-            var appDbContext = _context.DonHangVanChuyens
+            var appDbContext = context.DonHangVanChuyens
                 .Include(d => d.DonHang)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.TrangThaiVanChuyen);
-            ViewData["TrangThaiVanChuyen"] = _context.TrangThaiVanChuyens
+            ViewData["TrangThaiVanChuyen"] = context.TrangThaiVanChuyens
                 .Select(pttt => new SelectListItem
                 {
                     Value = pttt.Id_TrangThai.ToString(),
@@ -828,14 +809,14 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var appDbContext = _context.DonHangVanChuyens
+            var appDbContext = context.DonHangVanChuyens
                 .Include(d => d.DonHang)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.TrangThaiVanChuyen)
                 .Where(d => d.TrangThaiVanChuyen.Id_TrangThai != 2)
                 .OrderByDescending(d => d.DonHang.NgayDat);
-            ViewData["TrangThaiVanChuyen"] = _context.TrangThaiVanChuyens
+            ViewData["TrangThaiVanChuyen"] = context.TrangThaiVanChuyens
                 .Select(pttt => new SelectListItem
                 {
                     Value = pttt.Id_TrangThai.ToString(),
@@ -850,14 +831,14 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var appDbContext = _context.DonHangVanChuyens
+            var appDbContext = context.DonHangVanChuyens
                 .Include(d => d.DonHang)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.PhuongThucThanhToan)
                 .Include(d => d.TrangThaiVanChuyen)
                 .Where(d => d.TrangThaiVanChuyen.Id_TrangThai == 2)
                 .OrderByDescending(d => d.DonHang.NgayDat);
-            ViewData["TrangThaiVanChuyen"] = _context.TrangThaiVanChuyens
+            ViewData["TrangThaiVanChuyen"] = context.TrangThaiVanChuyens
                 .Select(pttt => new SelectListItem
                 {
                     Value = pttt.Id_TrangThai.ToString(),
@@ -876,17 +857,17 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewBag.email = session;
 
 
-            var donHang = await _context.DonHangs.FindAsync(id);
+            var donHang = await context.DonHangs.FindAsync(id);
             if (donHang == null)
             {
                 return NotFound("Không tìm thấy hóa đơn.");
             }
 
-            var chiTietDonHang = await _context.ChiTietDonHangs
+            var chiTietDonHang = await context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.DungCu)
                 .ToListAsync();
-            var donHangVanChuyen = await _context.DonHangVanChuyens
+            var donHangVanChuyen = await context.DonHangVanChuyens
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.TrangThaiVanChuyen)
                 .Include(p => p.PhuongThucThanhToan)
@@ -907,7 +888,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 donHangVanChuyenModel = donHangVanChuyen
             };
             decimal? tongtien = donHang.TongTien;
-            decimal? tamtinh = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
+            decimal? tamtinh = await context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
             decimal? vat = Math.Round((decimal)(tongtien * 8 / 108), 0);
 
             //Lấy giá trị giảm
@@ -915,7 +896,7 @@ namespace WebDungCuLamBanh.AdminControllers
             decimal giatrigiam = 0;
             if (magiamgia != null)
             {
-                giatrigiam = (decimal)await _context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
+                giatrigiam = (decimal)await context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
             }
 
             ViewBag.tamtinh = tamtinh;
@@ -931,7 +912,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var appDbContext = _context.BannerModel;
+            var appDbContext = context.BannerModel;
             return View(await appDbContext.ToListAsync());
         }
         public IActionResult CreateBanner()
@@ -952,16 +933,16 @@ namespace WebDungCuLamBanh.AdminControllers
                     {
                         string? newUrl = await UploadImage(imageInput, bannerModel.TenBanner);
                         bannerModel.DuongDan = newUrl;
-                        _context.Add(bannerModel);
+                        context.Add(bannerModel);
 
                     }
                     else
                     {
                         bannerModel.DuongDan = "null";
-                        _context.Add(bannerModel);
+                        context.Add(bannerModel);
                     }
 
-                    await _context.SaveChangesAsync();
+                    await context.SaveChangesAsync();
                     return RedirectToAction(nameof(Banner));
                 }
             }
@@ -982,7 +963,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var bannerModel = await _context.BannerModel.FindAsync(id);
+            var bannerModel = await context.BannerModel.FindAsync(id);
             if (bannerModel == null)
             {
                 return NotFound();
@@ -1006,16 +987,16 @@ namespace WebDungCuLamBanh.AdminControllers
                     {
                         string? newUrl = await UpdateImage(bannerModel.DuongDan, imageInput);
                         bannerModel.DuongDan = newUrl;
-                        _context.Update(bannerModel);
-                        await _context.SaveChangesAsync();
+                        context.Update(bannerModel);
+                        await context.SaveChangesAsync();
                     }
                     else if (imageInput == null)
                     {
-                        _context.Update(bannerModel);
-                        await _context.SaveChangesAsync();
+                        context.Update(bannerModel);
+                        await context.SaveChangesAsync();
                     }
-                    _context.Update(bannerModel);
-                    await _context.SaveChangesAsync();
+                    context.Update(bannerModel);
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -1031,13 +1012,13 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            var banner = await _context.Banners.FindAsync(id);
+            var banner = await context.Banners.FindAsync(id);
             if (banner != null)
             {
-                DeleteImage(banner.TenBanner);
-                _context.Banners.Remove(banner);
+                if (banner.TenBanner != null) DeleteImage(banner.TenBanner);
+                context.Banners.Remove(banner);
 
-                await _context.SaveChangesAsync();
+                await context.SaveChangesAsync();
 
             }
             return RedirectToAction(nameof(Banner));
@@ -1048,15 +1029,15 @@ namespace WebDungCuLamBanh.AdminControllers
         {
             try
             {
-                var donHangVanChuyen = await _context.DonHangVanChuyens
+                var donHangVanChuyen = await context.DonHangVanChuyens
                                                      .Where(p => p.Id_DHVC == dhvc)
                                                      .FirstOrDefaultAsync();
 
                 if (donHangVanChuyen != null)
                 {
                     donHangVanChuyen.TinhTrang = value;
-                    _context.Update(donHangVanChuyen);
-                    await _context.SaveChangesAsync();
+                    context.Update(donHangVanChuyen);
+                    await context.SaveChangesAsync();
                     return Json(new { success = true });
                 }
                 else
@@ -1084,7 +1065,7 @@ namespace WebDungCuLamBanh.AdminControllers
             for (int i = 0; i < 6; i++)
             {
                 var targetDate = currentDate.AddMonths(-i);
-                var earning = _context.DonHangs
+                var earning = context.DonHangs
                     .Where(d => d.TrangThai != "Chưa thanh toán"
                                 && d.NgayDat.Value.Month == targetDate.Month
                                 && d.NgayDat.Value.Year == targetDate.Year)

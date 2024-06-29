@@ -17,20 +17,7 @@
         <img src="~/logo/Designer.jpeg" alt="Alternate Text" />
     }
 
-    .product-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 30px;
-    }
-
-    .product {
-        position: relative;
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-    }
-
-        .product img {
+    .product img {
             width: 100%;
             height: auto;
             object-fit: cover;
@@ -58,7 +45,7 @@
         padding-left: 20px;
         padding-right: 20px;
         font-size: 25px;
-        font-family: Sans-serif;
+        font-family: Sans-serif, sans-serif;
         font-weight: 600;
     }
 
@@ -70,7 +57,7 @@
         padding-left: 20px;
         padding-right: 20px;
         font-size: 20px;
-        font-family: Sans-serif;
+        font-family: Sans-serif, serif;
     }
 
     .carousel-caption h1 {
@@ -132,7 +119,7 @@
     .card:hover {
         /* background-color: #f8d9d6; */
         border-radius: 20px;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     }
     .league-spartan {
         font-family: "League Spartan", sans-serif;
@@ -141,7 +128,7 @@
         font-style: normal;
     }
 </style>
-<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0px!important;">
+<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0!important;">
     <div class="row">
     @if(banner != null && banner.Count != 0)
     {
@@ -157,7 +144,7 @@
                 {
                     <div class="carousel-item @(i == 0 ? "active" : "")">
                         <a href="@banner[i].LienKet">
-                            <img src="@banner[i].DuongDan" class="d-block w-100" >
+                            <img src="@banner[i].DuongDan" class="d-block w-100"  alt="">
                             <div class="carousel-caption d-none d-md-block">
                                 @if (i == 0)
                                 {
@@ -197,7 +184,7 @@
             {
 
                 <div class="card card-newpd" onclick="navigateToLink('/Product/Detail/@Html.DisplayFor(modelItem => item.Id_DungCu)')">
-                    <img src="@item.HinhAnh" class="card-img-top" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    <img src="@item.HinhAnh" class="card-img-top" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" alt="">
                     <div class="card-body">
                         <a class="card-title"><b>@item.TenDungCu</b></a>
                     </div>
@@ -214,7 +201,7 @@
                                 <div class="card-body">
                                     <a class="card-text league-spartan" style="color:red;text-decoration:none"><b>@Html.FormatCurrency(item.GiaKhuyenMai.Value)</b></a>
                                     <a class="card-text league-spartan" style="color:gray;text-decoration:none"><del>@Html.FormatCurrency(item.Gia.Value)</del></a>
-                                    <span style="background-color:#f8d9d6;color:red;font-size:15px;mar-bottom:1px" class="badge">-@giakm%</span>
+                                    <span style="background-color:#f8d9d6;color:red;font-size:15px;margin-bottom:1px" class="badge">-@giakm%</span>
                                 </div>
                             }
                         
@@ -239,7 +226,7 @@ else
         @foreach(var item in newProduct)
             {
                 <div class="card card-newpd" onclick="navigateToLink('/Product/Detail/@Html.DisplayFor(modelItem => item.Id_DungCu)')">
-                    <img src="@item.HinhAnh" class="card-img-top" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
+                    <img src="@item.HinhAnh" class="card-img-top" style="border-top-left-radius: 20px; border-top-right-radius: 20px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;" alt="">
                     <div class="card-body">
                         <a class="card-title"><b>@item.TenDungCu</b></a>
                     </div>
@@ -256,7 +243,7 @@ else
                             <div class="card-body">
                                 <a class="card-text league-spartan" style="color:red;text-decoration:none"><b>@Html.FormatCurrency(item.GiaKhuyenMai.Value)</b></a>
                                 <a class="card-text league-spartan" style="color:gray;text-decoration:none"><del>@Html.FormatCurrency(item.Gia.Value)</del></a>
-                                <span style="background-color:#f8d9d6;color:red;font-size:15px;mar-bottom:1px" class="badge">-@giakm%</span>
+                                <span style="background-color:#f8d9d6;color:red;font-size:15px;margin-bottom:1px" class="badge">-@giakm%</span>
                             </div>
                         }
                     }                                  

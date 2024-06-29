@@ -37,7 +37,7 @@
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 </style>
-<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0px!important;">
+<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0 !important;">
     <div class="row">
         <nav style="--bs-breadcrumb-divider: '/'; padding-top:20px" aria-label="breadcrumb">
             <ul class="breadcrumb">
@@ -126,8 +126,7 @@
                     <div class="col-md-10">
                         <h6>Đã hủy đơn hàng</h6>
                         <p>
-                            Đơn hàng của bạn đã bị hủy.<b>
-
+                            <b>Đơn hàng của bạn đã bị hủy.</b>
                         </p>
                     </div>
                     <div class="col-md-2 d-flex justify-content-center align-items-center">
@@ -236,7 +235,7 @@
                                         <img src="@Html.DisplayFor(modelItem => item.DungCu.HinhAnh)" class="card-img-top" alt="" width="200px">
                                     </div>
                                     <div class="col-8">
-                                        <p><a style="font-size:20px;text-decoration:none,color:black" href="/Product/Detail/@item.DungCu.Id_DungCu">@item.DungCu.TenDungCu</a></p>
+                                        <p><a style="font-size:20px;text-decoration:none;color:black" href="/Product/Detail/@item.DungCu.Id_DungCu">@item.DungCu.TenDungCu</a></p>
                                         <a style="color:gray;font-size:11px">Dụng cụ</a>
                                     </div>
                                 </th>

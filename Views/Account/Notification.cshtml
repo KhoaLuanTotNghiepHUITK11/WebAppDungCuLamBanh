@@ -30,7 +30,7 @@
 </style>
 <script type="module">
     import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js';
-    import { getDatabase, ref, push, onValue } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
+    import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js';
     const firebaseConfig = {
         databaseURL: "https://qldclb-770f5-default-rtdb.asia-southeast1.firebasedatabase.app/",
     };
@@ -90,7 +90,7 @@
         }
     }
 </script>
-<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0px!important;">
+<div class="p-3 p-sm-4 p-lg-5" style="padding-top:0!important;">
     <div class="row">
         <nav style="--bs-breadcrumb-divider: '>'; padding-top:20px" aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -117,12 +117,8 @@
                 <a>Những cập nhật về đơn hàng.</a>
             </div>
             <div class="list-group" id="messageContainer">
-
                 <a href="#" class="list-group-item list-group-item-action">Chưa có thông báo</a>
-
             </div>
-            <div id="messageContainer"></div>
-
             <script type="text/javascript">
                 // Hàm gọi để lọc thông báo theo UserId
                 function filterNotifications(userId) {
@@ -139,9 +135,6 @@
                     filterNotifications(userId);
                 });
             </script>
-
-
-            
         </div>
     </div>
 </div>

@@ -10,15 +10,8 @@ using WebDungCuLamBanh.Models;
 
 namespace WebDungCuLamBanh.AdminControllers
 {
-    public class StaffController : Controller
+    public class StaffController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public StaffController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         // GET: Staff
         public async Task<IActionResult> Index()
         {
@@ -26,7 +19,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            return View(await _context.Admins.ToListAsync());
+            return View(await context.Admins.ToListAsync());
         }
 
         // GET: Staff/Details/5
@@ -41,7 +34,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var adminModel = await _context.Admins
+            var adminModel = await context.Admins
                 .FirstOrDefaultAsync(m => m.TenNguoiDung == id);
             if (adminModel == null)
             {
@@ -70,8 +63,8 @@ namespace WebDungCuLamBanh.AdminControllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(adminModel);
-                await _context.SaveChangesAsync();
+                context.Add(adminModel);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(adminModel);
@@ -85,7 +78,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var adminModel = await _context.Admins.FindAsync(id);
+            var adminModel = await context.Admins.FindAsync(id);
             if (adminModel == null)
             {
                 return NotFound();
@@ -109,8 +102,8 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 try
                 {
-                    _context.Update(adminModel);
-                    await _context.SaveChangesAsync();
+                    context.Update(adminModel);
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -136,7 +129,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var adminModel = await _context.Admins
+            var adminModel = await context.Admins
                 .FirstOrDefaultAsync(m => m.TenNguoiDung == id);
             if (adminModel == null)
             {
@@ -151,19 +144,19 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var adminModel = await _context.Admins.FindAsync(id);
+            var adminModel = await context.Admins.FindAsync(id);
             if (adminModel != null)
             {
-                _context.Admins.Remove(adminModel);
+                context.Admins.Remove(adminModel);
             }
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool AdminModelExists(string id)
         {
-            return _context.Admins.Any(e => e.TenNguoiDung == id);
+            return context.Admins.Any(e => e.TenNguoiDung == id);
         }
     }
 }

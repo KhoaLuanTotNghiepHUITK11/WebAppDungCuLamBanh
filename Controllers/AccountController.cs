@@ -15,7 +15,7 @@ namespace WebDungCuLamBanh.Controllers
 {
 
     [ProfileStatusFilter]
-    public class AccountController : Controller
+    public class AccountController(AppDbContext context, ILogger<AccountController> logger) : Controller
     {
 
         private static readonly FirebaseAuthConfig config = new FirebaseAuthConfig()
@@ -28,13 +28,7 @@ namespace WebDungCuLamBanh.Controllers
                 new EmailProvider()
             }
         };
-        private readonly AppDbContext _context;
-        private readonly ILogger<AccountController> _logger;
-        public AccountController(AppDbContext context, ILogger<AccountController> logger)
-        {
-            _context = context;
-            _logger = logger;
-        }
+
         public IActionResult SignIn()
         {
 
@@ -138,14 +132,14 @@ namespace WebDungCuLamBanh.Controllers
                     try
                     {
                         // Thực hiện insert vào bảng Account
-                        _context.KhachHangs.Add(user);
-                        await _context.SaveChangesAsync();
+                        context.KhachHangs.Add(user);
+                        await context.SaveChangesAsync();
                     }
                     catch (Exception ex)
                     {
 
                         ViewBag.Error = HandleFirebaseException(ex);
-                        _logger.LogError(ex, "Lỗi khi đăng nhập.");
+                        logger.LogError(ex, "Lỗi khi đăng nhập.");
                         return View("SignIn");
                     }
                     // Thực hiện insert chỉ vào các cột Email, Uid và FullName
@@ -161,7 +155,7 @@ namespace WebDungCuLamBanh.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = HandleFirebaseException(ex);
-                _logger.LogError(ex, "Lỗi khi đăng nhập.");
+                logger.LogError(ex, "Lỗi khi đăng nhập.");
                 return View("SignIn");
             }
         }
@@ -190,14 +184,14 @@ namespace WebDungCuLamBanh.Controllers
                     try
                     {
                         // Thực hiện insert vào bảng Account
-                        _context.KhachHangs.Add(user);
-                        await _context.SaveChangesAsync();
+                        context.KhachHangs.Add(user);
+                        await context.SaveChangesAsync();
                     }
                     catch (Exception ex)
                     {
 
                         ViewBag.Error = HandleFirebaseException(ex);
-                        _logger.LogError(ex, "Lỗi khi đăng nhập.");
+                        logger.LogError(ex, "Lỗi khi đăng nhập.");
                         return View("SignUp");
                     }
                     // Thực hiện insert chỉ vào các cột Email, Uid và FullName
@@ -211,7 +205,7 @@ namespace WebDungCuLamBanh.Controllers
             catch (Exception ex)
             {
                 ViewBag.Error = HandleFirebaseException(ex);
-                _logger.LogError(ex, "Lỗi khi đăng nhập.");
+                logger.LogError(ex, "Lỗi khi đăng nhập.");
                 return View("SignUp");
             }
         }
@@ -329,7 +323,7 @@ namespace WebDungCuLamBanh.Controllers
             }
             ViewBag.success = data;
             // Xuất nội dung trong Account
-            var accountModel = await _context.KhachHangs.FindAsync(uid);
+            var accountModel = await context.KhachHangs.FindAsync(uid);
             if (accountModel == null)
             {
                 return NotFound();
@@ -344,8 +338,8 @@ namespace WebDungCuLamBanh.Controllers
             {
                 try
                 {
-                    _context.Update(accountModel);
-                    await _context.SaveChangesAsync();
+                    context.Update(accountModel);
+                    await context.SaveChangesAsync();
                     TempData["SuccessMessage"] = "Cập nhật thông tin thành công";
                 }
                 catch (Exception ex)
@@ -377,7 +371,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy danh sách đơn hàng vận chuyển
-            var donHangVanChuyenModel = await _context.DonHangVanChuyens
+            var donHangVanChuyenModel = await context.DonHangVanChuyens
                 .Where(ct => ct.DonHang.Id_KhachHang == uid)
                 .Include(p => p.TrangThaiVanChuyen)
                 .Include(p => p.DonHang)
@@ -386,7 +380,7 @@ namespace WebDungCuLamBanh.Controllers
                 .ToListAsync();
 
             // Lấy thông tin khách hàng
-            var accountModel = await _context.KhachHangs.FindAsync(uid);
+            var accountModel = await context.KhachHangs.FindAsync(uid);
 
             // Kiểm tra xem có dữ liệu khách hàng hay không
             if (accountModel == null)
@@ -396,7 +390,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Lấy chi tiết đơn hàng liên quan
-            var chiTietDonHangModel = await _context.ChiTietDonHangs
+            var chiTietDonHangModel = await context.ChiTietDonHangs
                 .Include(ct => ct.DungCu) // Bao gồm các thông tin về dụng cụ liên quan
                 .Where(ct => donHangVanChuyenModel.Select(dh => dh.DonHang.Id_DonHang).Contains(ct.Id_DonHang))
                 .ToListAsync();
@@ -438,14 +432,14 @@ namespace WebDungCuLamBanh.Controllers
             //    return RedirectToAction("SignIn", "Account");
             //}
 
-            var donHang = await _context.DonHangs.FindAsync(id);
+            var donHang = await context.DonHangs.FindAsync(id);
             if (donHang == null)
             {
                 //Trả về View error
                 return View("Error", new ErrorViewModel { Message = "Không tìm thấy hóa đơn." });
             }
 
-            var chiTietDonHang = await _context.ChiTietDonHangs
+            var chiTietDonHang = await context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.DungCu)
                 .ToListAsync();
@@ -453,7 +447,7 @@ namespace WebDungCuLamBanh.Controllers
             {
                 return NotFound("Không tìm thấy chi tiết hóa đơn.");
             }
-            var donHangVanChuyen = await _context.DonHangVanChuyens
+            var donHangVanChuyen = await context.DonHangVanChuyens
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.TrangThaiVanChuyen)
                 .Include(p => p.PhuongThucThanhToan)
@@ -468,7 +462,7 @@ namespace WebDungCuLamBanh.Controllers
                 donHangVanChuyenModel = donHangVanChuyen
             };
             decimal? tongtien = donHang.TongTien;
-            decimal? tamtinh = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
+            decimal? tamtinh = await context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
             decimal vat = Math.Round((decimal)((tongtien * 8) / 108), 0);
 
             //Lấy giá trị giảm
@@ -476,7 +470,7 @@ namespace WebDungCuLamBanh.Controllers
             decimal giatrigiam = 0;
             if (magiamgia != null)
             {
-                giatrigiam = (decimal)await _context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
+                giatrigiam = (decimal)await context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
             }
 
             ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)tamtinh);
@@ -496,14 +490,14 @@ namespace WebDungCuLamBanh.Controllers
             //    return RedirectToAction("SignIn", "Account");
             //}
 
-            var donHang = await _context.DonHangs.FindAsync(id);
+            var donHang = await context.DonHangs.FindAsync(id);
             if (donHang == null)
             {
                 //Trả về View error
                 return View("Error", new ErrorViewModel { Message = "Không tìm thấy hóa đơn." });
             }
 
-            var chiTietDonHang = await _context.ChiTietDonHangs
+            var chiTietDonHang = await context.ChiTietDonHangs
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.DungCu)
                 .Include(p=>p.DungCu.LoaiDungCu)
@@ -512,7 +506,7 @@ namespace WebDungCuLamBanh.Controllers
             {
                 return NotFound("Không tìm thấy chi tiết hóa đơn.");
             }
-            var donHangVanChuyen = await _context.DonHangVanChuyens
+            var donHangVanChuyen = await context.DonHangVanChuyens
                 .Where(ct => ct.Id_DonHang == id)
                 .Include(p => p.TrangThaiVanChuyen)
                 .Include(p => p.PhuongThucThanhToan)
@@ -527,7 +521,7 @@ namespace WebDungCuLamBanh.Controllers
                 donHangVanChuyenModel = donHangVanChuyen
             };
             decimal? tongtien = donHang.TongTien;
-            decimal? tamtinh = await _context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
+            decimal? tamtinh = await context.ChiTietDonHangs.Where(ct => ct.Id_DonHang == id).SumAsync(ct => ct.DonGia);
             decimal vat = Math.Round((decimal)((tongtien * 8) / 108), 0);
 
             //Lấy giá trị giảm
@@ -535,7 +529,7 @@ namespace WebDungCuLamBanh.Controllers
             decimal giatrigiam = 0;
             if (magiamgia != null)
             {
-                giatrigiam = (decimal)await _context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
+                giatrigiam = (decimal)await context.MaGiamGias.Where(gg => gg.Id_MaGiamGia == magiamgia).Select(gg => gg.GiaTriGiam).FirstOrDefaultAsync();
             }
 
             ViewBag.tamtinh = HtmlHelpers.FormatCurrency((decimal)tamtinh);
@@ -558,13 +552,13 @@ namespace WebDungCuLamBanh.Controllers
                 if (result != null)
                 {
                     var id = HttpContext.Session.GetString("uid");
-                    var accountModel = await _context.KhachHangs.FindAsync(id);
+                    var accountModel = await context.KhachHangs.FindAsync(id);
                     if (accountModel == null)
                     {
                         return NotFound();
                     }
-                    _context.KhachHangs.Remove(accountModel);
-                    await _context.SaveChangesAsync();
+                    context.KhachHangs.Remove(accountModel);
+                    await context.SaveChangesAsync();
                     await client.User.DeleteAsync();
                     return RedirectToAction("SignOut");
                 }
@@ -623,7 +617,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Kiểm tra xem sản phẩm đã có trong danh sách yêu thích chưa
-            var favorite = await _context.YeuThichs
+            var favorite = await context.YeuThichs
                                          .Where(yt => yt.Id_SanPham == id && yt.Id_KhachHang == uid)
                                          .FirstOrDefaultAsync();
             if (favorite != null)
@@ -637,8 +631,8 @@ namespace WebDungCuLamBanh.Controllers
                 Id_SanPham = id,
                 Id_KhachHang = uid
             };
-            _context.YeuThichs.Add(yeuthich);
-            await _context.SaveChangesAsync();
+            context.YeuThichs.Add(yeuthich);
+            await context.SaveChangesAsync();
 
             return Json(new { success = true, message = "Thêm sản phẩm vào yêu thích thành công." });
         }
@@ -657,7 +651,7 @@ namespace WebDungCuLamBanh.Controllers
             }
 
             // Tìm sản phẩm yêu thích trong cơ sở dữ liệu
-            var favorite = await _context.YeuThichs
+            var favorite = await context.YeuThichs
                 .Where(yt => yt.Id_SanPham == id && yt.Id_KhachHang == sessionUid)
                 .FirstOrDefaultAsync();
 
@@ -669,8 +663,8 @@ namespace WebDungCuLamBanh.Controllers
             try
             {
                 // Xóa sản phẩm yêu thích khỏi cơ sở dữ liệu
-                _context.YeuThichs.Remove(favorite);
-                await _context.SaveChangesAsync();
+                context.YeuThichs.Remove(favorite);
+                await context.SaveChangesAsync();
                 return Json(new { success = true, message = "Xóa sản phẩm khỏi yêu thích thành công." });
             }
             catch (Exception ex)
@@ -691,7 +685,7 @@ namespace WebDungCuLamBanh.Controllers
             {
                 return RedirectToAction("SignIn", "Account");
             }
-            var favorite = _context.YeuThichs.Where(yt => yt.Id_KhachHang == uid).Include(yt => yt.SanPham).ToList();
+            var favorite = context.YeuThichs.Where(yt => yt.Id_KhachHang == uid).Include(yt => yt.SanPham).ToList();
             return View(favorite);
         }
         public IActionResult Notification()

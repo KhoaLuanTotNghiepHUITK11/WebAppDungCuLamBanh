@@ -34,18 +34,16 @@
             {
                 <tr>
                     <td>
-                        <a href="/Administrator/OrderDetail/@item.Id_DonHang">
-                            @if (item.Id_DonHang.Length > 15)
-                            {
-                                @item.Id_DonHang.Substring(27)
-                                ;
-                            }
-                            else
-                            {
-                                @Html.DisplayFor(modelItem => item.Id_DonHang)
-                            }
-
-
+                    <a href="/Administrator/OrderDetail/@item.Id_DonHang">
+                        @if (item.Id_DonHang.Length > 15)
+                        {
+                            @item.Id_DonHang.Substring(27)
+                        }
+                        else
+                        {
+                            @Html.DisplayFor(modelItem => item.Id_DonHang)
+                        }
+                    </a>
                     <td>
                         @Html.DisplayFor(modelItem => item.PhuongThucThanhToan.TenPTTT)
                     </td>

@@ -33,6 +33,11 @@
     <_ContentIncludedByDefault Remove="wwwroot\js\checkCloseTab.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\firebase.js" />
     <_ContentIncludedByDefault Remove="wwwroot\logo\logodai.png" />
+    <_ContentIncludedByDefault Remove="Views\NhaCungCapModels\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\NhaCungCapModels\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\NhaCungCapModels\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\NhaCungCapModels\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\NhaCungCapModels\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

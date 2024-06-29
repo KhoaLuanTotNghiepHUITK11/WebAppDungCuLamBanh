@@ -38,19 +38,17 @@
                             @if (item.Id_DonHang.Length > 15)
                             {
                                 @item.Id_DonHang.Substring(27)
-                                ;
                             }
                             else
                             {
                                 @Html.DisplayFor(modelItem => item.Id_DonHang)
                             }
-
-
+                        </a>
                     <td>
-                                @Html.DisplayFor(modelItem => item.PhuongThucThanhToan.TenPTTT)
+                        @Html.DisplayFor(modelItem => item.PhuongThucThanhToan.TenPTTT)
                     </td>
                     <td>
-                                @Html.DisplayFor(modelItem => item.DiaChiVanChuyen)
+                        @Html.DisplayFor(modelItem => item.DiaChiVanChuyen)
                     </td>
                     <td>
                         <ul>
@@ -71,6 +69,7 @@
                 <a asp-action="Details" asp-route-id="@item.Id_DHVC">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id_DHVC">Delete</a>
                 </td> *@
+                        
                 </tr>
             }
         </tbody>

@@ -1,4 +1,4 @@
-﻿using Firebase.Storage;
+﻿
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -8,18 +8,11 @@ using WebDungCuLamBanh.Components;
 namespace WebDungCuLamBanh.Controllers
 {
     [ProfileStatusFilter]
-    public class HomeController : Controller
+    public class HomeController(ILogger<HomeController> logger, AppDbContext context) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-        private readonly AppDbContext _context;
+        private readonly ILogger<HomeController> _logger = logger;
 
 
-
-        public HomeController(ILogger<HomeController> logger, AppDbContext context)
-        {
-            _logger = logger;
-            _context = context;
-        }
         //chuyen chuyen ve error404 khi khong co view
 
         public IActionResult Error404()
@@ -30,11 +23,11 @@ namespace WebDungCuLamBanh.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.uid = HttpContext.Session.GetString("uid");
-            var appDbContext = _context.BannerModel;
-            ViewData["KhuyenMai"]= await _context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).Take(4).ToListAsync();
+            var appDbContext = context.BannerModel;
+            ViewData["KhuyenMai"]= await context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).Take(4).ToListAsync();
             ViewData["Banner"] = await appDbContext.ToListAsync();
-            ViewData["NewProduct"] = await _context.DungCus.Where(x=>x.SoLuong>0).OrderByDescending(x => x.Id_DungCu).Take(4).ToListAsync();
-            ViewData["PhanTramKM"] = await _context.DungCus
+            ViewData["NewProduct"] = await context.DungCus.Where(x=>x.SoLuong>0).OrderByDescending(x => x.Id_DungCu).Take(4).ToListAsync();
+            ViewData["PhanTramKM"] = await context.DungCus
                 .Where(x => x.GiaKhuyenMai > 0)
                 .Select(x => x.GiaKhuyenMai / x.Gia * 100)
                 .ToListAsync();
@@ -44,7 +37,7 @@ namespace WebDungCuLamBanh.Controllers
         public async Task<IActionResult> SaleOff()
         {
 
-            ViewData["KhuyenMai"] = await _context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).ToListAsync();
+            ViewData["KhuyenMai"] = await context.DungCus.Where(x => x.GiaKhuyenMai > 0&&x.SoLuong>0).ToListAsync();
             return View();
         }
         public IActionResult Privacy()

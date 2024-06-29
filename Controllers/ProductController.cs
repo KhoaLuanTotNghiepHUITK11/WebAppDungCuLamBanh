@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
-using System.Net.WebSockets;
 using WebDungCuLamBanh.Components;
 using WebDungCuLamBanh.Data;
 using WebDungCuLamBanh.Models;
@@ -10,25 +8,19 @@ using WebDungCuLamBanh.Models;
 namespace WebDungCuLamBanh.Controllers
 {
     [ProfileStatusFilter]
-    public class ProductController : Controller
+    public class ProductController(AppDbContext context, ILogger<AccountController> logger) : Controller
     {
-        private readonly AppDbContext _context;
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AccountController> _logger = logger;
 
-        public ProductController(AppDbContext context, ILogger<AccountController> logger)
-        {
-            _context = context;
-            _logger = logger;
-        }
         public async Task<IActionResult> Index(string search = "", string SortColumn = "Newest", int min = 0, int max = 0, int page = 1, string type = "", string nph = "")
         {
             // Lấy danh sách các loại dụng cụ và nhà cung cấp để hiển thị trong dropdown list
-            SelectList loaipmList = new SelectList(_context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu");
+            SelectList loaipmList = new SelectList(context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu");
             ViewBag.LoaiPMList = loaipmList;
-            ViewBag.Publisher = new SelectList(_context.NhaCungCaps, "Id_NhaCungCap", "TenNhaCungCap");
+            ViewBag.Publisher = new SelectList(context.NhaCungCaps, "Id_NhaCungCap", "TenNhaCungCap");
 
             // Lấy dữ liệu dụng cụ từ database
-            IQueryable<DungCuModel> query = _context.DungCus
+            IQueryable<DungCuModel> query = context.DungCus
                 .Include(p => p.LoaiDungCu)
                 .Where(p => p.DaXoa == 0 && p.SoLuong != 0);
 
@@ -110,7 +102,7 @@ namespace WebDungCuLamBanh.Controllers
                 return NotFound();
             }
             ViewBag.email = HttpContext.Session.GetString("email");
-            var dungCuModel = await _context.DungCus
+            var dungCuModel = await context.DungCus
                 .Include(p => p.LoaiDungCu)
                 .Include(p => p.NhaCungCap)
                 .FirstOrDefaultAsync(m => m.Id_DungCu == id);
@@ -129,7 +121,7 @@ namespace WebDungCuLamBanh.Controllers
             var uid = HttpContext.Session.GetString("uid");
             if (uid != null)
             {
-                var idsp = _context.YeuThichs.Where(p => p.Id_SanPham == id && p.Id_KhachHang == uid).FirstOrDefault();
+                var idsp = context.YeuThichs.Where(p => p.Id_SanPham == id && p.Id_KhachHang == uid).FirstOrDefault();
                 if (idsp != null)
                 {
                     ViewBag.isFavorite = true;

@@ -75,7 +75,7 @@
                     <div class="form-group">
                         <label class="control-label">Số lượng</label>
                         <input name="SoLuong" type="number" class="form-control" />
-                    </div
+                    </div>
                     <div class="form-group">
                         <label class="control-label">Đơn giá</label>
                         <input name="DonGia" type="number" class="form-control" />
@@ -156,7 +156,7 @@
             processData: false,
             contentType: false,
             success: function (result) {
-                if (result.success==true) {
+                if (result.success===true) {
                     location.reload();
                 }
                 else {
@@ -173,7 +173,7 @@
             type: 'POST',
             data: { MaHD: '@hoaDon.Id_HoaDonNhap' },
             success: function (result) {
-                if (result.success == true) {
+                if (result.success === true) {
                     window.location.href = '/GoodsReceipt/Index';
                 }
                 else {

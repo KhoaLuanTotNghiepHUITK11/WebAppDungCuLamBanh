@@ -5,15 +5,8 @@ using WebDungCuLamBanh.Models;
 
 namespace WebDungCuLamBanh.AdminControllers
 {
-    public class SupplierController : Controller
+    public class SupplierController(AppDbContext context) : Controller
     {
-        private readonly AppDbContext _context;
-
-        public SupplierController(AppDbContext context)
-        {
-            _context = context;
-        }
-
         // GET: Supplier
         public async Task<IActionResult> Index()
         {
@@ -21,7 +14,7 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 return RedirectToAction("Index");
             }
-            return View(await _context.NhaCungCaps.ToListAsync());
+            return View(await context.NhaCungCaps.ToListAsync());
         }
 
         // GET: Supplier/Details/5
@@ -36,7 +29,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var nhaCungCapModel = await _context.NhaCungCaps
+            var nhaCungCapModel = await context.NhaCungCaps
                 .FirstOrDefaultAsync(m => m.Id_NhaCungCap == id);
             if (nhaCungCapModel == null)
             {
@@ -65,8 +58,8 @@ namespace WebDungCuLamBanh.AdminControllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(nhaCungCapModel);
-                await _context.SaveChangesAsync();
+                context.Add(nhaCungCapModel);
+                await context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(nhaCungCapModel);
@@ -84,7 +77,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var nhaCungCapModel = await _context.NhaCungCaps.FindAsync(id);
+            var nhaCungCapModel = await context.NhaCungCaps.FindAsync(id);
             if (nhaCungCapModel == null)
             {
                 return NotFound();
@@ -108,8 +101,8 @@ namespace WebDungCuLamBanh.AdminControllers
             {
                 try
                 {
-                    _context.Update(nhaCungCapModel);
-                    await _context.SaveChangesAsync();
+                    context.Update(nhaCungCapModel);
+                    await context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -139,7 +132,7 @@ namespace WebDungCuLamBanh.AdminControllers
                 return NotFound();
             }
 
-            var nhaCungCapModel = await _context.NhaCungCaps
+            var nhaCungCapModel = await context.NhaCungCaps
                 .FirstOrDefaultAsync(m => m.Id_NhaCungCap == id);
             if (nhaCungCapModel == null)
             {
@@ -154,19 +147,19 @@ namespace WebDungCuLamBanh.AdminControllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var nhaCungCapModel = await _context.NhaCungCaps.FindAsync(id);
+            var nhaCungCapModel = await context.NhaCungCaps.FindAsync(id);
             if (nhaCungCapModel != null)
             {
-                _context.NhaCungCaps.Remove(nhaCungCapModel);
+                context.NhaCungCaps.Remove(nhaCungCapModel);
             }
 
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool NhaCungCapModelExists(int id)
         {
-            return _context.NhaCungCaps.Any(e => e.Id_NhaCungCap == id);
+            return context.NhaCungCaps.Any(e => e.Id_NhaCungCap == id);
         }
     }
 }

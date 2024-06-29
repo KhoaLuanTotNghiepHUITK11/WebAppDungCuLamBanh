@@ -250,46 +250,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFja2luZ09yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/GitHub/WebAppDungCuLamBanh/Views/LoaiDungCuModels/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUR1bmdDdU1vZGVsc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/LoaiDungCuModels/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUR1bmdDdU1vZGVsc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/LoaiDungCuModels/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUR1bmdDdU1vZGVsc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/LoaiDungCuModels/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUR1bmdDdU1vZGVsc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/LoaiDungCuModels/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9haUR1bmdDdU1vZGVsc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/NhaCungCapModels/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhQ3VuZ0NhcE1vZGVsc1xDcmVhdGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/NhaCungCapModels/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhQ3VuZ0NhcE1vZGVsc1xEZWxldGUuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/NhaCungCapModels/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhQ3VuZ0NhcE1vZGVsc1xEZXRhaWxzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/NhaCungCapModels/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhQ3VuZ0NhcE1vZGVsc1xFZGl0LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/GitHub/WebAppDungCuLamBanh/Views/NhaCungCapModels/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTmhhQ3VuZ0NhcE1vZGVsc1xJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/GitHub/WebAppDungCuLamBanh/Views/Product/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

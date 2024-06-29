@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "D:\\GitHub\\WebAppDungCuLamBanh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\notification.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\favoriteproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\favoriteproduct.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\orderdetail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\account\\history.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\account\\history.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\administrator\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\administrator\\saleoff.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\goodsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\goodsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,71 +46,123 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Notification.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\Notification.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\Notification.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\Notification.cshtml",
-              "RelativeToolTip": "Views\\Account\\Notification.cshtml",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAywG0AAACdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T03:47:48.383Z",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:38:25.202Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FavoriteProduct.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\FavoriteProduct.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\FavoriteProduct.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\FavoriteProduct.cshtml",
-              "RelativeToolTip": "Views\\Account\\FavoriteProduct.cshtml",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAFQAAAClAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T03:47:22.317Z",
+              "DocumentIndex": 0,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAQwBIAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:37:26.282Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "History.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\History.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\History.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\History.cshtml",
-              "RelativeToolTip": "Views\\Account\\History.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAAC8AAACFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T03:44:52.102Z",
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:38:15.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OrderDetail.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\OrderDetail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Account\\OrderDetail.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Account\\OrderDetail.cshtml",
-              "RelativeToolTip": "Views\\Account\\OrderDetail.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAAAmwDYAAABSAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T03:42:33.557Z",
+              "DocumentIndex": 1,
+              "Title": "ErrorController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ErrorController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ErrorController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ErrorController.cs",
+              "RelativeToolTip": "Controllers\\ErrorController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:38:12.234Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "SaleOff.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\SaleOff.cshtml",
-              "RelativeDocumentMoniker": "Views\\Administrator\\SaleOff.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\SaleOff.cshtml",
-              "RelativeToolTip": "Views\\Administrator\\SaleOff.cshtml",
-              "ViewState": "AQIAAC4AAAAAAAAAAAAAAFEAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T03:37:14.052Z",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AQIAABoAAAAAAAAAAAAQwBkAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:36:06.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SupplierController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\SupplierController.cs",
+              "RelativeDocumentMoniker": "AdminControllers\\SupplierController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\SupplierController.cs",
+              "RelativeToolTip": "AdminControllers\\SupplierController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:35:58.938Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "StaffController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
+              "RelativeDocumentMoniker": "AdminControllers\\StaffController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
+              "RelativeToolTip": "AdminControllers\\StaffController.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:35:51.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GoodsReceiptController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\GoodsReceiptController.cs",
+              "RelativeDocumentMoniker": "AdminControllers\\GoodsReceiptController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\GoodsReceiptController.cs",
+              "RelativeToolTip": "AdminControllers\\GoodsReceiptController.cs",
+              "ViewState": "AQIAADIAAAAAAAAAAAAQwAgAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:35:37.254Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdministratorController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
+              "RelativeDocumentMoniker": "AdminControllers\\AdministratorController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
+              "RelativeToolTip": "AdminControllers\\AdministratorController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABEAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-29T08:23:15.664Z",
               "EditorCaption": ""
             }
           ]

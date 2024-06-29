@@ -250,6 +250,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFja2luZ09yZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/GitHub/WebAppDungCuLamBanh/Views/Manufactor/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3RvclxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/WebAppDungCuLamBanh/Views/Manufactor/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3RvclxEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/WebAppDungCuLamBanh/Views/Manufactor/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3RvclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/WebAppDungCuLamBanh/Views/Manufactor/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3RvclxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/GitHub/WebAppDungCuLamBanh/Views/Manufactor/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWFudWZhY3RvclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/GitHub/WebAppDungCuLamBanh/Views/Product/Detail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHVjdFxEZXRhaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

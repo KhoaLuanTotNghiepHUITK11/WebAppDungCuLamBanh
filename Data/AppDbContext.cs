@@ -33,7 +33,7 @@ namespace WebDungCuLamBanh.Data
         public DbSet<CTHDNhapHangModel> ChiTietHoaDonNhapHangs { get; set; }
         public DbSet<CheckTab> CheckTabs { get; set; }
         public DbSet<YeuThichModel> YeuThichs { get; set; }
-
+        public DbSet<NhaSanXuatModel> NhaSanXuats { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -52,6 +52,10 @@ namespace WebDungCuLamBanh.Data
                 .HasOne(p => p.NhaCungCap)
                 .WithMany()
                 .HasForeignKey(p => p.Id_NhaCungCap);
+            _ = modelBuilder.Entity<DungCuModel>()
+                .HasOne(p => p.NhaSanXuat)
+                .WithMany()
+                .HasForeignKey(p => p.Id_NhaSanXuat);
             _ = modelBuilder.Entity<DungCuModel>(entity =>
             {
                 entity.Property(e => e.Gia).HasPrecision(18, 0);
@@ -64,7 +68,7 @@ namespace WebDungCuLamBanh.Data
             {
                 entity.Property(e => e.GiaNhap).HasPrecision(18, 0);
             });
-
+            
             ///////////////////////////////////Đơn hàng/////////////////////////
 
             _ = modelBuilder.Entity<DonHangModel>()

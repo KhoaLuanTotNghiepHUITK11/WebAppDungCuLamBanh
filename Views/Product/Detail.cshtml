@@ -32,11 +32,12 @@
                 <p><h3><span style="margin-right:5px" class="text-danger fw-bold league-spartan">@Html.FormatCurrency(Model.GiaKhuyenMai.Value)</span> <del style="color:gray;margin-right:5px" class="league-spartan">@Html.FormatCurrency(Model.Gia.Value)</del> <span style="background-color:#f8d9d6;color:red;font-size:15px;mar-bottom:1px" class="badge">-@ViewBag.phantramkm %</span></h3></p>
             }
         </div>
+            <div>
+                <a>@Html.DisplayFor(model=>model.LoaiDungCu.TenLoaiDungCu)</a>
+            </div>
+            <br/>
         <div>
-            <a>@Model.LoaiDungCu.TenLoaiDungCu</a>
-        </div>
-        <div>
-            <a>@Model.NhaSanXuat</a>
+            <a>@Html.DisplayFor(model=>model.NhaSanXuat.TenNSX)</a>
         </div>
         <div contenteditable="false" style="white-space: pre-line;min-height: 100px;">
             @Html.Raw(Model.ThongTin)
@@ -120,16 +121,27 @@
     <div style="text-align:center">
         <h4 class="align-center">Chi tiết sản phẩm</h4>
     </div>
-    <div>
-        <p>Nhà cung cấp: @Html.DisplayFor(model => model.NhaCungCap.TenNhaCungCap) </p>
-        <p>Mã sản phẩm: @Html.DisplayFor(model => model.Id_DungCu)</p>
-        <p>Kho: @Html.DisplayFor(model => model.SoLuong)</p>
-    </div>
     <div contenteditable="false" style="white-space: pre-line">
         <div class="ratio" style="width:100%">
             @Html.Raw(Model.MoTa)
         </div>
     </div>
+        <div>
+            
+            <p>Mã sản phẩm: @Html.DisplayFor(model => model.Id_DungCu)</p>
+            <p>Kho: @Html.DisplayFor(model => model.SoLuong)</p>
+            <p>Nhà cung cấp: @Html.DisplayFor(model => model.NhaCungCap.TenNhaCungCap)</p>
+            <ul>
+                <li>Địa chỉ: @Html.DisplayFor(model => model.NhaCungCap.DiaChi)</li>
+                <li>Hotline: @Html.DisplayFor(model => model.NhaCungCap.SoDienThoai)</li>
+                <li>Email: @Html.DisplayFor(model => model.NhaCungCap.Email)</li>
+            </ul>
+            <p>Thương hiệu: @Html.DisplayFor(model => model.NhaSanXuat.TenNSX)</p>
+            <ul>
+                <li>Địa chỉ: @Html.DisplayFor(model => model.NhaSanXuat.DiaChi)</li>
+                <li>Email: @Html.DisplayFor(model => model.NhaSanXuat.Email)</li>
+            </ul>
+        </div>
 </div>
 <div style="border-radius:20px;" class="toast-container position-fixed bottom-0 end-0 p-3">
     <div id="addToCartOk" class="toast" role="alert" aria-live="assertive" aria-atomic="true" style="width:400px;">

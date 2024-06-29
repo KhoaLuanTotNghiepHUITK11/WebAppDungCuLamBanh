@@ -36,8 +36,10 @@ namespace WebDungCuLamBanh.Models
         public decimal? GiaKhuyenMai { get; set; }
         public decimal? GiaNhap { get; set; }
         public string? ThongTin { get; set; }
-        [Column("Manufactor")]
-        public string? NhaSanXuat { get; set; }
+        [Column("Id_NhaSanXuat")]
+        public int? Id_NhaSanXuat { get; set; }
+        [ForeignKey("Id_NhaSanXuat")]
+        public NhaSanXuatModel? NhaSanXuat { get; set; }
         public int? DaXoa { get; set; }
     }
 }

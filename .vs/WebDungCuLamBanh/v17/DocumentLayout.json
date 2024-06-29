@@ -3,40 +3,36 @@
   "WorkspaceRootPath": "D:\\GitHub\\WebAppDungCuLamBanh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\errorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\suppliercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\goodsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\goodsreceiptcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\administratorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -46,123 +42,110 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "Controllers\\ProductController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:38:25.202Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CartController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\CartController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\CartController.cs",
-              "RelativeToolTip": "Controllers\\CartController.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAQwBIAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:37:26.282Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:38:15.428Z",
+              "Title": "AdminLayout.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\AdminLayout.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\AdminLayout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T13:59:58.64Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ErrorController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ErrorController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ErrorController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ErrorController.cs",
-              "RelativeToolTip": "Controllers\\ErrorController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:38:12.234Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAQwBkAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:36:06.141Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "SupplierController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\SupplierController.cs",
-              "RelativeDocumentMoniker": "AdminControllers\\SupplierController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\SupplierController.cs",
-              "RelativeToolTip": "AdminControllers\\SupplierController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAgAAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:35:58.938Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "StaffController.cs",
               "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
               "RelativeDocumentMoniker": "AdminControllers\\StaffController.cs",
               "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
               "RelativeToolTip": "AdminControllers\\StaffController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAwAAAA2AAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAABQAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:35:51.326Z",
+              "WhenOpened": "2024-06-29T10:26:14.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manufactor\\Delete.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Manufactor\\Delete.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:24:06.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manufactor\\Create.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Create.cshtml",
+              "RelativeToolTip": "Views\\Manufactor\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:21:27.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manufactor\\Edit.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Manufactor\\Edit.cshtml",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAMAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:20:23.729Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Views\\Product\\Detail.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
+              "RelativeToolTip": "Views\\Product\\Detail.cshtml",
+              "ViewState": "AQIAABYAAAAAAAAAAAAAACgAAAAOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:09:54.294Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "GoodsReceiptController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\GoodsReceiptController.cs",
-              "RelativeDocumentMoniker": "AdminControllers\\GoodsReceiptController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\GoodsReceiptController.cs",
-              "RelativeToolTip": "AdminControllers\\GoodsReceiptController.cs",
-              "ViewState": "AQIAADIAAAAAAAAAAAAQwAgAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:35:37.254Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Supplier\\Index.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Index.cshtml",
+              "RelativeToolTip": "Views\\Supplier\\Index.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADkAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:03:48.854Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdministratorController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
-              "RelativeDocumentMoniker": "AdminControllers\\AdministratorController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\AdministratorController.cs",
-              "RelativeToolTip": "AdminControllers\\AdministratorController.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABEAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T08:23:15.664Z",
+              "DocumentIndex": 6,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Manufactor\\Index.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Index.cshtml",
+              "RelativeToolTip": "Views\\Manufactor\\Index.cshtml",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-29T10:03:37.686Z",
               "EditorCaption": ""
             }
           ]

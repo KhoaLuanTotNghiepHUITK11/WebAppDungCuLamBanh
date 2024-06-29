@@ -230,6 +230,13 @@ namespace WebDungCuLamBanh.AdminControllers
                     Text = $"{ncc.TenNhaCungCap}" + " - " + $"{ncc.DiaChi}"
                 })
                 .ToList();
+            ViewData["Id_NhaSanXuat"] = context.NhaSanXuats
+                .Select(ncc => new SelectListItem
+                {
+                    Value = ncc.Id_NhaSanXuat.ToString(),
+                    Text = $"{ncc.TenNSX}"
+                })
+                .ToList();
 
             return View();
         }
@@ -375,6 +382,13 @@ namespace WebDungCuLamBanh.AdminControllers
                 {
                     Value = ncc.Id_NhaCungCap.ToString(),
                     Text = $"{ncc.TenNhaCungCap}" + " - " + $"{ncc.DiaChi}"
+                })
+                .ToList();
+            ViewData["NhaSanXuat"] = context.NhaSanXuats
+                .Select(ncc => new SelectListItem
+                {
+                    Value = ncc.Id_NhaSanXuat.ToString(),
+                    Text = $"{ncc.TenNSX}"
                 })
                 .ToList();
             return View(dungCuModel);

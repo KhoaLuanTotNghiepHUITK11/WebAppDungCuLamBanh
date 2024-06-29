@@ -105,6 +105,7 @@ namespace WebDungCuLamBanh.Controllers
             var dungCuModel = await context.DungCus
                 .Include(p => p.LoaiDungCu)
                 .Include(p => p.NhaCungCap)
+                .Include(p=>p.NhaSanXuat)
                 .FirstOrDefaultAsync(m => m.Id_DungCu == id);
 
             if (dungCuModel == null)

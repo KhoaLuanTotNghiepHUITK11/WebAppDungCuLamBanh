@@ -17,7 +17,7 @@ namespace WebDungCuLamBanh.Controllers
             // Lấy danh sách các loại dụng cụ và nhà cung cấp để hiển thị trong dropdown list
             SelectList loaipmList = new SelectList(context.LoaiDungCus, "Id_LoaiDungCu", "TenLoaiDungCu");
             ViewBag.LoaiPMList = loaipmList;
-            ViewBag.Publisher = new SelectList(context.NhaCungCaps, "Id_NhaCungCap", "TenNhaCungCap");
+            ViewBag.Publisher = new SelectList(context.NhaSanXuats, "Id_NhaSanXuat", "TenNSX");
 
             // Lấy dữ liệu dụng cụ từ database
             IQueryable<DungCuModel> query = context.DungCus
@@ -45,7 +45,7 @@ namespace WebDungCuLamBanh.Controllers
             // Lọc theo nhà cung cấp
             if (!string.IsNullOrEmpty(nph))
             {
-                query = query.Where(p => p.NhaCungCap.TenNhaCungCap.Contains(nph));
+                query = query.Where(p => p.NhaSanXuat.TenNSX.Contains(nph));
             }
 
             // Sắp xếp theo cột được chọn

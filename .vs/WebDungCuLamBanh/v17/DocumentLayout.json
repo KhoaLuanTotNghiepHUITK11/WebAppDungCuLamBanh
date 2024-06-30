@@ -3,36 +3,20 @@
   "WorkspaceRootPath": "D:\\GitHub\\WebAppDungCuLamBanh\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\shared\\adminlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\supplier\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\supplier\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:admincontrollers\\staffcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\product\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\product\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\manufactor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\manufactor\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:views\\supplier\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|d:\\github\\webappdungculambanh\\models\\nhasanxuatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8DC5533A-AAF4-4A56-8DAF-5F5965D6386C}|WebDungCuLamBanh.csproj|solutionrelative:models\\nhasanxuatmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,105 +31,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AdminLayout.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\AdminLayout.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Shared\\AdminLayout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\AdminLayout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAdAAAA",
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Views\\Supplier\\Edit.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Edit.cshtml",
+              "RelativeToolTip": "Views\\Supplier\\Edit.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T13:59:58.64Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "StaffController.cs",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
-              "RelativeDocumentMoniker": "AdminControllers\\StaffController.cs",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\AdminControllers\\StaffController.cs",
-              "RelativeToolTip": "AdminControllers\\StaffController.cs",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAABQAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-29T10:26:14.28Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Delete.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Delete.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manufactor\\Delete.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Delete.cshtml",
-              "RelativeToolTip": "Views\\Manufactor\\Delete.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:24:06.791Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manufactor\\Create.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Create.cshtml",
-              "RelativeToolTip": "Views\\Manufactor\\Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:21:27.52Z",
+              "WhenOpened": "2024-06-30T14:41:30.021Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Edit.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manufactor\\Edit.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Edit.cshtml",
-              "RelativeToolTip": "Views\\Manufactor\\Edit.cshtml",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAMAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:20:23.729Z",
+              "Title": "NhaSanXuatModel.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Models\\NhaSanXuatModel.cs",
+              "RelativeDocumentMoniker": "Models\\NhaSanXuatModel.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Models\\NhaSanXuatModel.cs",
+              "RelativeToolTip": "Models\\NhaSanXuatModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T14:37:08.484Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Views\\Product\\Detail.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Detail.cshtml",
-              "RelativeToolTip": "Views\\Product\\Detail.cshtml",
-              "ViewState": "AQIAABYAAAAAAAAAAAAAACgAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:09:54.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Supplier\\Index.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Supplier\\Index.cshtml",
-              "RelativeToolTip": "Views\\Supplier\\Index.cshtml",
-              "ViewState": "AQIAACQAAAAAAAAAAAAAADkAAAAUAAAA",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Product\\Index.cshtml",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Product\\Index.cshtml",
+              "RelativeToolTip": "Views\\Product\\Index.cshtml",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAJkAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:03:48.854Z",
+              "WhenOpened": "2024-06-30T14:32:19.149Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Manufactor\\Index.cshtml",
-              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Manufactor\\Index.cshtml",
-              "RelativeToolTip": "Views\\Manufactor\\Index.cshtml",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAABQAAAAaAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-29T10:03:37.686Z",
+              "DocumentIndex": 2,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAWwIEAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-30T14:31:05.08Z",
               "EditorCaption": ""
             }
           ]

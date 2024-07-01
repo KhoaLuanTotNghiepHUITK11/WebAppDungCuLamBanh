@@ -22,8 +22,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -34,8 +38,7 @@
               "RelativeToolTip": "Controllers\\ProductController.cs",
               "ViewState": "AQIAAGQAAAAAAAAAAAAgwFUAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T13:28:08.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T13:28:08.688Z"
             },
             {
               "$type": "Document",
@@ -45,7 +48,7 @@
               "RelativeDocumentMoniker": "Views\\Administrator\\Dashboard.cshtml",
               "ToolTip": "D:\\GitHub\\WebAppDungCuLamBanh\\Views\\Administrator\\Dashboard.cshtml",
               "RelativeToolTip": "Views\\Administrator\\Dashboard.cshtml",
-              "ViewState": "AQIAACEBAAAAAAAAAAAAACIBAAAAAAAA",
+              "ViewState": "AQIAAAUBAAAAAAAAAAAAACIBAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-07-01T13:26:57.304Z",
               "EditorCaption": ""
@@ -60,8 +63,7 @@
               "RelativeToolTip": "AdminControllers\\AdministratorController.cs",
               "ViewState": "AQIAAKAAAAAAAAAAAAAAwK4AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-01T13:26:32.554Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-07-01T13:26:32.554Z"
             }
           ]
         }

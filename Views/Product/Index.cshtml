@@ -168,6 +168,7 @@
                             <option value="4">Tên Z-A</option>
                             <option value="6">Cũ nhất</option>
                             <option value="5">Mới nhất</option>
+                            <option value="6">Bán chạy nhất</option>
                         </select>
                     </li>
                     <li class="list-group-item">
@@ -287,54 +288,54 @@
 
     <!-- Nội dung trang -->
     <script>
-        document.getElementById("btnSearch").addEventListener("click", function () { 
-    // Lấy text nhà cung cấp, bỏ qua nếu là "Nhà cung cấp"
-    var selectElementNPH = document.getElementById("manph");
-    var selectedNPH = selectElementNPH.options[selectElementNPH.selectedIndex].text;
-    if (selectedNPH == "Nhà cung cấp") {
-        selectedNPH = "";
-    }
+    document.getElementById("btnSearch").addEventListener("click", function () { 
+        // Lấy text nhà cung cấp, bỏ qua nếu là "Nhà cung cấp"
+        var selectElementNPH = document.getElementById("manph");
+        var selectedNPH = selectElementNPH.options[selectElementNPH.selectedIndex].text;
+        if (selectedNPH === "Nhà sản xuất") {
+            selectedNPH = ""; // Bỏ qua nếu giá trị là "Nhà cung cấp"
+        }
 
-    // Lấy text thể loại, bỏ qua nếu là "Thể loại"
-    var selectElementTheLoai = document.getElementById("theloai");
-    var selectedTheLoai = selectElementTheLoai.options[selectElementTheLoai.selectedIndex].text;
-    if (selectedTheLoai == "Thể loại") {
-        selectedTheLoai = "";
-    }
+        // Lấy text thể loại, bỏ qua nếu là "Thể loại"
+        var selectElementTheLoai = document.getElementById("theloai");
+        var selectedTheLoai = selectElementTheLoai.options[selectElementTheLoai.selectedIndex].text;
+        if (selectedTheLoai === "Thể loại") {
+            selectedTheLoai = ""; // Bỏ qua nếu giá trị là "Thể loại"
+        }
 
-    var sort = document.getElementById("SortDrop").value;
-    var min = document.getElementById("min").value;
-    var max = document.getElementById("max").value;
+        var sort = document.getElementById("SortDrop").value;
+        var min = document.getElementById("min").value;
+        var max = document.getElementById("max").value;
 
-    var filterUrl = "/Product/Index?";
-    var array = [];
+        var filterUrl = "/Product/Index?";
+        var array = [];
 
-    if (selectedNPH != "") {
-        array.push("nph=" + selectedNPH);
-    }
-    if (sort != "") {
-        array.push("SortColumn=" + sort);
-    }
-    if (selectedTheLoai != "") {
-        array.push("type=" + selectedTheLoai);
-    }
-    if (min != "" && max != "") {
-        array.push("min=" + min + "&max=" + max);
-    }
+        if (selectedNPH !== "") {
+            array.push("nph=" + encodeURIComponent(selectedNPH)); // Mã hóa URI để tránh lỗi ký tự đặc biệt
+        }
+        if (sort !== "") {
+            array.push("SortColumn=" + encodeURIComponent(sort));
+        }
+        if (selectedTheLoai !== "") {
+            array.push("type=" + encodeURIComponent(selectedTheLoai));
+        }
+        if (min !== "" && max !== "") {
+            array.push("min=" + encodeURIComponent(min) + "&max=" + encodeURIComponent(max));
+        }
 
-    filterUrl += array.join("&");
-    window.location.href = filterUrl;
-});
+        filterUrl += array.join("&");
+        window.location.href = filterUrl;
+    });
+</script>
 
-
-    </script>
     <script>
-        $(document).ready(function () {
-            $('.parent-item').click(function () {
-                $(this).find('.child-list').slideToggle();
-            });
+    $(document).ready(function () {
+        $('.parent-item').click(function () {
+            $(this).find('.child-list').slideToggle();
         });
-    </script>
+    });
+</script>
+    
 
 </body>
 

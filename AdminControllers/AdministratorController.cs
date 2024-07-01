@@ -50,7 +50,7 @@ namespace WebDungCuLamBanh.AdminControllers
         }
 
 
-        public IActionResult Dashboard(DateTime fromDate, DateTime toDate)
+        public async Task<IActionResult> Dashboard(DateTime fromDate, DateTime toDate)
         {
             @ViewBag.fromDate = fromDate;
             @ViewBag.toDate = toDate;
@@ -142,25 +142,48 @@ namespace WebDungCuLamBanh.AdminControllers
             ViewBag.tienNhapHangHomNay = HtmlHelpers.FormatCurrency((decimal)tienNhapHangHomNay);
             ViewBag.tienLoiHomNay = HtmlHelpers.FormatCurrency((decimal)tienLoiHomNay);
             ViewBag.vatHomNay = HtmlHelpers.FormatCurrency((decimal)vatHomNay);
-            //Lấy sản phẩm trong Chi tiết đơn hàng
-            var top10= context.ChiTietDonHangs
-                .Include(ct => ct.DungCu)
-                
-                .Where(ct => ct.DonHang.TrangThai != "Chưa thanh toán")
-              
-                .ToList();
-            var top10RepeatedProducts = top10
-                .GroupBy(ct => ct.DungCu.Id_DungCu)  // Nhóm các sản phẩm theo ID
-                .Select(group => new
+
+            var products = await context.DungCus
+                .Where(d=>d.DaXoa==0)
+                .ToListAsync(); // Thay thế bằng query của bạn
+
+            // Tính toán thứ hạng sản phẩm
+            var orderDetails = await context.ChiTietDonHangs
+                .Where(d => d.DonHang.TrangThai != "Chưa thanh toán" && d.DonHang.NgayDat.Value.Month == DateTime.Now.Month && d.DonHang.NgayDat.Value.Year == DateTime.Now.Year)
+                .GroupBy(p => p.Id_DungCu)
+                .Select(p => new
                 {
-                    ProductId = group.Key,
-                    Count = group.Count()
-                })  // Chọn số lần xuất hiện của mỗi sản phẩm
-                .OrderByDescending(item => item.Count)  // Sắp xếp theo số lần xuất hiện giảm dần
-                .Take(10)  // Chọn 10 sản phẩm đầu tiên
+                    Id_DungCu = p.Key,
+                    SoLuong = p.Sum(x => x.SoLuong)
+                })
+                .OrderByDescending(x => x.SoLuong)
+                .ToListAsync();
+
+            // Tạo Dictionary để tra cứu thứ tự sắp xếp dựa trên Id_DungCu
+            // Tạo Dictionary để tra cứu thứ tự sắp xếp dựa trên Id_DungCu
+            var productRank = orderDetails
+                .Select((item, index) => new { item.Id_DungCu, Rank = index + 1 })
+                .ToDictionary(x => x.Id_DungCu, x => x.Rank);
+
+// Sắp xếp danh sách sản phẩm dựa trên thứ hạng đã tính toán
+            var sortedProducts = products.OrderBy(p => productRank.ContainsKey(p.Id_DungCu) ? productRank[p.Id_DungCu] : int.MaxValue).Take(10)
                 .ToList();
 
-            ViewData["Top10"] = top10RepeatedProducts;
+// Lấy thông tin sản phẩm và tính số lượng bán được
+            var productInfo = sortedProducts.Select(p => new
+            {
+                Id_DungCu = p.Id_DungCu,
+                TenSanPham = p.TenDungCu, // Thay thế bằng tên thuộc tính thực tế trong sản phẩm của bạn
+                SoLuongBanDuoc = orderDetails.FirstOrDefault(d => d.Id_DungCu == p.Id_DungCu)?.SoLuong ?? 0
+            }).ToList();
+
+
+// Bỏ danh sách thông tin sản phẩm vào ViewData
+            ViewData["ProductInfo"] = productInfo;
+
+
+
+
 
             return View();
         }

@@ -1,5 +1,5 @@
 ﻿@{
-    var top10 = ViewData["Top10"] as List<dynamic>;
+    var top10 = ViewData["ProductInfo"] as IEnumerable<dynamic>;
 }
 @{
     ViewData["Title"] = "Tổng quan";
@@ -157,123 +157,134 @@
                 </div>
             </div>
         </div>
-        <div class="col-xl-6 col-lg-6">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Doanh thu tháng @ViewBag.thangNay</h6>
+    <div class="col-xl-6 col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Doanh thu tháng @ViewBag.thangNay</h6>
 
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <table width="100%" class="table">
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <table width="100%" class="table">
+                    <tbody>
+                    <tr>
+                        <td>Doanh thu</td>
+                        <td style="text-align:right">@ViewBag.doanhThuThangNay</td>
+                    </tr>
+                    <tr>
+                        <td>Doanh thu sau thuế (đã trừ chi phí)</td>
+                        <td style="text-align:right">@ViewBag.doanhThuSauThuevaChiPhiThangNay</td>
+                    </tr>
+                    <tr>
+                        <td>Tiền vận chuyển</td>
+                        <td style="text-align:right">@ViewBag.tienShipThangNay</td>
+                    </tr>
+                    <tr>
+                        <td>VAT</td>
+                        <td style="text-align:right">@ViewBag.vatThangNay</td>
+                    </tr>
+                    <tr>
+                        <td>Tiền nhập hàng</td>
+                        <td style="text-align:right">@ViewBag.tienNhapHangThangNay</td>
+                    </tr>
+                    <tr>
+                        <td>Lợi nhuận</td>
+                        <td style="text-align:right">@ViewBag.loiNhuanThangNay</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Lọc doanh thu</h6>
+
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                <form class="row g-3" method="get" asp-action="Dashboard" asp-controller="Administrator">
+                    <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label">Từ ngày</label>
+                    </div>
+                    <div class="col-auto d-flex">
+
+                        <input value="@ViewBag.fromDate" type="date" class="form-control" name="fromDate" placeholder="Password">
+                    </div>
+                    <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label">Đến ngày</label>
+                    </div>
+                    <div class="col-auto d-flex">
+
+                        <input value="@ViewBag.toDate" type="date" class="form-control" name="toDate" placeholder="Password">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Lọc</button>
+                    </div>
+                </form>
+                @if (ViewBag.doanhThuLoc != null)
+                {
+                    <table class="table">
+                        <tr>
+                            <td>Từ ngày @ViewBag.fromDate đến ngày @ViewBag.toDate.</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Doanh thu toàn ngành</td>
+                            <td style="text-align:right">@ViewBag.doanhThuLoc₫</td>
+                        </tr>
+                        <tr>
+                            <td>Doanh thu sau thuế (đã trừ chi phí)</td>
+                            <td style="text-align:right">@ViewBag.doanhThuSauThueVaChiPhiLoc₫</td>
+                        </tr>
+                        <tr>
+                            <td>Tiền nhập hàng</td>
+                            <td style="text-align:right">@ViewBag.tienNhapHangLoc₫</td>
+                        </tr>
+                        <tr>
+                            <td>Tiền lời</td>
+                            <td style="text-align:right">@ViewBag.tienLoiLoc₫</td>
+                        </tr>
+                        <tr>
+                            <td>VAT</td>
+                            <td style="text-align:right">@ViewBag.vatLoc₫</td>
+                        </tr>
+                    </table>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-12 col-md-12 mb-4">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                <h6 class="m-0 font-weight-bold text-primary">Top 10 sản phẩm bán chạy nhất trong tháng @ViewBag.thangNay</h6>
+            </div>
+            <!-- Card Body -->
+            <div class="card-body">
+                @if (top10 != null)
+                {
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Bán được</th>
+                            </tr>
+                        </thead>
                         <tbody>
-                            <tr>
-                                <td>Doanh thu</td>
-                                <td style="text-align:right">@ViewBag.doanhThuThangNay</td>
-                            </tr>
-                            <tr>
-                                <td>Doanh thu sau thuế (đã trừ chi phí)</td>
-                                <td style="text-align:right">@ViewBag.doanhThuSauThuevaChiPhiThangNay</td>
-                            </tr>
-                            <tr>
-                                <td>Tiền vận chuyển</td>
-                                <td style="text-align:right">@ViewBag.tienShipThangNay</td>
-                            </tr>
-                            <tr>
-                                <td>VAT</td>
-                                <td style="text-align:right">@ViewBag.vatThangNay</td>
-                            </tr>
-                            <tr>
-                                <td>Tiền nhập hàng</td>
-                                <td style="text-align:right">@ViewBag.tienNhapHangThangNay</td>
-                            </tr>
-                            <tr>
-                                <td>Lợi nhuận</td>
-                                <td style="text-align:right">@ViewBag.loiNhuanThangNay</td>
-                            </tr>
-
+                            @foreach (var item in top10)
+                            {
+                                <tr>
+                                    <td><a href="/Product/Detail/@item.Id_DungCu">@item.TenSanPham</a></td>
+                                    <td style="text-align:right">@item.SoLuongBanDuoc</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
-                </div>
-            </div>
-        </div>      
-</div>
-<div class="row">
-    <h4>Lọc </h4>
-
-    <form class="row g-3" method="get" asp-action="Dashboard" asp-controller="Administrator">
-        <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Từ ngày</label>
-        </div>
-        <div class="col-auto d-flex">
-
-            <input value="@ViewBag.fromDate" type="date" class="form-control" name="fromDate" placeholder="Password">
-        </div>
-        <div class="col-auto">
-            <label for="inputPassword6" class="col-form-label">Đến ngày</label>
-        </div>
-        <div class="col-auto d-flex">
-
-            <input value="@ViewBag.toDate" type="date" class="form-control" name="toDate" placeholder="Password">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-primary mb-3">Lọc</button>
-        </div>
-    </form>
-    @if (ViewBag.doanhThuLoc != null)
-    {
-        <table class="table">
-            <tr>
-                <td>Từ ngày @ViewBag.fromDate đến ngày @ViewBag.toDate.</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Doanh thu toàn ngành</td>
-                <td style="text-align:right">@ViewBag.doanhThuLoc₫</td>
-            </tr>
-            <tr>
-                <td>Doanh thu sau thuế (đã trừ chi phí)</td>
-                <td style="text-align:right">@ViewBag.doanhThuSauThueVaChiPhiLoc₫</td>
-            </tr>
-            <tr>
-                <td>Tiền nhập hàng</td>
-                <td style="text-align:right">@ViewBag.tienNhapHangLoc₫</td>
-            </tr>
-            <tr>
-                <td>Tiền lời</td>
-                <td style="text-align:right">@ViewBag.tienLoiLoc₫</td>
-            </tr>
-            <tr>
-                <td>VAT</td>
-                <td style="text-align:right">@ViewBag.vatLoc₫</td>
-            </tr>
-        </table>
-
-
-    }
-</div>
-<div class="row">
-    @if(top10 != null)
-    {
-        <h4>Top 10 sản phẩm bán chạy nhất trong tháng</h4>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>STT</th>
-                    <th>Tên sản phẩm</th>
-                    <th>Số lượng bán</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in top10)
-                {
-                    <tr>
-                        <td>@item.ProductId</td>
-                        <td>@item.Count</td>
-                    </tr>
                 }
-            </tbody>
-        </table>
-    }
-    
+            </div>
+        </div>
+    </div>
 </div>

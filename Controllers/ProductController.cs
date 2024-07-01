@@ -47,6 +47,20 @@ namespace WebDungCuLamBanh.Controllers
             {
                 query = query.Where(p => p.NhaSanXuat.TenNSX.Contains(nph));
             }
+            var orderDetails = await context.ChiTietDonHangs
+                .GroupBy(p => p.Id_DungCu)
+                .Select(p => new
+                {
+                    Id_DungCu = p.Key,
+                    SoLuong = p.Sum(x => x.SoLuong)
+                })
+                .OrderByDescending(x => x.SoLuong)
+                .ToListAsync();
+
+// Dictionary để tra cứu thứ tự sắp xếp dựa trên Id_DungCu
+            var productRank = orderDetails
+                .Select((item, index) => new { item.Id_DungCu, Rank = index + 1 })
+                .ToDictionary(x => x.Id_DungCu, x => x.Rank);
 
             // Sắp xếp theo cột được chọn
             query = SortColumn switch
@@ -57,8 +71,15 @@ namespace WebDungCuLamBanh.Controllers
                 "2" => query.OrderByDescending(p => p.TenDungCu),
                 "5" => query.OrderBy(p => p.Id_DungCu),
                 "6" => query.OrderByDescending(p => p.Id_DungCu),
+                //Lấy ra danh sách sp bán chạy từ productCoun
+                "7" => query.OrderBy(p => productRank.ContainsKey(p.Id_DungCu) ? productRank[p.Id_DungCu] : int.MaxValue),
+                
                 _ => query.OrderByDescending(p => p.Id_LoaiDungCu),
             };
+            // Giả sử bạn có một tập hợp OrderDetails (chi tiết hóa đơn) 
+            
+
+// Nếu cần lấy kết quả dưới dạng khác, bạn có thể tiếp tục thao tác với productCounts
 
             // Kiểm tra nếu không có kết quả
             int TotalItems = await query.CountAsync();
@@ -102,6 +123,8 @@ namespace WebDungCuLamBanh.Controllers
                 return NotFound();
             }
             ViewBag.email = HttpContext.Session.GetString("email");
+            HttpContext.Session.SetString("idspvuaxem", id.Value.ToString());
+
             var dungCuModel = await context.DungCus
                 .Include(p => p.LoaiDungCu)
                 .Include(p => p.NhaCungCap)

@@ -15,6 +15,7 @@ namespace WebDungCuLamBanh.Components
                 var spvuaxem = context.HttpContext.Session.GetString("idspvuaxem");
                 controller.ViewBag.email = email;
                 controller.ViewBag.uid = uid;
+                controller.ViewBag.idspvuaxem = spvuaxem;
             }
             base.OnActionExecuting(context);
         }
